@@ -1,18 +1,27 @@
+/*
+	@@Imports
+	Module is dependant @processXml
+*/
 var ingestionScripts = require('../ingestion');
 
-var fileName = "/sa20170317XFD00000001.xml";
+var fileName = "/sa20170317XFD12350002.xml";
 
 var ingestScript = ingestionScripts["processXml"];
-console.log(ingestScript);
 if ( ingestScript == null ) {
 	console.log("Fail: Function does not exist.");
 	return
 }
 
-ingestScript.readXML(fileName)
-.then(function( xml ) {
-	console.log(xml);
+ingestScript
+.readXML( fileName )
+.then( function( xml )
+{
+	return ingestScript.parseXML(xml);
 })
-.catch(function( error ) {
-	console.log(error);
+.then( function( json )
+{
+	console.log(json);
 })
+.catch( function( error ) {
+	console.log("Unable to read file because: " + error.message);
+});
