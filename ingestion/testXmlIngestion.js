@@ -21,10 +21,7 @@ if ( ingestScript == null ) {
 	If successful logs SA JSON Object to console.
 	Logs unsuccessful parse errors to the console.
 */
-ingestScript
-.readXML( fileName )
-.then(ingestScript.parseXML)
-.then( function( json )
+ingestScript.readXML( fileName ).then(ingestScript.parseXML).then( function( json )
 {
 	console.log(json);
 })
