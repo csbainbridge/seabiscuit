@@ -4,20 +4,26 @@
 */
 var ingestionScripts = require('../ingestion');
 
-var fileName = "/sa20170317XFD12350002.xml";
+// XML file to test
+var fileName = "/sa20170317XFD00000001.xml";
 
+// Set processXml module as ingestScript
 var ingestScript = ingestionScripts["processXml"];
+
+// if ingestion module does not exit log error to console.
 if ( ingestScript == null ) {
 	console.log("Fail: Function does not exist.");
 	return
 }
 
+/*
+	Execute processXml passing fileName as parameter.
+	If successful logs SA JSON Object to console.
+	Logs unsuccessful parse errors to the console.
+*/
 ingestScript
 .readXML( fileName )
-.then( function( xml )
-{
-	return ingestScript.parseXML(xml);
-})
+.then(ingestScript.parseXML)
 .then( function( json )
 {
 	console.log(json);
