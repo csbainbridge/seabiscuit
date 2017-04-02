@@ -1,0 +1,36 @@
+{
+  "name": "seabiscuit",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "hjs": "~0.0.6",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "description": "PA XML Race Day Viewer",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https//github.com/csbainbridge/seabiscuit.git"
+  },
+  "keywords": [
+    "xml",
+    "betting",
+    "race",
+    "card",
+    "horse",
+    "racing",
+    "web",
+    "application"
+  ],
+  "author": "Racing Data Customer Support (Dev Team)",
+  "license": "ISC"
+}
