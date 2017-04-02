@@ -7,8 +7,7 @@ var xml2js = require('xml2js');
 var Promise = require('bluebird');
 
 /*
-  @@processXML object provides functions @readXML and @parseXML for production usage.
-  Function @writeToFile is for testing usage only.
+  @@processXml object provides functions @readXML and @parseXML for production usage.
 */
 module.exports = {
   /* 
