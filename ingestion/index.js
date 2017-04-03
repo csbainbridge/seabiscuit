@@ -3,10 +3,10 @@
 	Module is dependant on @processXML.
 */
 var processXml = require('./ProcessXml.js');
-var standardizeJson = require('./StandardizeJson');
+var initializePABettingObject = require('./InitializePABettingObject');
 
 // Export processXml as ProcessXml.
 module.exports = {
 	processXml : processXml,
-	standardizeJson : standardizeJson,
+	initializePABettingObject : initializePABettingObject,
 }
