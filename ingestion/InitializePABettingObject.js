@@ -48,7 +48,8 @@ var initializePABettingObject = {
 			} else if ( parsedJson.HorseRacingX ) {
 				resolve({ 
 					"BettingObject" : parsedJson, 
-					"ObjectType": "SA"
+					"ObjectType": "SA",
+					"paObject" : initializePABettingObject.createPABettingObject()
 				} )
 			}
 		});
@@ -61,19 +62,21 @@ var initializePABettingObject = {
 	*/
 	standardizeJson : function( bettingObject ) {
 		// TODO 03/04/2017: Wrap this function in a Promise.
-		var objData = {
-			"checkObjectType" :  initializePABettingObject.checkBettingObjectType(bettingObject),
-			"paObject" : initializePABettingObject.createPABettingObject()
-		}
+		var objData = initializePABettingObject.checkBettingObjectType(bettingObject)
 
-		var paObjectWithData = objData.checkObjectType
+		var paObjectWithData = objData
 		.then( function( object ) {
-			var bettingObj = object.BettingObject;
-			var objectType = object.ObjectType;
-			var paObject = objData.paObject;
+			// If change the call location of the createPABettingObject within the checkBettingObjectType function, I will be able to pipe the result
+			// Object directly into the setValues function
+			// var params = {
+			// 	"bettingObject" : object.BettingObject,
+			// 	"objectType" : object.ObjectType,
+			// 	"paObject" : objData.paObject
+			// }
+			// console.log(object);
 			
 			// Call setValues with @paObject {Empty JSON Object}, @bettingObj {Object created from supplier XML}, @objType {Supplier Object Indentifier}
-			return initializePABettingObject.setValues( paObject, bettingObj, objectType );
+			return initializePABettingObject.setValues( object );
 		})
 		.catch( function( error ){
 			// Need to promise otherwise the calling Promise block will not fail the test. The test will still be successful even if the data is Betting object
@@ -90,20 +93,19 @@ var initializePABettingObject = {
 		@params paObject, bettingObject, objectType
 		Function determines which supplier the object is from using @objectType and returns standardizezed PA Betting object.
 	*/
-	setValues : function( paObject, bettingObject, objectType ) {
+	setValues : function( params ) {
 		// Error handling for the type of object is already executed in @checkBettingObjectType function.
-		if ( objectType === "SA" ) {
-			paObject.PABettingObject.Revision = bettingObject.HorseRacingX.Message["0"].$.seq;
-			paObject.PABettingObject.MessageType = bettingObject.HorseRacingX.Message["0"].$.type;
-			paObject.PABettingObject.Meeting.Course = bettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.country;
-			paObject.PABettingObject.Meeting.Country = bettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.course;
-			paObject.PABettingObject.Meeting.Date = bettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.date;
+		if ( params.ObjectType === "SA" ) {
+			params.paObject.PABettingObject.Revision = params.BettingObject.HorseRacingX.Message["0"].$.seq;
+			params.paObject.PABettingObject.MessageType = params.BettingObject.HorseRacingX.Message["0"].$.type;
+			params.paObject.PABettingObject.Meeting.Course = params.BettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.country;
+			params.paObject.PABettingObject.Meeting.Country = params.BettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.course;
+			params.paObject.PABettingObject.Meeting.Date = params.BettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.date;
 			// Default value. We need to figure out what meta data we can use to set this value to the different race status'.
-			paObject.PABettingObject.Meeting.Status = "Dormant"; 
+			params.paObject.PABettingObject.Meeting.Status = "Dormant"; 
 		}
-
 		// Return PA Betting object to the @standardizeJson function
-		return paObject
+		return params.paObject
 	},
 }
 
