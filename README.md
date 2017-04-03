@@ -1,1 +1,1 @@
-PA XML Data Viewer
+PA XML Race Day Viewer
