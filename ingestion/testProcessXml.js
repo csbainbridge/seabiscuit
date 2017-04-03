@@ -21,9 +21,11 @@ if ( processXml == null || standardizeJson == null) {
 	If successful logs SA JSON Object to console.
 	Logs unsuccessful parse errors to the console.
 */
-processXml.readXML( fileName ).then( processXml.parseXML ).then( function( json )
-{
-	console.log(standardizeJson.createPABettingObject(json));
+processXml.readXML( fileName )
+.then( processXml.parseXML )
+.then( standardizeJson.createPABettingObject)
+.then(function( json ) {
+	console.log(json);
 })
 .catch( function( error ) {
 	console.log("Unable to read file because: " + error.message);
