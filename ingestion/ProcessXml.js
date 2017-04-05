@@ -20,7 +20,10 @@ module.exports = {
     return new Promise(function( resolve, reject ) {
         fs.readFile(filePath, 'utf8', function( error, fileContents ) {
           if ( error ) {
-            reject(error);
+            reject({
+              "Error" : error,
+              "Action" : "N/A",
+            });
             return
           }
           // Creates Regular Expression for pattern matching all NULL bytes globally.
@@ -42,7 +45,10 @@ module.exports = {
     return new Promise(function( resolve, reject ) {
         xmlParser.parseString(xml, function( error, json ) {
           if ( error ) {
-            reject(error);
+            reject({
+              "Error" : error,
+              "Action" : "N/A",
+            });
             return
           }
           resolve(JSON.stringify(json));
