@@ -116,11 +116,10 @@ var initializePABettingObject = {
 		var paObjectWithData = objData
 		.then( function( object ) {
 		
-			var paObject = initializePABettingObject.createPABettingObject();
 			var bettingDataObjects = {
 				"BettingDataObject" : object.BettingObject,
 				"ObjectType" : object.ObjectType,
-				"PAObject" : paObject
+				"PAObject" : initializePABettingObject.createPABettingObject()
 			}
 			
 			// Call setValues with @paObject {Empty JSON Object}, @bettingObj {Object created from supplier XML}, @objType {Supplier Object Indentifier}
