@@ -17,6 +17,7 @@ var initializePABettingObject = {
 		// TODO: Promise this function
 		var obj = {
 			"PABettingObject" : {
+				"ObjectCreationTime" : new Date(),
 				"Revision" : "",
 				"MessageType" : "",
 				"Meeting" : {
@@ -24,6 +25,52 @@ var initializePABettingObject = {
 					"Country" : "",
 					"Date" : "",
 					"Status" : "",
+					"Race" : {
+						"Status" : "",
+						"Time" : "",
+						"Runners" : "", 
+						"Weather" : "",
+						"Going" : "", 
+						"OffTime" : "",
+						"Horse" : [{
+							"Status" : "",
+							"Name" : "",
+							"Bred" : "",
+							"Cloth" : "",
+							"Weight" : {
+								"units" : "",
+								"value" : "",
+								"text" : "",
+							},
+							"Jockey" : {
+								"Name" : "",
+							},
+							"Show" : [{
+								"TimeStamp" : "",
+								"Numerator" : "",
+								"Denominator" : "",
+							}],
+							"Starting Price" : {
+								"TimeStamp": "",
+								"Numerator" : "",
+								"Denominator" : "",
+							},
+							"Result" : {
+								"FinishPos" : "",
+								"Disqualified" : "",
+								"BtnDistance" : "",
+							}
+						}],
+						"Returns" : [{
+							"Type" : "",
+							"Currency" : "",
+							"Dividend" : "",
+							"Horse" : {
+								"Name" : "",
+								"Bred" : "",
+							},
+						}],
+					},
 				},
 			}
 		}

@@ -3,9 +3,10 @@
 	Module is dependant @processXml
 */
 var ingestionScripts = require('../ingestion');
+var util = require('util');
 
 // XML file to test
-var fileName = "/sa20170317XFD12350001.xml";
+var fileName = "/sa20170317XFD12350025.xml";
 
 // Set processXml module as ingestScript
 var processXml = ingestionScripts["processXml"];
@@ -35,7 +36,7 @@ processXml.readXML( fileName )
 .then( processXml.parseXML )
 .then( initializePABettingObject.standardizeJson )
 .then( function ( paBettingObject  ) {
-	console.log(paBettingObject);
+	console.log(util.inspect(paBettingObject, false, null));
 })
 .catch( function( error ) {
 	console.log("\nTest Unsuccessful" 
