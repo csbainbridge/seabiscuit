@@ -6,9 +6,9 @@ var ingestionScripts = require('../ingestion');
 var util = require('util');
 
 // XML file to test
-var fileName = "/sa20170317XFD12350025.xml";
+var fileName = "/sa20170317XFD00000002.xml";
 
-// Set processXml module as ingestScript
+// Set processXml module as processXml and InitializePABettingObject module to initializePABettingObject
 var processXml = ingestionScripts["processXml"];
 var initializePABettingObject = ingestionScripts["initializePABettingObject"]
 // if ingestion module does not exit log error to console.
@@ -19,28 +19,18 @@ if ( processXml == null || initializePABettingObject == null) {
 
 /*
 	Execute processXml passing fileName as parameter.
-	If successful logs SA JSON Object to console.
+	If successful logs PA JSON Object to console.
 	Logs unsuccessful parse errors to the console.
 */
-// processXml.readXML( fileName )
-// .then( processXml.parseXML )
-// .then( standardizeJson.createPABettingObject )
-// .then(function( json ) {
-// 	console.log(json);
-// })
-// .catch( function( error ) {
-// 	console.log("Unable to read file because: " + error.message);
-// });
-
 processXml.readXML( fileName )
 .then( processXml.parseXML )
-.then( initializePABettingObject.standardizeJson )
+.then( initializePABettingObject.standardizeBettingData )
 .then( function ( paBettingObject  ) {
 	console.log(util.inspect(paBettingObject, false, null));
 })
 .catch( function( error ) {
-	console.log("\nTest Unsuccessful" 
-			+ "\n" + error.Error
+	console.log(
+			"\n" + error.Error
 			+ "\nAction: " + error.Action
 		);
 });
