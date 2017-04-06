@@ -5,9 +5,9 @@
 */
 
 /*
-  @setValues function
-  @params messageType
-  Returns @setMessageTypeData function that is called with an empty PA Betting Object and SA Betting Object.
+  @setMessageValues function
+  @params messageType, paObject, saBettingObject
+  Returns paBettingObject.
 */
 function setMessageValues( messageType, paObject, saBettingObject ) {
     var paBettingObject = paObject;
