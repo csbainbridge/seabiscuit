@@ -5,14 +5,73 @@
 */
 
 /*
+  @@Imports
+  Module is dependant on @utils.
+*/
+
+var seabiscuitUtils = require('./utils');
+
+/*
   @setMessageValues function
   @params messageType, paObject, saBettingObject
   Returns paBettingObject.
 */
 function setMessageValues( messageType, paObject, saBettingObject ) {
+    
     var paBettingObject = paObject;
-    if ( messageType === "Weather" ) {
-      paBettingObject.PABettingObject.Meeting.Race.Weather = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].Weather["0"].$.message;
+    
+    switch( messageType ) {
+      case "Going":
+        paBettingObject.PABettingObject.Meeting.Race.Going = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].RaceGoing["0"].$.brief;
+        seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+        break;
+
+      case "Weather":
+        paBettingObject.PABettingObject.Meeting.Race.Weather = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].Weather["0"].$.message;
+        break;
+
+      case "NonRunner":
+        saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].HorseRef.map(function( horse ) {
+          paBettingObject.PABettingObject.Meeting.Race.Horse.push({
+            "Status" : "NonRunner",
+            "Name" : horse.$.name,
+            "Bred" : horse.$.bred,
+            "Cloth" : horse.ClothRef["0"].$.number,
+          })
+        });
+        seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+        break
+
+      case "Market":
+        paBettingObject = seabiscuitUtils.setShows(paBettingObject, saBettingObject);
+        break;
+
+      case "Show":
+        paBettingObject = seabiscuitUtils.setShows(paBettingObject, saBettingObject);
+        break;
+
+      case "RaceState":
+        //
+        break;
+      case "OffTime":
+        //
+        break;
+      case "Result":
+        //
+        break;
+      case "WinningTime":
+        //
+        break;
+      case "RaceDividends":
+        //
+        break;
+      case "JockeyChange":
+        //
+        break;
+      case "Withdrawn":
+        //
+        break;
+      default:
       return paBettingObject;
     }
 }
