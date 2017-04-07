@@ -5,8 +5,7 @@
 var fs = require('fs');
 var Promise = require('bluebird');
 var seabiscuitUtils = require('./utils');
-var saMessageValueSetter = require('./SetSABettingValues').setMessageValues;
-var saDefaultValueSetter = require('./SetSABettingValues').setDefaultValues;
+var setSABettingValues = require('./SetSABettingValues').setMessageValues;
 
 // For testing purposes
 var util = require('util');
@@ -35,6 +34,7 @@ var initializePABettingObject = {
 					"Status" : "",
 					"Race" : {
 						"Status" : "",
+						"StatusTimeStamp" : "",
 						"Time" : "",
 						"Runners" : "",
 						"Weather" : "",
@@ -42,15 +42,7 @@ var initializePABettingObject = {
 						"OffTime" : "",
 						"WinningTime" : "",
 						"Horse" : [],
-						"Returns" : [{
-							"Type" : "",
-							"Currency" : "",
-							"Dividend" : "",
-							"Horse" : {
-								"Name" : "",
-								"Bred" : "",
-							},
-						}],
+						"Returns" : [],
 					},
 				},
 			}
@@ -124,8 +116,8 @@ var initializePABettingObject = {
 		
 		// Check which supplier the betting data came from
 		if ( bettingDataObjects.ObjectType === "SA" ) {
-			saMessageValueSetter(messageType, paObject, bettingObject);
-			saDefaultValueSetter(paObject, bettingObject);
+			setSABettingValues(messageType, paObject, bettingObject);
+			// saDefaultValueSetter(paObject, bettingObject);
 		}
 		// Return PA Betting object to the @standardizeJson function
 		return paObject

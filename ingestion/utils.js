@@ -34,26 +34,26 @@ var utils = {
   */
 	setShows : function( paBettingObject, saBettingObject ) {
 		var runnerCount = 0;
-        saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].HorseRef.map(function( horse ) {
-          runnerCount += 1; 
-          paBettingObject.PABettingObject.Meeting.Race.Horse.push({
-            "Status" : "Runner",
-            "Name" : horse.$.name,
-            "Bred" : horse.$.bred,
-            "Cloth" : horse.ClothRef["0"].$.number,
-            "Show" : horse.Show.map(function( show ) {
-                return {
-                  "TimeStamp" : show.$.timestamp,
-                  "Numerator" : show.$.numerator,
-                  "Denominator" : show.$.denominator,
-                  "Offer" : show.$.noOffers,
-                };
-            })
-          });
-        });
-        paBettingObject.PABettingObject.Meeting.Race.Runners = runnerCount;
-        utils.setRaceTimeValue(paBettingObject, saBettingObject);
-        return paBettingObject;
+    saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].HorseRef.map(function( horse ) {
+      runnerCount += 1; 
+      paBettingObject.PABettingObject.Meeting.Race.Horse.push({
+        "Status" : "Runner",
+        "Name" : horse.$.name,
+        "Bred" : horse.$.bred,
+        "Cloth" : horse.ClothRef["0"].$.number,
+        "Show" : horse.Show.map(function( show ) {
+            return {
+              "TimeStamp" : show.$.timestamp,
+              "Numerator" : show.$.numerator,
+              "Denominator" : show.$.denominator,
+              "Offer" : show.$.noOffers,
+            };
+        })
+      });
+    });
+    paBettingObject.PABettingObject.Meeting.Race.Runners = runnerCount;
+    utils.setRaceTimeValue(paBettingObject, saBettingObject);
+    return paBettingObject;
 	}
 }
 

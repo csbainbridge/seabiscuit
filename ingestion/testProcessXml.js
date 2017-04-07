@@ -6,7 +6,7 @@ var ingestionScripts = require('../ingestion');
 var util = require('util');
 
 // XML file to test
-var fileName = "/sa20170317XFD12350007.xml";
+var fileName = "/sa20170317XFD12350021.xml";
 
 // Set processXml module as processXml and InitializePABettingObject module to initializePABettingObject
 var processXml = ingestionScripts["processXml"];
@@ -25,7 +25,7 @@ if ( processXml == null || initializePABettingObject == null) {
 processXml.readXML( fileName )
 .then( processXml.parseXML )
 .then( initializePABettingObject.standardizeBettingData )
-.then( function ( paBettingObject  ) {
+.then( function ( paBettingObject ) {
 	console.log(util.inspect(paBettingObject, false, null));
 })
 .catch( function( error ) {
