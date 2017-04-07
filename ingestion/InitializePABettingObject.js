@@ -4,6 +4,7 @@
 */
 var fs = require('fs');
 var Promise = require('bluebird');
+var seabiscuitUtils = require('./utils');
 var saMessageValueSetter = require('./SetSABettingDataValues').setMessageValues;
 var saDefaultValueSetter = require('./SetSABettingDataValues').setDefaultValues;
 
@@ -23,7 +24,7 @@ var initializePABettingObject = {
 	createPABettingObject : function() {
 		var obj = {
 			"PABettingObject" : {
-				"ObjectCreationTime" : new Date(),
+				"ObjectCreationTime" : seabiscuitUtils.createTimeStamp(),
 				"Revision" : "",
 				"MessageType" : "",
 				"Meeting" : {
@@ -38,35 +39,8 @@ var initializePABettingObject = {
 						"Weather" : "",
 						"Going" : "",
 						"OffTime" : "",
-						"Horse" : [{
-							"Status" : "",
-							"Name" : "",
-							"Bred" : "",
-							"Cloth" : "",
-							"Weight" : {
-								"units" : "",
-								"value" : "",
-								"text" : "",
-							},
-							"Jockey" : {
-								"Name" : "",
-							},
-							"Show" : [{
-								"TimeStamp" : "",
-								"Numerator" : "",
-								"Denominator" : "",
-							}],
-							"Starting Price" : {
-								"TimeStamp": "",
-								"Numerator" : "",
-								"Denominator" : "",
-							},
-							"Result" : {
-								"FinishPos" : "",
-								"Disqualified" : "",
-								"BtnDistance" : "",
-							}
-						}],
+						"WinningTime" : "",
+						"Horse" : [],
 						"Returns" : [{
 							"Type" : "",
 							"Currency" : "",
@@ -119,6 +93,7 @@ var initializePABettingObject = {
 	standardizeBettingData : function( bettingObject ) {
 		var objData = initializePABettingObject.checkBettingObjectType( bettingObject );
 		var paObjectWithData = objData
+
 		.then( function( object ) {
 			var bettingDataObjects = {
 				"BettingDataObject" : object.BettingObject,
