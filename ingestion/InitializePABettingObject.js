@@ -5,8 +5,8 @@
 var fs = require('fs');
 var Promise = require('bluebird');
 var seabiscuitUtils = require('./utils');
-var saMessageValueSetter = require('./SetSABettingDataValues').setMessageValues;
-var saDefaultValueSetter = require('./SetSABettingDataValues').setDefaultValues;
+var saMessageValueSetter = require('./SetSABettingValues').setMessageValues;
+var saDefaultValueSetter = require('./SetSABettingValues').setDefaultValues;
 
 // Testing Modules
 var util = require('util');
