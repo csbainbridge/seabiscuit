@@ -5,7 +5,6 @@
 */
 
 /*
-<<<<<<< HEAD
   @@Imports
   Module is dependant on @utils.
 */
@@ -73,20 +72,6 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
         //
         break;
       default:
-=======
-  @setValues function
-  @params messageType
-  Returns @setMessageTypeData function that is called with an empty PA Betting Object and SA Betting Object.
-*/
-function setMessageValues( messageType, paObject, saBettingObject ) {
-    var paBettingObject = paObject;
-    if ( messageType === "Weather" ) {
-      paBettingObject.PABettingObject.Meeting.Race.Weather = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].Weather["0"].$.message;
->>>>>>> 4cc9213ac560ce9e30b51c3c557dc85796513e80
-      return paBettingObject;
-    }
-}
-
 /*
   TODO: Complete function
 */
@@ -104,5 +89,5 @@ function setDefaultValues( paObject, bettingObject ) {
 
 module.exports = {
 	setMessageValues : setMessageValues,
-  setDefaultValues : setDefaultValues
+	setDefaultValues : setDefaultValues
 }
