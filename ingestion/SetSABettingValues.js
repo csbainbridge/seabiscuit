@@ -1,5 +1,19 @@
-var seabiscuitUtils = require('./utils');
+/*
+  @@SetSABettingValues module
+  Provides functions that are used to set the values of the {PA Betting Object} using the {SA Betting Object}.
+*/
 
+/*
+  @@Imports
+  Module is dependant on @Utils.
+*/
+var seabiscuitUtils = require('./Utils');
+
+/*
+    @setMessageValues
+    SA data is fragmented, therefore this function uses the {Message Type} to set values within the {PA Betting Object} dynamically
+    based on the {MessageType}.
+  */
 function setMessageValues( messageType, paObject, saBettingObject ) {
 	var paBettingObject = paObject;
 	switch(messageType) {
@@ -20,6 +34,7 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 					}
 				)
 			});
+			// Test this function, may need to return the object from the function
 			seabiscuitUtils.setRaceTimeValue(paBetttingObject, saBettingObject);
 			break;
 		case "Market":
@@ -29,12 +44,21 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 			paBettingObject = seabiscuitUtils.setShows(paBettingObject, saBettingObject);
 			break;
 	}
+	return paBettingObject
 }
 
-function setDefaultValues( paObject, saBettingObject) {
-	paObject.PABettingObject.Revision = saBettingObject.HorseRacingX.Message["0"].$.seq;
-	paObject.PABettingObject.MessageType = saBettingObject.HorseRacingX.Message["0"].$.type;
-	paObject.PABettingObject.Meeting.Course = saBettingObject.HorseRacingX.Message["0"].$.course;
+
+/*
+    @setDefaultValues
+    Sets the default values in the {PA Betting Object} using values in the {SA Betting Object}.
+  */
+function setDefaultValues( paBettingObject, saBettingObject) {
+	paBettingObject.PABettingObject.Revision = saBettingObject.HorseRacingX.Message["0"].$.seq;
+	paBettingObject.PABettingObject.MessageType = saBettingObject.HorseRacingX.Message["0"].$.type;
+	paBettingObject.PABettingObject.Meeting.Course = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.course;
+	paBettingObject.PABettingObject.Meeting.Country = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.country;
+	paBettingObject.PABettingObject.Meeting.Date = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.date;
+	return paBettingObject;
 }
 
 module.exports = {

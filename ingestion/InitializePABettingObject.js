@@ -8,13 +8,12 @@ var seabiscuitUtils = require('./utils');
 var saMessageValueSetter = require('./SetSABettingValues').setMessageValues;
 var saDefaultValueSetter = require('./SetSABettingValues').setDefaultValues;
 
-// Testing Modules
+// For testing purposes
 var util = require('util');
 
 /*
 	@@initializePABettingObject object provides function @createPABettingObject, @checkBettingObjectType, @standardizeBettingData and @checkObject.
 */
-
 var initializePABettingObject = {
 
 	/*
@@ -23,6 +22,8 @@ var initializePABettingObject = {
 	*/
 	createPABettingObject : function() {
 		var obj = {
+			"SeabiscuitPABettingSpecification" : "v0.1 07-04-2017",
+			"Author" : "CSBainbridge",
 			"PABettingObject" : {
 				"ObjectCreationTime" : seabiscuitUtils.createTimeStamp(),
 				"Revision" : "",
