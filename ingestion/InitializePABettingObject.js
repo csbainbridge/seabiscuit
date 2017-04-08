@@ -33,6 +33,7 @@ var initializePABettingObject = {
 					"Date" : "",
 					"Status" : "",
 					"Race" : {
+						"RaceID" : "",
 						"Status" : "",
 						"StatusTimeStamp" : "",
 						"Time" : "",

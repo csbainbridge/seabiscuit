@@ -8,7 +8,7 @@
   Module is dependant on @Utils.
 */
 var seabiscuitUtils = require('./Utils');
-
+var util = require('util');
 /*
     @setMessageValues
     SA data is fragmented, therefore this function uses the {Message Type} to set values within the {PA Betting Object} dynamically
@@ -26,27 +26,53 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 			break;
 
 		case "NonRunner":
-			// Might be possible to create a function that returns the result of map as this line seems to be used multiple times in this block of code.
-			saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].HorseRef.map(function( horse ) {
-				paBettingObject.paBettingObject.Meeting.Race.Horse.push(
-					{
-						"Status" : "NonRunner",
-						"Name" : horse.$.name,
-						"Bred" : horse.$.bred,
-						"Cloth" : horse.ClothRef["0"].$.number,
-					}
-				)
-			});
-			// Test this function, may need to return the object from the function
-			seabiscuitUtils.setRaceTimeValue(paBetttingObject, saBettingObject);
+			var NonRunnerObject = {
+				"Status" : "",
+				"Name" : "",
+				"Bred" : "",
+				"Cloth" : "",
+			}
+			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
+			var objToPush = seabiscuitUtils.createObjToPush(horseArray, NonRunnerObject, messageType);
+			paBettingObject = seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
+			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject)
 			break;
 
 		case "Market":
-			paBettingObject = seabiscuitUtils.setShows(paBettingObject, saBettingObject);
+			var showObject = {
+				"Name" : "",
+				"Bred" : "",
+				"Cloth" : "",
+				"Show" : {
+					"TimeStamp" : "",
+					"Numerator" : "",
+					"Denominator" : "",
+					"Offer" : "",
+				}
+			}
+			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
+			var objToPush = seabiscuitUtils.createObjToPush(horseArray, showObject, messageType);
+			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
+			seabiscuitUtils.countRaceRunners(paBettingObject);
+			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "Show":
-			paBettingObject = seabiscuitUtils.setShows(paBettingObject, saBettingObject);
+			var showObject = {
+				"Name" : "",
+				"Bred" : "",
+				"Cloth" : "",
+				"Show" : {
+					"TimeStamp" : "",
+					"Numerator" : "",
+					"Denominator" : "",
+					"Offer" : "",
+				}
+			}
+			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
+			var objToPush = seabiscuitUtils.createObjToPush(horseArray, showObject, messageType);
+			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
+			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "RaceState":
@@ -61,30 +87,23 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 			break;
 
 		case "Result":
-			// Might be possible to create a function that returns the result of map as this line seems to be used multiple times in this block of code.
-			// In the XML revision 17 and 19 the result is sent twice need to clarify this with Isaac/Dom
-			saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].HorseRef.map(function( horse ) {
-				paBettingObject.PABettingObject.Meeting.Race.Horse.push(
-					{
-						"Name" : horse.$.name,
-						"Bred" : horse.$.bred,
-						"Cloth" : horse.ClothRef["0"].$.number,
-						"StartingPrice" : horse.StartingPrice.map(function( startingPrice ) {
-							return {
-								"Numerator" : startingPrice.$.numerator,
-								"Denominator" : startingPrice.$.denominator, 
-                			};
-						}),
-						"Result" : horse.Result.map(function( result ) {
-							return {
-								"FinishPos" : result.$.finishPos,
-								"Disqualified" : result.$.disqualified,
-								"BtnDistance" : result.$.btnDistance,
-							}
-						})
-					}
-				);
-			});
+			var resultObject = {
+				"Name" : "",
+				"Bred" : "",
+				"Cloth" : "",
+				"StartingPrice" : {
+					"Numerator" : "",
+					"Denominator" : "",
+				},
+				"Result" : {
+					"FinishPos" : "",
+					"Disqualified" : "",
+					"BtnDistance" : "",
+				},
+			}
+			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
+			var objToPush = seabiscuitUtils.createObjToPush(horseArray, resultObject, messageType);
+			paBettingObject = seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
 			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
@@ -113,12 +132,38 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 			break;
 
 		case "JockeyChange":
-			//Code
+			var jockeyChangeObject = {
+		 	 		"Name" : "",
+		 	 		"Bred" : "",
+		 	 		"Cloth" : "",
+		 	 		"JockeyChange" : {
+		 	 			"Name" : "",
+		 	 			"Units" : "",
+		 	 			"Allowance" : "",
+		 	 			"Overweight" : "",
+		 	 	}
+		 	}
+			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
+			var objToPush = seabiscuitUtils.createObjToPush(horseArray, jockeyChangeObject, messageType);
+			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
+			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
+
 		case "Withdrawn":
-			//Code
+			var withdrawnObject = {
+				"Name" : "",
+				"Bred" : "",
+				"Cloth" : "",
+				"WithdrawnPrice" : {
+					"Numerator" : "",
+					"Denominator" : "",
+				}
+			}
+			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
+			var objToPush = seabiscuitUtils.createObjToPush(horseArray, withdrawnObject, messageType);
+			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
+			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
-		// Are there any other race status'?
 	}
 	return setDefaultValues(paBettingObject, saBettingObject);
 }
