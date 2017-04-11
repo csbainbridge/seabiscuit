@@ -9,12 +9,21 @@ var createIDs = {
 	    @createMeetingId
 	    Returns a unique {Meeting ID}. Created using {PA Betting Object} data ({Course}, {Country} and {Date}).
   	*/
-	createMeetingId : function( paBettingObject ) {
+	createMeetingId : function( paDataObject ) {
     var meetingId = "";
+    var course;
+    var country;
+    var date;
 
-    var course = paBettingObject.PABettingObject.Meeting.Course;
-    var country = paBettingObject.PABettingObject.Meeting.Country;
-    var date = paBettingObject.PABettingObject.Meeting.Date;
+    if ( paDataObject.PABettingObject ) {
+      course = paDataObject.PABettingObject.Meeting.Course;
+      country = paDataObject.PABettingObject.Meeting.Country;
+      date = paDataObject.PABettingObject.Meeting.Date;
+    } else {
+      course = paDataObject.PARaceCardObject.Meeting.Course;
+      country = paDataObject.PARaceCardObject.Meeting.Country;
+      date = paDataObject.PARaceCardObject.Meeting.Date
+    }
 
     meetingId += country.slice(0, 3).toLowerCase();
     meetingId += date.slice(2, 9);
@@ -26,11 +35,22 @@ var createIDs = {
 		@createRaceId
 		Returns a unique {Race ID}. Created using {PA Betting Object} data ({Meeting ID} and {Race Time}).
 	*/
-  	createRaceId : function( paBettingObject ) {
+  	createRaceId : function( paDataObject ) {
     var raceId = "";
-    var meetingId = paBettingObject.PABettingObject.Meeting.ID;
+    var raceTime;
+    var meetingId; 
 
-    raceId +=  meetingId.slice(0, 8) + paBettingObject.PABettingObject.Meeting.Race.Time.slice(0, 4) + meetingId.slice(8, 12);
+    // Will need to loop through the race array of the PARaceCardObject Race.map(function (race ))
+    if ( paDataObject.PABettingObject ) {
+      meetingId = paDataObject.PABettingObject.Meeting.ID;
+      raceTime = paDataObject.PABettingObject.Meeting.Race.Time;
+
+    } else {
+      meetingId = paDataObject.PARaceCardObject.Meeting.ID
+      raceTime = paDataObject.PARaceCardObject.Meeting.Race.Time;
+    }
+
+    raceId +=  meetingId.slice(0, 8) + raceTime.slice(0, 4) + meetingId.slice(8, 12);
     
     return raceId;
   },	

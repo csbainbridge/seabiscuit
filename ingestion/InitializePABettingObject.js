@@ -4,7 +4,6 @@
 */
 var fs = require('fs');
 var Promise = require('bluebird');
-var seabiscuitUtils = require('./SAUtils');
 var setSABettingValues = require('./SetSABettingValues').setMessageValues;
 
 // For testing purposes
@@ -20,11 +19,13 @@ var initializePABettingObject = {
 	Creates PABettingObject, and sets its values using the json data is was passed.
 	*/
 	createPABettingObject : function() {
-		var obj = {
-			"SeabiscuitPABettingSpecification" : "v0.1 07-04-2017",
-			"Author" : "CSBainbridge",
+		var paBettingObject = {
+			"SeabiscuitPABettingSpecification" : "v0.107042017",
 			"PABettingObject" : {
-				"ObjectCreationTime" : new Date().toISOString().slice(0, 19).replace(/[:-]/g, ''),
+				"ObjectCreationTime" : new Date()
+										.toISOString()
+										.slice(0, 19)
+										.replace(/[:-]/g, ''),
 				"Revision" : "",
 				"MessageType" : "",
 				"Meeting" : {
@@ -49,7 +50,7 @@ var initializePABettingObject = {
 				},
 			}
 		}
-		return obj;
+		return paBettingObject;
 	},
 
 	/*
