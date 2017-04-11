@@ -7,8 +7,9 @@
   @@Imports
   Module is dependant on @Utils.
 */
-var seabiscuitUtils = require('./Utils');
+var seabiscuitUtils = require('./SAUtils');
 var util = require('util');
+var id = require('./CreateIDs')
 /*
     @setMessageValues
     SA data is fragmented, therefore this function uses the {Message Type} to set values within the {PA Betting Object} dynamically
@@ -164,6 +165,9 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
 			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
+		default:
+			throw {"Error" : "Invalid Message Type: " + messageType,
+					"Action" : "Check XML data to confirm if the Message Type sent is valid."};
 	}
 	return setDefaultValues(paBettingObject, saBettingObject);
 }
@@ -172,8 +176,6 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 /*
     @setDefaultValues
     Sets the default values in the {PA Betting Object} using values in the {SA Betting Object}.
-    TODO: Need to write a function that uses metadata to set the race status as going down
-    TODO: Need to write a function that checks the meeting status (Clarify with Isaac if the supplier sends a message that details the state of the meeting)
   */
 function setDefaultValues( paBettingObject, saBettingObject) {
 	paBettingObject.PABettingObject.Revision = saBettingObject.HorseRacingX.Message["0"].$.seq;
@@ -182,6 +184,10 @@ function setDefaultValues( paBettingObject, saBettingObject) {
 	paBettingObject.PABettingObject.Meeting.Country = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.country;
 	paBettingObject.PABettingObject.Meeting.Date = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.date;
 	paBettingObject.PABettingObject.Meeting.Status = "Dormant"
+
+	paBettingObject.PABettingObject.Meeting.ID = id.createMeetingId(paBettingObject);
+	paBettingObject.PABettingObject.Meeting.Race.ID = id.createRaceId(paBettingObject);
+
 	return paBettingObject;
 }
 

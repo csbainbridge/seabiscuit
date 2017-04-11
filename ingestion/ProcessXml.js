@@ -22,7 +22,7 @@ module.exports = {
           if ( error ) {
             reject({
               "Error" : error,
-              "Action" : "N/A",
+              "Action" : "Please check that the file exists.",
             });
             return
           }
@@ -47,7 +47,7 @@ module.exports = {
           if ( error ) {
             reject({
               "Error" : error,
-              "Action" : "N/A",
+              "Action" : "Please check the XML from the data supplier.",
             });
             return
           }
