@@ -6,11 +6,11 @@ var ingestionScripts = require('../ingestion');
 var util = require('util');
 
 // XML file to test
-var fileName = "/sa20170317XFD12350019.xml";
+var fileName = "/sa20170317XFD12350002.xml";
 
 // Set processXml module as processXml and InitializePABettingObject module to initializePABettingObject
 var processXml = ingestionScripts["processXml"];
-var initializePABettingObject = ingestionScripts["initializePABettingObject"]
+var initializePABettingObject = ingestionScripts["initializePABettingObject"];
 // if ingestion module does not exit log error to console.
 if ( processXml == null || initializePABettingObject == null) {
 	console.log("Fail: A function that is been used not exist.");

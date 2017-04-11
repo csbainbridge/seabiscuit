@@ -65,10 +65,10 @@ var saUtils = {
           }
           break; 
         case "Market":
-          utils.setShow(object, horse);
+          saUtils.setShow(object, horse);
           break;
         case "Show":
-          utils.setShow(object, horse);
+          saUtils.setShow(object, horse);
           break;
         case "Withdrawn":
           horse.WithdrawnPrice.map(function( withdrawnPrice ) {
