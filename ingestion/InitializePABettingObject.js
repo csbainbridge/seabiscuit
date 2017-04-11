@@ -4,7 +4,7 @@
 */
 var fs = require('fs');
 var Promise = require('bluebird');
-var seabiscuitUtils = require('./utils');
+var seabiscuitUtils = require('./SAUtils');
 var setSABettingValues = require('./SetSABettingValues').setMessageValues;
 
 // For testing purposes
@@ -24,16 +24,17 @@ var initializePABettingObject = {
 			"SeabiscuitPABettingSpecification" : "v0.1 07-04-2017",
 			"Author" : "CSBainbridge",
 			"PABettingObject" : {
-				"ObjectCreationTime" : seabiscuitUtils.createTimeStamp(),
+				"ObjectCreationTime" : new Date().toISOString().slice(0, 19).replace(/[:-]/g, ''),
 				"Revision" : "",
 				"MessageType" : "",
 				"Meeting" : {
+					"ID" : "",
 					"Course" : "",
 					"Country" : "",
 					"Date" : "",
 					"Status" : "",
 					"Race" : {
-						"RaceID" : "",
+						"ID" : "",
 						"Status" : "",
 						"StatusTimeStamp" : "",
 						"Time" : "",
@@ -85,22 +86,26 @@ var initializePABettingObject = {
 		Function uses @checkBettingObjectType and @createPABettingObject to create a standardized PA Betting Object and returns it to its caller
 	*/
 	standardizeBettingData : function( bettingObject ) {
-		var objData = initializePABettingObject.checkBettingObjectType( bettingObject );
-		var paObjectWithData = objData
+		return new Promise(function( resolve, reject ) {
 
-		.then( function( object ) {
-			var bettingDataObjects = {
-				"BettingDataObject" : object.BettingObject,
-				"ObjectType" : object.ObjectType,
-				"PAObject" : initializePABettingObject.createPABettingObject()
-			}
-			// Returns standardized PA Betting Object
-			return initializePABettingObject.checkObjectType( bettingDataObjects );
-		})
-		.catch( function( error ){
-			throw error;
-		})
-		return paObjectWithData;
+			var objData = initializePABettingObject.checkBettingObjectType(bettingObject);
+			var paObjectWithData = objData
+
+			.then( function( object ) {
+				var bettingDataObjects = {
+					"BettingDataObject" : object.BettingObject,
+					"ObjectType" : object.ObjectType,
+					"PAObject" : initializePABettingObject.createPABettingObject()
+				}
+				// Returns standardized PA Betting Object
+				resolve(initializePABettingObject.checkObjectType(bettingDataObjects));
+			})
+			.catch( function( error ){
+				reject(error);
+				return
+			})
+			return paObjectWithData;
+		});
 	},
 
 	/*
@@ -114,10 +119,11 @@ var initializePABettingObject = {
 		var paObject = bettingDataObjects.PAObject;
 		var bettingObject = bettingDataObjects.BettingDataObject;
 		var messageType = bettingDataObjects.BettingDataObject.HorseRacingX.Message["0"].$.type;
+		var countryCode = bettingDataObjects.ObjectType;
 		
 		// Check which supplier the betting data came from
-		if ( bettingDataObjects.ObjectType === "SA" ) {
-			setSABettingValues(messageType, paObject, bettingObject);
+		if ( countryCode === "SA" ) {
+			setSABettingValues(messageType, paObject, bettingObject, countryCode);
 			// saDefaultValueSetter(paObject, bettingObject);
 		}
 		// Return PA Betting object to the @standardizeJson function

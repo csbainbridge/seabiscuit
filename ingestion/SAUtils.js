@@ -1,24 +1,10 @@
 /*
-  @@Utils module
-  Provides useful functions that perform operations on betting data when setting
+  @@SAUtils module
+  Provides useful functions that perform operations on SA betting data when setting
   values within the {PA Betting Object}.
 */
 
-var utils = {
-  /* 
-    @createTimeStamp function
-    Returns an {ISO timestamp}
-  */
-	createTimeStamp : function() {
-		return new Date().toISOString().slice(0, 19)
-	},
-  /*
-    @createRaceID
-    Returns a unique {Race ID}. Created using {SA Betting Object} metadata.
-  */
-	createRaceID : function() {
-		return
-	},
+var saUtils = {
   /*
     @setRaceTimeValue
     Sets the {Time} value in the {PA Betting Object} using {SA Betting Object}.
@@ -93,7 +79,6 @@ var utils = {
       object.Name = horse.$.name;
       object.Bred = horse.$.bred;
       object.Cloth = horse.ClothRef["0"].$.number;
-      console.log(object)
       return object
     })
   },
@@ -123,4 +108,4 @@ var utils = {
   }
 }
 
-module.exports = utils
+module.exports = saUtils
