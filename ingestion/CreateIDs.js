@@ -35,7 +35,7 @@ var createIDs = {
 		@createRaceId
 		Returns a unique {Race ID}. Created using {PA Betting Object} data ({Meeting ID} and {Race Time}).
 	*/
-  	createRaceId : function( paDataObject ) {
+  	createRaceId : function( paDataObject, raceTime ) {
     var raceId = "";
     var raceTime;
     var meetingId; 
@@ -46,8 +46,9 @@ var createIDs = {
       raceTime = paDataObject.PABettingObject.Meeting.Race.Time;
 
     } else {
+      console.log("Hello")
       meetingId = paDataObject.PARaceCardObject.Meeting.ID
-      raceTime = paDataObject.PARaceCardObject.Meeting.Race.Time;
+      raceTime = raceTime;
     }
 
     raceId +=  meetingId.slice(0, 8) + raceTime.slice(0, 4) + meetingId.slice(8, 12);

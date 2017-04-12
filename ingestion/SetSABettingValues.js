@@ -7,7 +7,7 @@
   @@Imports
   Module is dependant on @Utils.
 */
-var seabiscuitUtils = require('./SAUtils');
+var saUtils = require('./SAUtils');
 var util = require('util');
 var id = require('./CreateIDs')
 /*
@@ -33,10 +33,10 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 				"Bred" : "",
 				"Cloth" : "",
 			}
-			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
-			var objToPush = seabiscuitUtils.createObjToPush(horseArray, NonRunnerObject, messageType);
-			paBettingObject = seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject)
+			var horseArray = saUtils.getHorseArray(saBettingObject);
+			var objToPush = saUtils.createObjToPush(horseArray, NonRunnerObject, messageType);
+			paBettingObject = saUtils.pushToPABettingObject(paBettingObject, objToPush);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject)
 			break;
 
 		case "Market":
@@ -51,11 +51,11 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 					"Offer" : "",
 				}
 			}
-			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
-			var objToPush = seabiscuitUtils.createObjToPush(horseArray, showObject, messageType);
-			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
-			seabiscuitUtils.countRaceRunners(paBettingObject);
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			var horseArray = saUtils.getHorseArray(saBettingObject);
+			var objToPush = saUtils.createObjToPush(horseArray, showObject, messageType);
+			saUtils.pushToPABettingObject(paBettingObject, objToPush);
+			saUtils.countRaceRunners(paBettingObject);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "Show":
@@ -70,21 +70,21 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 					"Offer" : "",
 				}
 			}
-			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
-			var objToPush = seabiscuitUtils.createObjToPush(horseArray, showObject, messageType);
-			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			var horseArray = saUtils.getHorseArray(saBettingObject);
+			var objToPush = saUtils.createObjToPush(horseArray, showObject, messageType);
+			saUtils.pushToPABettingObject(paBettingObject, objToPush);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "RaceState":
 			paBettingObject.PABettingObject.Meeting.Race.Status = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].RaceState["0"].$.status;
 			paBettingObject.PABettingObject.Meeting.Race.StatusTimeStamp = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].RaceState["0"].$.timestamp;
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "OffTime":
 			paBettingObject.PABettingObject.Meeting.Race.OffTime = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].OffTime["0"].$.timestamp;
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "Result":
@@ -102,10 +102,10 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 					"BtnDistance" : "",
 				},
 			}
-			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
-			var objToPush = seabiscuitUtils.createObjToPush(horseArray, resultObject, messageType);
-			paBettingObject = seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			var horseArray = saUtils.getHorseArray(saBettingObject);
+			var objToPush = saUtils.createObjToPush(horseArray, resultObject, messageType);
+			paBettingObject = saUtils.pushToPABettingObject(paBettingObject, objToPush);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "WinningTime":
@@ -129,7 +129,7 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 						}
 					)
 			})
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "JockeyChange":
@@ -144,10 +144,10 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 		 	 			"Overweight" : "",
 		 	 	}
 		 	}
-			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
-			var objToPush = seabiscuitUtils.createObjToPush(horseArray, jockeyChangeObject, messageType);
-			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			var horseArray = saUtils.getHorseArray(saBettingObject);
+			var objToPush = saUtils.createObjToPush(horseArray, jockeyChangeObject, messageType);
+			saUtils.pushToPABettingObject(paBettingObject, objToPush);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "Withdrawn":
@@ -160,10 +160,10 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 					"Denominator" : "",
 				}
 			}
-			var horseArray = seabiscuitUtils.getHorseArray(saBettingObject);
-			var objToPush = seabiscuitUtils.createObjToPush(horseArray, withdrawnObject, messageType);
-			seabiscuitUtils.pushToPABettingObject(paBettingObject, objToPush);
-			seabiscuitUtils.setRaceTimeValue(paBettingObject, saBettingObject);
+			var horseArray = saUtils.getHorseArray(saBettingObject);
+			var objToPush = saUtils.createObjToPush(horseArray, withdrawnObject, messageType);
+			saUtils.pushToPABettingObject(paBettingObject, objToPush);
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 		default:
 			throw {"Error" : "Invalid Message Type: " + messageType,
