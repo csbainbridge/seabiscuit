@@ -91,7 +91,6 @@ var initializePABettingObject = {
 
 			var objData = initializePABettingObject.checkBettingObjectType(bettingObject);
 			var paObjectWithData = objData
-
 			.then( function( object ) {
 				var bettingDataObjects = {
 					"BettingDataObject" : object.BettingObject,
@@ -101,7 +100,7 @@ var initializePABettingObject = {
 				// Returns standardized PA Betting Object
 				resolve(initializePABettingObject.checkObjectType(bettingDataObjects));
 			})
-			.catch( function( error ){
+			.catch( function( error ) {
 				reject(error);
 				return
 			})

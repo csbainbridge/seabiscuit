@@ -1,7 +1,8 @@
 var ingestionScripts = require('../ingestion');
+var setPARaceCardValues = require('./SetPARaceCardValues.js');
 var util = require('util');
 
-var fileName = "/c20170412gre.xml";
+var fileName = "/c20170413vaa.xml";
 
 var processXml = ingestionScripts["processXml"]
 
@@ -11,8 +12,9 @@ var initializePARaceCardObject = ingestionScripts["initializePARaceCardObject"];
 processXml.readXML(fileName)
 .then(processXml.parseXML)
 .then(initializePARaceCardObject.standardizeRaceCardData)
+.then(setPARaceCardValues)
 .then(function( paRaceCardObject ) {
-	console.log(paRaceCardObject); 
+	console.log(util.inspect(paRaceCardObject, false, null));
 })
 .catch(function( error ) {
 	console.log(
