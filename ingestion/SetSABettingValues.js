@@ -1,28 +1,37 @@
 /*
   @@SetSABettingValues module
+  @desc - Standarization module
   Provides functions that are used to set the values of the {PA Betting Object} using the {SA Betting Object}.
 */
 
 /*
   @@Imports
-  Module is dependant on @Utils.
+  Module is dependant on @SAUtils and @CreateIDs.
 */
 var saUtils = require('./SAUtils');
-var util = require('util');
 var id = require('./CreateIDs')
+
+// For testing.
+var util = require('util');
 /*
     @setMessageValues
-    SA data is fragmented, therefore this function uses the {Message Type} to set values within the {PA Betting Object} dynamically
+    @param messageType - Message Type sent from the data supplier.
+    @param paObject - PA Betting Object.
+    @param saBettingObject - SA Betting Object.
+
+    @desc - SA data is fragmented, therefore this function uses the {Message Type} to set values within the {PA Betting Object} dynamically
     based on the {MessageType}.
   */
 function setMessageValues( messageType, paObject, saBettingObject ) {
 	var paBettingObject = paObject;
 	switch(messageType) {
+
 		case "Going":
 			paBettingObject.PABettingObject.Meeting.Race.Going = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].RaceGoing["0"].$.brief;
 			break;
 
 		case "Weather":
+
 			paBettingObject.PABettingObject.Meeting.Race.Weather = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].Weather["0"].$.message;
 			break;
 
@@ -175,7 +184,10 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 
 /*
     @setDefaultValues
-    Sets the default values in the {PA Betting Object} using values in the {SA Betting Object}.
+    @param paBettingObject - PA Betting Object
+    @param saBettingObject - SA Betting Object
+    
+    @desc - Sets the default values in the {PA Betting Object} using values in the {SA Betting Object}.
   */
 function setDefaultValues( paBettingObject, saBettingObject) {
 	paBettingObject.PABettingObject.Revision = saBettingObject.HorseRacingX.Message["0"].$.seq;
@@ -184,10 +196,10 @@ function setDefaultValues( paBettingObject, saBettingObject) {
 	paBettingObject.PABettingObject.Meeting.Country = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.country;
 	paBettingObject.PABettingObject.Meeting.Date = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.date;
 	paBettingObject.PABettingObject.Meeting.Status = "Dormant"
-
 	paBettingObject.PABettingObject.Meeting.ID = id.createMeetingId(paBettingObject);
 	paBettingObject.PABettingObject.Meeting.Race.ID = id.createRaceId(paBettingObject);
 
+	// Return PA Betting Object with standardized betting data.
 	return paBettingObject;
 }
 

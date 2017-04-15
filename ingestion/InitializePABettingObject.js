@@ -1,31 +1,30 @@
 /*
 	@@Imports
-	Module is dependant on @fs.
+	Module is dependant on @SetSABettingValues and @SAUtils.
 */
-var fs = require('fs');
+// var fs = require('fs');
 var Promise = require('bluebird');
 var setSABettingValues = require('./SetSABettingValues').setMessageValues;
+var timestamp = require('./SAUtils').createTimeStamp;
 
 // For testing purposes
 var util = require('util');
 
 /*
-	@@initializePABettingObject object provides function @createPABettingObject, @checkBettingObjectType, @standardizeBettingData and @checkObject.
+	@@initializePABettingObject provides function @createPABettingObject, @checkBettingObjectType, @standardizeBettingData and @checkObjectType.
 */
 var initializePABettingObject = {
-
 	/*
-	@createPABettingObject function
-	Creates PABettingObject, and sets its values using the json data is was passed.
+		@createPABettingObject function
+
+		@desc - Returns an empty PA Betting Object.
 	*/
+	//TODO: ADD timestamp function for object creation time.
 	createPABettingObject : function() {
 		var paBettingObject = {
 			"SeabiscuitPABettingSpecification" : "v0.107042017",
 			"PABettingObject" : {
-				"ObjectCreationTime" : new Date()
-										.toISOString()
-										.slice(0, 19)
-										.replace(/[:-]/g, ''),
+				"ObjectCreationTime" : timestamp(),
 				"Revision" : "",
 				"MessageType" : "",
 				"Meeting" : {
@@ -52,7 +51,6 @@ var initializePABettingObject = {
 		}
 		return paBettingObject;
 	},
-
 	/*
 		@checkBettingObjectType function
 		@params json

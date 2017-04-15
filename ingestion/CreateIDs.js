@@ -46,7 +46,6 @@ var createIDs = {
       raceTime = paDataObject.PABettingObject.Meeting.Race.Time;
 
     } else {
-      console.log("Hello")
       meetingId = paDataObject.PARaceCardObject.Meeting.ID
       raceTime = raceTime;
     }

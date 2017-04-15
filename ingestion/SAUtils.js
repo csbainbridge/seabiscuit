@@ -7,14 +7,20 @@
 var saUtils = {
   /*
     @setRaceTimeValue
-    Sets the {Time} value in the {PA Betting Object} using {SA Betting Object}.
+    @param paBettingObject - PA Betting Object
+    @param saBettingObject - SA Betting Object
+
+    @desc - Sets the {Time} value in the {PA Betting Object} using {SA Betting Object}.
   */
 	setRaceTimeValue : function( paBettingObject, saBettingObject) {
 		paBettingObject.PABettingObject.Meeting.Race.Time = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].$.time;
 	},
   /*
     @pushToPABettingObject
-    Iterates over each horse in the {Object} array, and pushes it to the {Horse} array in the {PA Betting Object}.
+    @param paBettingObject - PA Betting Object
+    @param object - Standardized object to push to horse Array in the {PA Betting Object}
+
+    @desc - Iterates over each horse in the {Object} array, and pushes it to the {Horse} array in the {PA Betting Object}.
   */ 
   pushToPABettingObject : function( paBettingObject, object ) {
     object.map(function( horse ) {
@@ -24,7 +30,9 @@ var saUtils = {
   },
   /*
     @getHorseArray
-    Iterates over each horse in the {SA Betting Object}, and pushes it to the {Horse} array.
+    @param saBettingObject - SA Betting Data object sent from the supplier.
+
+    @desc - Iterates over each horse in the {SA Betting Object}, and pushes it to the {Horse} array.
     Returns {Horse} array.
   */
   getHorseArray : function( saBettingObject ) {
@@ -36,7 +44,11 @@ var saUtils = {
   },
   /*
     @createObjToPush - Creates {Object} that is pushed to the {PA Betting Object} using the @pushToPABettingObject function.
-    Iterates over the {Horse} array, sets values within the {Object} depending on the {Message Type}.
+    @param horseArray - Array of horses from the SA Betting Data object.
+    @param object - PA Betting Object
+    @param messageType - Message Type sent from the data supplier.
+
+    @desc - Iterates over the {Horse} array, sets values within the {Object} depending on the {Message Type}.
     Returns {Object}
   */
   createObjToPush : function( horseArray, object, messageType ) {
@@ -84,7 +96,9 @@ var saUtils = {
   },
   /*
     @countRaceRunners
-    Iterates over each horse in the {PA Betting Object} {Horse} array, and keeps a count.
+    @param paBettingObject - PA Betting Object
+
+    @desc - Iterates over each horse in the {PA Betting Object} {Horse} array, and keeps a count.
     Returns {PA Betting Object} with "Runners" value set to the total horse count.
   */
   countRaceRunners : function( paBettingObject ) {
@@ -96,7 +110,10 @@ var saUtils = {
   },
   /*
     @setShow
-    Iterates over each show in the {Horse} array, and creates a new array containing the Show data for each horse. 
+    @param object - PA Betting Object.
+    @param horse - The current horse that is being iterated over.
+
+    @desc - Iterates over each show in the {Horse} array, and creates a new array containing the Show data for each horse. 
   */
   setShow : function( object, horse ) {
     return horse.Show.map(function( show ) {
@@ -105,7 +122,15 @@ var saUtils = {
        object.Show.Denominator = show.$.denominator;
        object.Show.Offer = show.$.noOffers;
     })
-  }
+  },
+  /*
+    TODO: Export this function to a generalised utils module as this is not directly related to SA Betting data rather the PA Betting data.
+    @createTimeStamp
+    @desc - Creates an timestamp string following the format YYYYMMDDTHHMMSS (Example: 20170415T213645).
+  */
+  createTimeStamp : function() {
+    return new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
+  },
 }
 
 module.exports = saUtils

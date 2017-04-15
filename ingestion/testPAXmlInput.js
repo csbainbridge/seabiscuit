@@ -2,7 +2,7 @@ var ingestionScripts = require('../ingestion');
 var setPARaceCardValues = require('./SetPARaceCardValues.js');
 var util = require('util');
 
-var fileName = "/c20170413vaa.xml";
+var fileName = "/c20170416scv.xml";
 
 var processXml = ingestionScripts["processXml"]
 

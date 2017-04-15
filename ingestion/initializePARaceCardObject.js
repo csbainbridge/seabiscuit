@@ -1,21 +1,32 @@
-var fs = require('fs');
+/*
+	@@InitializePARaceCardObject module
+*/
+
+/*
+	@@Imports
+	Module us dependant on @bluebird, @SetPARaceCardValues and @SAUtils.
+*/
 var Promise = require('bluebird');
 var setPARaceCardValues = require('./SetPARaceCardValues').setPARaceCardValues;
-
+var timestamp = require('./SAUtils').createTimeStamp;
 
 // For testing purposes
 var util = require('util');
 
+/*
+	@@InitializePARaceCardObject provides function @createPARaceCardObject, @checkRaceCardObjectType and @standardizeRaceCardData.
+*/
 var initializePARaceCardObject = {
+	/*
+		@createPARaceCardObject
 
+		@desc - Returns an empty PA Race Card Object
+	*/
 	createPARaceCardObject : function () {
-		var obj = {
+		var paRaceCardObject = {
 			"SeabiscuitPARaceCardSpecification" : "v0.111042017",
 			"PARaceCardObject" : {
-				"ObjectCreationTime" : new Date()
-										.toISOString()
-										.slice(0, 19)
-										.replace(/[:-]/g, ''),
+				"ObjectCreationTime" : timestamp(),
 				"Meeting" : {
 					"ID" : "",
 					"Course" : "",
@@ -27,8 +38,14 @@ var initializePARaceCardObject = {
 				},
 			},
 		}
-		return obj;
+		return paRaceCardObject;
 	},
+	/*
+		@checkRaceCardObjectType
+		@param raceCardObject - Supplier Race Card Object
+
+		@desc - Returns a promise that confirms if the race card object supplied is a valid format.
+	*/
 	checkRaceCardObjectType : function( raceCardObject ) {
 		parsedJson = JSON.parse( raceCardObject );
 		return new Promise(function( resolve, reject ) {
@@ -45,7 +62,12 @@ var initializePARaceCardObject = {
 			}
 		})
 	},
+	/*
+		@standardizeRaceCardData
+		@param raceCardObject
 
+		@desc - Returns a promise that returns a standardized PA Race Card object or an error that has occured during the standardization process.
+	*/
 	standardizeRaceCardData : function( raceCardObject ) {
 		return new Promise(function( resolve, reject ) {
 			var objData = initializePARaceCardObject.checkRaceCardObjectType(raceCardObject);
