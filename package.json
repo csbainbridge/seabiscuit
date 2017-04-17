@@ -32,6 +32,10 @@
     "web",
     "application"
   ],
-  "author": "Racing Data Customer Support (Dev Team)",
+  "author": {
+    "Lord Commander" : "Curtis",
+    "First Ranger" : "Dom",
+    "First Steward" : "Ryan"
+  },
   "license": "ISC"
 }
