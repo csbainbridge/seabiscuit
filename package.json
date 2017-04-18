@@ -13,7 +13,8 @@
     "express": "~4.15.2",
     "hjs": "~0.0.6",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "underscore": "^1.8.3"
   },
   "description": "PA XML Race Day Viewer",
   "main": "app.js",
@@ -33,9 +34,9 @@
     "application"
   ],
   "author": {
-    "Lord Commander" : "Curtis",
-    "First Ranger" : "Dom",
-    "First Steward" : "Ryan"
+    "Lord Commander": "Curtis",
+    "First Ranger": "Dom",
+    "First Steward": "Ryan"
   },
   "license": "ISC"
 }
