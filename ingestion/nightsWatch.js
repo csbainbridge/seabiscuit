@@ -1,7 +1,6 @@
 /*
   @@Module Nightswatch
   @desc - Watches a given directory for newly added files.
-
 	@watchDirectories - Module Configuration Object
 	@configformat - {"Watch" : "./path/to/directory"}
 */
@@ -27,26 +26,20 @@ var statArray = [];
 var liveDirectories = [];
 
 /*
-	@Object dataService - Used a service provider for file and directory data.
-	@directoryDataService function provides functions @setDirData and @getDirData for storing an object that provides a directory name and an array of files within the given directory.
-	@filesDataService function provides functions @setFiles and @getFiles for storing an array of files added to the current directory being processed.
-*/
-
-/*
 	@orderByTimeAdded function
 	@param files - Array of files
 	@param directory - Current directory being processed.
 	@desc - Returns an array of file stat objects sorted by the time added to the given @directory.
 */
 function orderByTimeAdded( files, directory ) {
-  _.each(files, function getTimeAdded( file ) {
-      var fileStats = fs.statSync(directory+"/"+file)
-      statArray.push({
-        "FileName" : file,
-        "AddedTime" : fileStats.ctime
-      });
-  });
-   return _.sortBy(statArray, 'AddedTime').reverse();
+	_.each(files, function getTimeAdded( file ) {
+		var fileStats = fs.statSync(directory+"/"+file)
+			statArray.push({
+				"FileName" : file,
+				"AddedTime" : fileStats.ctime
+			});
+		});
+	return _.sortBy(statArray, 'AddedTime').reverse();
 };
 
 /*
@@ -59,86 +52,96 @@ function createLiveDirectory( directory ) {
 		var newLiveDirectory = {
 			"DirectoryName" : directory.DirectoryName,
 			"NumOfFiles" : 0
-			}
-			resolve(liveDirectories.push(newLiveDirectory));
+		}
+		resolve(liveDirectories.push(newLiveDirectory));
 	})
 }
 
-// I have tried refactoring this but it just breaks the script (Potentially related to the Promise) #Ugly Code Try using forEach, pass it a function that is promised.
 function getFilesAdded( directoryData ) {
-  return new Promise(function( resolve, reject ) {
-    if ( liveDirectories.length === 0 ) {
-		directoryData.forEach(createLiveDirectory)
-		.catch(function(e){
-			return
-		})
-    } else if ( liveDirectories.length > 0 ) {
-      _.each(liveDirectories, function( liveDirectory ) {
-		  	_.each(directoryData, function( directory ) {
-					if ( directory.DirectoryName === liveDirectory.DirectoryName
-						&& directory.Files.length > liveDirectory.NumOfFiles ) {
-						var filesAdded = [];
-						numOfFilesAdded = directory.Files.length - liveDirectory.NumOfFiles;
-						fileArray = orderByTimeAdded(directory.Files, directory.DirectoryName);
-							for (var i = numOfFilesAdded; i > 0; i--) {
-							filesAdded.push((fileArray[i - 1]))
-						}
-						liveDirectory.NumOfFiles = directory.Files.length;
-						resolve(_.sortBy(filesAdded, 'FileName'))
+	return new Promise(function( resolve, result ) {
+		_.each(liveDirectories, function( liveDirectory ) {
+			_.each(directoryData, function( directory ) {
+				if ( directory.DirectoryName === liveDirectory.DirectoryName && directory.Files.length > liveDirectory.NumOfFiles ) {
+					var filesAdded = [];
+					numOfFilesAdded = directory.Files.length - liveDirectory.NumOfFiles;
+					fileArray = orderByTimeAdded(directory.Files, directory.DirectoryName);
+					for (var i = numOfFilesAdded; i > 0; i--) {
+						filesAdded.push((fileArray[i - 1]))
 					}
-		  	})
-      })
-    }
-  })
+					liveDirectory.NumOfFiles = directory.Files.length;
+					resolve(_.sortBy(filesAdded, 'FileName'))
+				}
+			})
+		})
+	})
+}
+
+function checkDirectoryLength( directoryData ) {
+	return new Promise(function( resolve, reject ) {
+		if ( liveDirectories.length === 0 ) {
+			directoryData.forEach(createLiveDirectory)
+			.catch(function( error ) {
+				return
+			})
+		} else if ( liveDirectories.length > 0 ) {
+			getFilesAdded(directoryData)
+			.then(function(files){
+				resolve(files)
+			})
+			.catch(function(error){
+				return
+			})
+		}
+	})
 }
 
 /*
 	@readDirectory
 	@param directory - Current directory being processed.
 	@desc - Returns an object containing the @directory and an array of files it contains.
-*/
+	*/
 function readDirectory( directory ) {
-    return new Promise(function( resolve, reject ) {
-      fs.readdir(directory, function( error, files ) {
-        if ( error ) {
-          reject(error)
-          return
-        }
-        resolve({
-          "DirectoryName" : directory,
-          "Files" : files,
-        })
-      })
-    })
+	return new Promise(function( resolve, reject ) {
+		fs.readdir(directory, function( error, files ) {
+			if ( error ) {
+				reject(error)
+				return
+			}
+			resolve({
+				"DirectoryName" : directory,
+				"Files" : files,
+			})
+		})
+	})
 }
 /*
-	Testing Utils
+Testing Utils
 */
 var testUtils = {
 	logFileName : function( files ) {
-      _.each(files, function( file ) {
-				console.log(file.FileName)
-			});
+		_.each(files, function( file ) {
+			console.log(file.FileName)
+		});
 	}
 }
+
 /*
 	@watcherOnTheWall function
 	@desc - Module configuration. Specify a directory or multiple directory strings within the Promise.all() function.
-	@configformat - readDirectory('./path/to/directory)
 */
 function watcherOnTheWall(watchDirectories) {
-  return function() {
+	return function() {
 		var watchDirs = [];
 		_.each(watchDirectories, function( directory ) {
-				watchDirs.push(readDirectory(directory.Watch))
+			watchDirs.push(readDirectory(directory.Watch))
 		})
-    Promise.all(watchDirs)
-		.then(getFilesAdded)
-    .then(testUtils.logFileName)
+		Promise.all(watchDirs)
+		.then(checkDirectoryLength)
+		.then(testUtils.logFileName)
 		.catch(function(error) {
-      return
-    });
-  }
+			return
+		});
+	}
 }
 
 setInterval(watcherOnTheWall(watchDirectories), 100);
