@@ -13,8 +13,19 @@ var saUtils = {
     @desc - Sets the {Time} value in the {PA Betting Object} using {SA Betting Object}.
   */
 	setRaceTimeValue : function( paBettingObject, saBettingObject) {
-		paBettingObject.PABettingObject.Meeting.Race.Time = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].$.time;
+    raceTime = this.standardizeRaceTime(saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].$.time);
+		paBettingObject.PABettingObject.Meeting.Race.Time = raceTime;
 	},
+
+  /*
+    @standardizeRaceTime function
+    @param saTime - SA Betting Race Time {0000+0200}
+    @desc - Returns @raceTime that matches PA Race Card Race Time {0000+0100}
+  */
+  standardizeRaceTime : function( saTime ) {
+    return saTime.slice(0, 1) + parseInt(saTime[1]) - 1 + saTime.slice(2, 6) + parseInt(saTime[6] - 1 + saTime.slice(7, 9));
+  },
+
   /*
     @pushToPABettingObject
     @param paBettingObject - PA Betting Object

@@ -6,7 +6,7 @@ var ingestionScripts = require('../ingestion');
 var util = require('util');
 
 // XML file to test
-var fileName = "/sa20170317XFD12350002.xml";
+var fileName = "/zaf/zaf_kenilworth/zaf_kenilworth_betting/sa20170418XKD13150021.xml";
 
 // Set processXml module as processXml and InitializePABettingObject module to initializePABettingObject
 var processXml = ingestionScripts["processXml"];

@@ -34,26 +34,27 @@ var createIDs = {
 	/*
 		@createRaceId
 		Returns a unique {Race ID}. Created using {PA Betting Object} data ({Meeting ID} and {Race Time}).
+    SA Betting <RaceRef time="1315+0200"> does not match PA Racecard time="1215+0100"
 	*/
   	createRaceId : function( paDataObject, raceTime ) {
     var raceId = "";
     var raceTime;
     var meetingId; 
 
-    // Will need to loop through the race array of the PARaceCardObject Race.map(function (race ))
     if ( paDataObject.PABettingObject ) {
       meetingId = paDataObject.PABettingObject.Meeting.ID;
       raceTime = paDataObject.PABettingObject.Meeting.Race.Time;
 
     } else {
       meetingId = paDataObject.PARaceCardObject.Meeting.ID
-      raceTime = raceTime;
+      
     }
+
 
     raceId +=  meetingId.slice(0, 8) + raceTime.slice(0, 4) + meetingId.slice(8, 12);
     
     return raceId;
-  },	
+  },
 }
 
 module.exports = createIDs;

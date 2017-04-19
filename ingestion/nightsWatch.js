@@ -1,18 +1,43 @@
 /*
   @@Module Nightswatch
   @desc - Watches a given directory for newly added files.
+
+	@watchDirectories - Module Configuration Object
+	@configformat - {"Watch" : "./path/to/directory"}
+*/
+var watchDirectories = [
+	{"Watch" : "./zaf/betting"}, 
+	{"Watch" : "./zaf/racecard"}
+]
+
+/*
+	@Dependencies
+	@fs, @underscore and @bluebird.
+*/
+var fs = require('fs');
+var Promise = require('bluebird');
+var _ = Promise.promisifyAll(require('underscore'));
+
+/*
+	@Globals
+	@Array statArray - Stores file stat objects {Keys: FileName, AddedTime} {Values: name of current file being processed, file stat change time}.
+	@Array liveDirectories - Stores directory objects {Keys: DirectoryName, NumOfFiles} {Values: name of directory, number of files in the given directory}.
+*/
+var statArray = [];
+var liveDirectories = [];
+
+/*
+	@Object dataService - Used a service provider for file and directory data.
+	@directoryDataService function provides functions @setDirData and @getDirData for storing an object that provides a directory name and an array of files within the given directory.
+	@filesDataService function provides functions @setFiles and @getFiles for storing an array of files added to the current directory being processed.
 */
 
-var fs = require('fs');
-var util = require('util');
-var _ = require('underscore');
-var Promise = require('bluebird');
-
-var previousLength1 = 0;
-var previousLength2 = 0;
-var fileArray = [];
-var statArray = [];
-
+/*
+	@orderByTimeAdded function
+	@param files - Array of files
+	@param directory - Current directory being processed.
+	@desc - Returns an array of file stat objects sorted by the time added to the given @directory.
+*/
 function orderByTimeAdded( files, directory ) {
   _.each(files, function getTimeAdded( file ) {
       var fileStats = fs.statSync(directory+"/"+file)
@@ -24,10 +49,54 @@ function orderByTimeAdded( files, directory ) {
    return _.sortBy(statArray, 'AddedTime').reverse();
 };
 
-function logFile( file ) {
-  console.log(file.FileName);
+/*
+	@createLiveDirectory
+	@param directory - Directory object
+	@desc - Creates a new live directory object and stores it in the @liveDirectories global array.
+*/
+function createLiveDirectory( directory ) {
+	return new Promise(function( resolve, reject ){
+		var newLiveDirectory = {
+			"DirectoryName" : directory.DirectoryName,
+			"NumOfFiles" : 0
+			}
+			resolve(liveDirectories.push(newLiveDirectory));
+	})
 }
 
+// I have tried refactoring this but it just breaks the script (Potentially related to the Promise) #Ugly Code Try using forEach, pass it a function that is promised.
+function getFilesAdded( directoryData ) {
+  return new Promise(function( resolve, reject ) {
+    if ( liveDirectories.length === 0 ) {
+		directoryData.forEach(createLiveDirectory)
+		.catch(function(e){
+			return
+		})
+    } else if ( liveDirectories.length > 0 ) {
+      _.each(liveDirectories, function( liveDirectory ) {
+		  	_.each(directoryData, function( directory ) {
+					if ( directory.DirectoryName === liveDirectory.DirectoryName
+						&& directory.Files.length > liveDirectory.NumOfFiles ) {
+						var filesAdded = [];
+						numOfFilesAdded = directory.Files.length - liveDirectory.NumOfFiles;
+						fileArray = orderByTimeAdded(directory.Files, directory.DirectoryName);
+							for (var i = numOfFilesAdded; i > 0; i--) {
+							filesAdded.push((fileArray[i - 1]))
+						}
+						liveDirectory.NumOfFiles = directory.Files.length;
+						resolve(_.sortBy(filesAdded, 'FileName'))
+					}
+		  	})
+      })
+    }
+  })
+}
+
+/*
+	@readDirectory
+	@param directory - Current directory being processed.
+	@desc - Returns an object containing the @directory and an array of files it contains.
+*/
 function readDirectory( directory ) {
     return new Promise(function( resolve, reject ) {
       fs.readdir(directory, function( error, files ) {
@@ -36,64 +105,40 @@ function readDirectory( directory ) {
           return
         }
         resolve({
-          "Directory" : directory,
+          "DirectoryName" : directory,
           "Files" : files,
         })
       })
     })
 }
-
-function getFilesAdded( object ) {
-  return new Promise(function( resolve, reject ) {
-    _.each(object, function(directory) {
-      if ( directory.Directory === './zaf/racecard' ) {
-        if ( directory.Files.length > previousLength1 ) {
-          var filesAdded = [];
-          numOfFilesAdded = directory.Files.length - previousLength1;
-          fileArray = orderByTimeAdded(directory.Files, directory.Directory);
-          for (var i = numOfFilesAdded; i > 0; i--) {
-            filesAdded.push((fileArray[i - 1]))
-          }
-          filesAddedSorted = _.sortBy(filesAdded, 'FileName');
-          // console.log(filesAddedSorted);
-          previousLength1 = directory.Files.length;
-          resolve(filesAddedSorted)
-        }
-      } else if ( directory.Directory === './zaf/betting' ) {
-          if ( directory.Files.length > previousLength2 ) {
-            var filesAdded = [];
-            numOfFilesAdded = directory.Files.length - previousLength2;
-            fileArray = orderByTimeAdded(directory.Files, directory.Directory);
-            for (var i = numOfFilesAdded; i > 0; i--) {
-              filesAdded.push((fileArray[i - 1]))
-            }
-            filesAddedSorted = _.sortBy(filesAdded, 'FileName');
-            previousLength2 = directory.Files.length;
-            resolve(filesAddedSorted)
-          }
-      }
-    })
-  })
+/*
+	Testing Utils
+*/
+var testUtils = {
+	logFileName : function( files ) {
+      _.each(files, function( file ) {
+				console.log(file.FileName)
+			});
+	}
 }
-
-function watcherOnTheWall() {
+/*
+	@watcherOnTheWall function
+	@desc - Module configuration. Specify a directory or multiple directory strings within the Promise.all() function.
+	@configformat - readDirectory('./path/to/directory)
+*/
+function watcherOnTheWall(watchDirectories) {
   return function() {
-    Promise.all([
-      readDirectory('./zaf/betting'),
-      readDirectory('./zaf/racecard'),
-    ]).then(getFilesAdded)
-      .then(function(result) {
-        _.forEach(result, function(file) {
-          console.log(file.FileName)
-        })
-    }).catch(function(error) {
+		var watchDirs = [];
+		_.each(watchDirectories, function( directory ) {
+				watchDirs.push(readDirectory(directory.Watch))
+		})
+    Promise.all(watchDirs)
+		.then(getFilesAdded)
+    .then(testUtils.logFileName)
+		.catch(function(error) {
       return
     });
   }
 }
 
-function nightsWatch() {
-  setInterval(watcherOnTheWall(), 100);
-}
-
-nightsWatch();
+setInterval(watcherOnTheWall(watchDirectories), 100);
