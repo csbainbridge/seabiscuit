@@ -232,15 +232,14 @@ var nightsWatch = (function() {
 module.exports = nightsWatch;
 
 // Example Usage
+// Declare "callback" function
 var callApi = function( files ) {
     console.log("Files added calling api..")
     _.each(files, function( file ) {
         console.log(file.FileName)
     })
 }
-
-
-
+// Initialize object
 var zafWatcher = nightsWatch;
 zafWatcher.WatchDirs = ["./zaf/betting", "./zaf/racecard"]
 zafWatcher.IntervalTime = 500
