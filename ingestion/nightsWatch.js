@@ -1,146 +1,227 @@
 /*
-  @@Module Nightswatch
-  @desc - Watches a given directory for newly added files.
-	@watchDirectories - Module Configuration Object
-	@configformat - {"Watch" : "./path/to/directory"}
+* NightsWatch watches a given or multiple directories for the addition of files.
 */
-var watchDirectories = [
-	{"Watch" : "./zaf/betting"}, 
-	{"Watch" : "./zaf/racecard"}
-]
 
 /*
-	@Dependencies
-	@fs, @underscore and @bluebird.
+* Dependencies
+* @bluebird, @fs, @underscore
 */
-var Promise = require('bluebird');
-var fs = Promise.promisifyAll(require('fs'));
-var _ = Promise.promisifyAll(require('underscore'));
+var Promise = require('bluebird'), 
+    fs = Promise.promisifyAll(require('fs')),
+    _ = Promise.promisifyAll(require('underscore'))
 
-/*
-	@Globals
-	@Array statArray - Stores file stat objects {Keys: FileName, AddedTime} {Values: name of current file being processed, file stat change time}.
-	@Array liveDirectories - Stores directory objects {Keys: DirectoryName, NumOfFiles} {Values: name of directory, number of files in the given directory}.
-*/
-var filesAdded = []
-var statArray = [];
-var liveDirectories = [];
-var count = 0;
+var nightsWatch = (function() {
+    var statArray = []
+    var liveDirectories = []
+    var prevFileCount = 0;
+    /**
+    * Calls watcherOnTheWall function with @WatchDirs for the time specified in @IntervalTime.
+    */
+    function init() {
+        setInterval(watcherOnTheWall(watcher.WatchDirs), watcher.IntervalTime)
+    }
 
-/*
-	@param files - Array of files
-	@param directory - Current directory being processed.
-	@desc - Returns an array of file stat objects sorted by the time added to the given @directory.
-*/
-function orderByTimeAdded( files, directory ) {
-	statArray = [];
-	_.each(files, function getTimeAdded( file ) {
-		var fileStats = fs.statSync(directory+"/"+file)
-			statArray.push({
-				"FileName" : file,
-				"AddedTime" : fileStats.ctime
-			});
-		});
-	return _.sortBy(statArray, 'AddedTime').reverse();
-};
+    /**
+     * Root function that uses @directories to process files that exist and are added to a given directory.
+     * 
+     * @param {Array} directories The array to iterate over.
+     */
+    function watcherOnTheWall( directories ) {
+        return function() {
+            var dirsToWatch = []
+            _.each(directories, function(directory) {
+                dirsToWatch.push(watcher.readDirectory(directory))
+            })
+            Promise.all(dirsToWatch)
+            .then(watcher.checkDirectoryLength)
+            .then(watcher.iterateAndLog)
+            .catch(function(error) {
+                return
+            })
+        }
+    }
 
-/*
-	@createLiveDirectory
-	@param directory - Directory object
-	@desc - Creates a new live directory object and stores it in the @liveDirectories global array.
-*/
-function createLiveDirectory( directory ) {
-	return liveDirectories.push({
-		"DirectoryName" : directory.DirectoryName,
-		"NumOfFiles" : 0
-	});
-}
+    /**
+     * Reads a given directory
+     * 
+     * @param {String} directory The directory to read.
+     * @returns {Object} Returns directory data.
+     */
+    function readDirectory( directory ) {
+        return fs.readdirAsync(directory)
+        .then(function( files ) {
+            return {
+                "DirectoryName": directory,
+                "Files": files
+            }
+        })
+        .catch(function( error ) {
+            return error
+        })
+    }
+    /**
+     * Checks the length of @liveDirectories and proceses @directoryData.
+     * If script is on first execution it will create an array of live directories.
+     * Otherwise it will get the files added to a directory.
+     * 
+     * @param {Object} directoryData The object to process.
+     * @returns {Promise} filesAdded The Promised Array.  
+     */
+    function checkDirectoryLength( directoryData ) {
+        return new Promise(function( resolve, reject ) {
+            if ( directoryData.length === 1) {
+                fileCount = directoryData["0"].Files.length
+            } else {
+                var fileCount = watcher.getTotalFileCount(directoryData)
+            }
+            if ( watcher.liveDirectories.length === 0 ) {
+                directoryData.forEach(createLiveDirectory)
+            } else if ( watcher.liveDirectories.length > 0 && fileCount > watcher.prevFileCount ) {
+                watcher.prevFileCount = fileCount
+                resolve(getFilesAdded(directoryData))
+            }
+        })
+    }
+    /**
+     * Adds the given directory to the @liveDirectories array.
+     * 
+     * @param {Object} directory The object to process.
+     * @returns {Object} Returns directory added to the live directory array.
+     */
+    function createLiveDirectory( directory ) {
+        return watcher.liveDirectories.push(
+            {
+                "DirectoryName": directory.DirectoryName,
+                "NumOfFiles": 0
+            }
+        )
+    }
+    /**
+     * Iterates over @liveDirectories and creates a {Map} to each live directory.
+     * Uses the {Map} of live directories whilst iterating over @directoryData to get files added to a given directory. 
+     * 
+     * @param {Object} directoryData The object to process.
+     * @returns {Array} Returns filesAdded
+     */
+    function getFilesAdded( directoryData ) {
+        var directoryMap = new Map()
+        _.each(watcher.liveDirectories, function( liveDirectory ) {
+            directoryMap.set(liveDirectory.DirectoryName, liveDirectory)
+        })
+        filesAdded = _.map(directoryData, function( directory ) {
+            var liveDirectory = directoryMap.get(directory.DirectoryName)
+            if ( directory.Files.length > liveDirectory.NumOfFiles ) {
+                var fileArray = []
+                var filesAdded = []
+                numOfFilesAdded = directory.Files.length - liveDirectory.NumOfFiles
+                fileArray = watcher.orderByTimeAdded(directory.Files, directory.DirectoryName)
+                watcher.iterateFiles(numOfFilesAdded, fileArray, filesAdded)
+                liveDirectory.NumOfFiles = directory.Files.length
+                return filesAdded
+            }
+        })
+        filesAdded = watcher.flatten(filesAdded)
+        return _.sortBy(filesAdded, 'FileName')
+    }
+    /**
+     * Creates an {Object} for each file within a given directory adds this to the statArray
+     * 
+     * @param {Array} files The array to process 
+     * @param {String} directory The string used to create a file path.
+     * @returns {Object} Returns file added to the statArray
+     */
+    function orderByTimeAdded( files, directory ) {
+        watcher.statArray = []
+        _.each(files, function(file) {
+            var fileStats = fs.statSync(directory + "/" + file)
+            watcher.statArray.push(
+                {
+                    "FileName": file,
+                    "AddedTime": fileStats.ctime
+                }
+            )
+        })
+        return _.sortBy(watcher.statArray, 'AddedTime').reverse()
+    }
+    /**
+     * Adds the files that have been added to a directory to the filesAdded array.
+     * 
+     * @param {Number} numOfFilesAdded The number of files added
+     * @param {Array} fileArray The array of current files within a directory.
+     * @param {Array} filesAdded The array of files added
+     */
+    function iterateFiles( numOfFilesAdded, fileArray, filesAdded ) {
+        fileArray.slice(0, numOfFilesAdded).forEach(watcher.pushToArray(filesAdded))
+    }
+    /**
+     * Returns a function that adds a given item to an array.
+     * 
+     * @param {Array} array The array. 
+     * @returns {Function} The function that adds a given item to the array.
+     */
+    function pushToArray( array ) {
+        return function( item ) {
+            array.push(item)
+        }
+    }
+    /**
+     * Reduces each File array for each directory within the directoryData object to a single array,
+     * then returns the length of this array.
+     * 
+     * @param {Object} directoryData The object to process.
+     * @returns {Number} TotalFileCount The number of files in all directories.
+     */
+    function getTotalFileCount( directoryData ) {
+        return directoryData.reduce(function( acc, object ) {
+            return acc.Files.concat(object.Files, [])
+        }).length
+    }
+    /**
+     * Reduces the given array of arrays, and returns an array containing all values contained within these arrays.
+     * 
+     * @param {Array} array The array to flatten.
+     * @returns {Array} Returns flattened array.
+     */
+    function flatten( array ) {
+        return array.reduce(function(acc, val) {
+            return acc.concat(Array.isArray(val) ? flatten(val) : val)
+        }, [])
+    }
+    /**
+     * Iterates over each files within the files array, and logs the FileName to the console.
+     * 
+     * @param {Array} files The array of files to log. 
+     */
+    function iterateAndLog( files ) {
+        _.each(files, function( file ) {
+            console.log(file.FileName)
+        })
+    }
+    var watcher = {
+        init: init,
+        WatchDirs : [],
+        IntervalTime : 0,
+        statArray: statArray,
+        liveDirectories: liveDirectories,
+        prevFileCount: prevFileCount,
+        watcherOnTheWall: watcherOnTheWall,
+        readDirectory: readDirectory,
+        checkDirectoryLength, checkDirectoryLength,
+        createLiveDirectory: createLiveDirectory,
+        getFilesAdded: getFilesAdded,
+        orderByTimeAdded: orderByTimeAdded,
+        iterateFiles: iterateFiles,
+        pushToArray: pushToArray,
+        getTotalFileCount: getTotalFileCount,
+        flatten: flatten,
+        iterateAndLog: iterateAndLog,
+    }
+    return watcher 
+}());
 
-function pushToArray( array ) {
-	return function( item ) {
-		array.push(item);
-	}
-}
 
-function iterateFiles( numOfFilesAdded, fileArray, filesAdded ) {
-	fileArray.slice(0, numOfFilesAdded).forEach(pushToArray(filesAdded))
-}
-
-function getFilesAdded( directoryData ) {
-	return new Promise(function( resolve, reject ) {
-		var dirMap = new Map()
-		_.each(liveDirectories, function( liveDirectory) {
-			dirMap.set(liveDirectory.DirectoryName, liveDirectory)
-		})
-		_.each(directoryData, function( directory ) {
-			var liveDir = dirMap.get(directory.DirectoryName)
-			if ( directory.Files.length > liveDir.NumOfFiles && count > 0) {
-				var fileArray = [];
-				filesAdded = [];
-				numOfFilesAdded = directory.Files.length - liveDir.NumOfFiles
-				fileArray = orderByTimeAdded(directory.Files, directory.DirectoryName);
-				iterateFiles(numOfFilesAdded, fileArray, filesAdded)
-				liveDir.NumOfFiles = directory.Files.length;
-				count++
-				resolve(_.sortBy(filesAdded, 'FileName'))
-			} else {
-				count++
-			}
-		})
-	})
-}
-
-function checkDirectoryLength( directoryData ) {
-	return new Promise(function( resolve, reject ) {
-		if ( liveDirectories.length === 0 ) {
-			directoryData.forEach(createLiveDirectory)
-		} else if ( liveDirectories.length > 0 ) {
-			resolve(getFilesAdded(directoryData))
-		}
-	})
-}
-
-/*
-	@readDirectory
-	@param directory - Current directory being processed.
-	@desc - Returns an object containing the @directory and an array of files it contains.
-	*/
-function readDirectory( directory ) {
-	return fs.readdirAsync(directory)
-	.then(function( files ) {
-		return { "DirectoryName" : directory, "Files" : files, }	
-	}).catch(function( error ){
-		return error
-	})
-}
-/*
-Testing Utils
-*/
-var testUtils = {
-	logFileName : function( files ) {
-		_.each(files, function( file ) {
-			console.log(file.FileName)
-		});
-	}
-}
-
-/*
-	@watcherOnTheWall function
-	@desc - Module configuration. Specify a directory or multiple directory strings within the Promise.all() function.
-*/
-function watcherOnTheWall(watchDirectories) {
-	return function() {
-		var watchDirs = [];
-		_.each(watchDirectories, function( directory ) {
-			watchDirs.push(readDirectory(directory.Watch))
-		})
-		Promise.all(watchDirs)
-		.then(checkDirectoryLength)
-		.then(testUtils.logFileName)
-		.catch(function(error) {
-			return
-		});
-	}
-}
-
-setInterval(watcherOnTheWall(watchDirectories), 1000);
+// Example initialization
+var zafWatcher = nightsWatch;
+zafWatcher.WatchDirs = ["./zaf/betting", "./zaf/racecard"]
+zafWatcher.IntervalTime = 500
+zafWatcher.init();
