@@ -18,15 +18,18 @@ var nightsWatch = (function() {
     * Calls watcherOnTheWall function with @WatchDirs for the time specified in @IntervalTime.
     */
     function init() {
-        setInterval(watcherOnTheWall(watcher.WatchDirs), watcher.IntervalTime)
+        setInterval(watcherOnTheWall(watcher.WatchDirs, watcher.whenComplete), watcher.IntervalTime)
     }
 
+    function onAdd( definedFunction ) {
+        return definedFunction
+    }
     /**
      * Root function that uses @directories to process files that exist and are added to a given directory.
      * 
      * @param {Array} directories The array to iterate over.
      */
-    function watcherOnTheWall( directories ) {
+    function watcherOnTheWall( directories, definedFunction ) {
         return function() {
             var dirsToWatch = []
             _.each(directories, function(directory) {
@@ -34,7 +37,7 @@ var nightsWatch = (function() {
             })
             Promise.all(dirsToWatch)
             .then(watcher.checkDirectoryLength)
-            .then(watcher.iterateAndLog)
+            .then(watcher.onAdd)
             .catch(function(error) {
                 return
             })
@@ -199,6 +202,7 @@ var nightsWatch = (function() {
     }
     var watcher = {
         init: init,
+        onAdd: onAdd,
         WatchDirs : [],
         IntervalTime : 0,
         statArray: statArray,
@@ -219,9 +223,21 @@ var nightsWatch = (function() {
     return watcher 
 }());
 
+module.exports = nightsWatch;
 
-// Example initialization
+// Example Usage
+var callApi = function( files ) {
+    console.log("Files added calling api..")
+    _.each(files, function( file ) {
+        console.log(file.FileName)
+    })
+}
+
 var zafWatcher = nightsWatch;
 zafWatcher.WatchDirs = ["./zaf/betting", "./zaf/racecard"]
 zafWatcher.IntervalTime = 500
+// onAdd is the function used to define what should happen when files are added
+// to the given directories.
+// The watchers return value is alway an array of files added.
+zafWatcher.onAdd = callApi
 zafWatcher.init();
