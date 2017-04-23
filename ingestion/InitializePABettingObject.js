@@ -1,27 +1,25 @@
-/*
-	@@Imports
-	Module is dependant on @SetSABettingValues and @SAUtils.
-*/
-// var fs = require('fs');
-var Promise = require('bluebird');
-var setSABettingValues = require('./SetSABettingValues').setMessageValues;
-var timestamp = require('./SAUtils').createTimeStamp;
+/**
+ * InitializePABettingObject initializes a JSON object used to store in the standardization process.
+ */
 
-// For testing purposes
-var util = require('util');
+/**
+ * Dependencies
+ * @bluebird, @SetPARaceCardValues, @IngestionUtils
+ */
+var Promise = require('bluebird'),
+	setSABettingValues = require('./SetSABettingValues').setMessageValues,
+	timestamp = require('./IngestionUtils').createTimeStamp;
+	utils = require('util');
 
-/*
-	@@initializePABettingObject provides function @createPABettingObject, @checkBettingObjectType, @standardizeBettingData and @checkObjectType.
-*/
-var initializePABettingObject = {
-	/*
-		@createPABettingObject function
 
-		@desc - Returns an empty PA Betting Object.
-	*/
-	//TODO: ADD timestamp function for object creation time.
+var initializeBettingObject = {
+	/**
+	 * Returns a paBettingObject
+	 * 
+	 * @returns {Object} Returns the paBettingObject
+	 */
 	createPABettingObject : function() {
-		var paBettingObject = {
+		return {
 			"SeabiscuitPABettingSpecification" : "v0.107042017",
 			"PABettingObject" : {
 				"ObjectCreationTime" : timestamp(),
@@ -49,84 +47,53 @@ var initializePABettingObject = {
 				},
 			}
 		}
-		return paBettingObject;
 	},
-	/*
-		@checkBettingObjectType function
-		@params json
-		Checks the structure of the JSON betting object it was passed and returns a Promise to its caller
-
-		@Resolve returns an object containing the JSON betting object and Object Type which is a country code based of the supplier of the data
-		For example, data from South African supplier returns country code "SA" to the caller.
-		@Reject returns as error if the structure of the JSON betting object is unrecognized.
-	*/
+	/**
+	 * Validates if the supplied bettingObject is a valid (expected) format.
+	 * 
+	 * @param {Object} bettingObject The bettingObject with supplied betting data.
+	 * @returns {Object} Returns an object stating the validity of the @bettingObject
+	 */
 	checkBettingObjectType : function( bettingObject ) {
 		var parsedJson = JSON.parse( bettingObject );
-		return new Promise(function( resolve, reject ) {
-			var error = "Unrecognized Betting Object"
-			if ( !parsedJson.HorseRacingX ) {
-				reject({
-					"Error" : error,
+		if ( !parsedJson.HorseRacingX ) {
+			return {
+				"Flag" : false,
+				Data : {
+					"Error" : "Unrecognized Betting Object",
 					"Action" : "Please check the XML data sent from the supplier",
-				});
-				return
-			} else if ( parsedJson.HorseRacingX ) {
-				resolve({
-					"BettingObject" : parsedJson,
-					"ObjectType": "SA",
-				})
-			}
-		});
-	},
-
-	/*
-		@standardizeBettingData function
-		@params bettingObject
-		Function uses @checkBettingObjectType and @createPABettingObject to create a standardized PA Betting Object and returns it to its caller
-	*/
-	standardizeBettingData : function( bettingObject ) {
-		return new Promise(function( resolve, reject ) {
-
-			var objData = initializePABettingObject.checkBettingObjectType(bettingObject);
-			var paObjectWithData = objData
-			.then( function( object ) {
-				var bettingDataObjects = {
-					"BettingDataObject" : object.BettingObject,
-					"ObjectType" : object.ObjectType,
-					"PAObject" : initializePABettingObject.createPABettingObject()
 				}
-				// Returns standardized PA Betting Object
-				resolve(initializePABettingObject.checkObjectType(bettingDataObjects));
-			})
-			.catch( function( error ) {
-				reject(error);
-				return
-			})
-			return paObjectWithData;
-		});
-	},
-
-	/*
-		@checkObjectType function
-		@params bettingDataObjects {Object that contains data to construct standardised PA Betting Object}
-		Function determines which supplier the object is from using @ObjectType and returns standardizezed PA Betting object.
-	*/
-	checkObjectType : function( bettingDataObjects ) {
-		// Error handling for the type of object is already executed in @checkBettingObjectType function.
-		console.log(util.inspect(bettingDataObjects.BettingDataObject, false, null));
-		var paObject = bettingDataObjects.PAObject;
-		var bettingObject = bettingDataObjects.BettingDataObject;
-		var messageType = bettingDataObjects.BettingDataObject.HorseRacingX.Message["0"].$.type;
-		var countryCode = bettingDataObjects.ObjectType;
-		
-		// Check which supplier the betting data came from
-		if ( countryCode === "SA" ) {
-			setSABettingValues(messageType, paObject, bettingObject, countryCode);
-			// saDefaultValueSetter(paObject, bettingObject);
+			}
+		} else if ( parsedJson.HorseRacingX ) {
+			return {
+				"Flag" : true,
+				"Data" : {
+					"BettingObject" : parsedJson,
+					"CountryCode": "SA",
+				}
+			}
 		}
-		// Return PA Betting object to the @standardizeJson function
-		return paObject
+	},
+	/**
+	 * Returns a {Promise} rejects invalid data supplied and resolves with standardized pa betting data.
+	 * 
+	 * @param {Object} bettingObject The bettingObject with supplied betting data.
+	 * @returns {Promise} Returns a Promise with pa betting data or an error depending on the validity of the supplied data.
+	 */
+	init : function( bettingObject ) {
+		return new Promise(function( resolve, reject ) {
+			var isValid = initializeBettingObject.checkBettingObjectType(bettingObject);
+			if ( isValid.Flag === false ) {
+				reject(isValid.Data)
+			}
+			var bettingDataObjects = {
+				"BettingDataObject" : isValid.Data.BettingObject,
+				"CountryCode" : isValid.Data.CountryCode,
+				"PAObject" : initializeBettingObject.createPABettingObject()
+			}
+			resolve(bettingDataObjects);
+		});
 	},
 }
 
-module.exports = initializePABettingObject;
+module.exports = initializeBettingObject;

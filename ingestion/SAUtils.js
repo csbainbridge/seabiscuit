@@ -134,14 +134,6 @@ var saUtils = {
        object.Show.Offer = show.$.noOffers;
     })
   },
-  /*
-    TODO: Export this function to a generalised utils module as this is not directly related to SA Betting data rather the PA Betting data.
-    @createTimeStamp
-    @desc - Creates an timestamp string following the format YYYYMMDDTHHMMSS (Example: 20170415T213645).
-  */
-  createTimeStamp : function() {
-    return new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
-  },
 }
 
 module.exports = saUtils

@@ -9,7 +9,7 @@
   Module is dependant on @SAUtils and @CreateIDs.
 */
 var saUtils = require('./SAUtils');
-var id = require('./CreateIDs')
+var ingestionUtils = require('./IngestionUtils')
 
 // For testing.
 var util = require('util');
@@ -22,7 +22,7 @@ var util = require('util');
     @desc - SA data is fragmented, therefore this function uses the {Message Type} to set values within the {PA Betting Object} dynamically
     based on the {MessageType}.
   */
-function setMessageValues( messageType, paObject, saBettingObject ) {
+function checkMessageValues( messageType, paObject, saBettingObject ) {
 	var paBettingObject = paObject;
 	switch(messageType) {
 
@@ -119,6 +119,7 @@ function setMessageValues( messageType, paObject, saBettingObject ) {
 
 		case "WinningTime":
 			paBettingObject.PABettingObject.Meeting.Race.WinningTime = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].WinningTime["0"].$.time;
+			saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 			break;
 
 		case "RaceDividends":
@@ -196,13 +197,12 @@ function setDefaultValues( paBettingObject, saBettingObject) {
 	paBettingObject.PABettingObject.Meeting.Country = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.country;
 	paBettingObject.PABettingObject.Meeting.Date = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].$.date;
 	paBettingObject.PABettingObject.Meeting.Status = "Dormant"
-	paBettingObject.PABettingObject.Meeting.ID = id.createMeetingId(paBettingObject);
-	paBettingObject.PABettingObject.Meeting.Race.ID = id.createRaceId(paBettingObject);
-
+	paBettingObject.PABettingObject.Meeting.ID = ingestionUtils.createMeetingId(paBettingObject);
+	paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 	// Return PA Betting Object with standardized betting data.
 	return paBettingObject;
 }
 
 module.exports = {
-	setMessageValues : setMessageValues,
+	checkMessageValues : checkMessageValues,
 }

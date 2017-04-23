@@ -1,14 +1,19 @@
-/* 
-	@@Imports
-	Module is dependant on @processXML.
-*/
-var processXml = require('./ProcessXml.js');
-var initializePABettingObject = require('./InitializePABettingObject.js');
-var initializePARaceCardObject = require('./InitializePARaceCardObject.js');
+/**
+ * Index is used to collect and export multiple modules within the ingestion directory.
+ * 
+ * Exports
+ * @ProcessXml, @InitializePABettingObject, @InitializePARaceCardObject, @SetPARaceCardValues
+ */
+var processXml = require('./ProcessXml.js'),
+	initializeBettingObject = require('./InitializePABettingObject.js'),
+	initializeRaceCardObject = require('./InitializePARaceCardObject.js'),
+	setRaceCardValues = require('./SetPARaceCardValues.js'),
+	checkCountryCode = require('./CheckCountryCodes.js')
 
-// Export processXml as ProcessXml.
 module.exports = {
 	processXml : processXml,
-	initializePABettingObject : initializePABettingObject,
-	initializePARaceCardObject : initializePARaceCardObject,
+	initializeBettingObject : initializeBettingObject,
+	initializeRaceCardObject : initializeRaceCardObject,
+	setRaceCardValues : setRaceCardValues,
+	checkCountryCode : checkCountryCode.checkCountryCode,
 }

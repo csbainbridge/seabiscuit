@@ -27,9 +27,15 @@ var nightsWatch = (function() {
 
     }
 
+    /**
+     * Returns the function set during {Object} initialization.
+     * 
+     * @param {Function} definedFunction function called when files are added 
+     */
     function onAdd( definedFunction ) {
         return definedFunction
     }
+
     /**
      * Root function that uses @directories to process files that exist and are added to a given directory.
      * 
