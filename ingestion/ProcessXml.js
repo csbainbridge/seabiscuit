@@ -15,25 +15,17 @@ module.exports = {
     @params fileName
     Reads the contents of the file it was passed, removes NULL bytes from the file contents, and returns a Promise to its caller.
   */
-  readXML : function( fileName ) {
-    var filePath = __dirname + fileName;
-    return new Promise(function( resolve, reject ) {
-        fs.readFile(filePath, 'utf8', function( error, fileContents ) {
-          if ( error ) {
-            reject({
-              "Error" : error,
-              "Action" : "Please check that the file exists.",
-            });
-            return
-          }
-          // Creates Regular Expression for pattern matching all NULL bytes globally.
-          var regEx = /[\x00]/g;
+  // Async functionality meant that the betting files would be read out of order, possibility here would be to create two methods readXMLAsync and readXMLSync
+  readXML : function( filePath ) {
+    // console.log(filePath)
+    // return new Promise(function( resolve, reject ) {
+    var xml = fs.readFileSync(filePath, "utf-8")
+    // Creates Regular Expression for pattern matching all NULL bytes globally.
+    var regEx = /[\x00]/g;
 
-          // Uses regular expressesion to replace all NULL bytes in the the file contents.
-          validXml = fileContents.replace(regEx, "");
-          resolve(validXml);
-        });
-    });
+      //   // Uses regular expressesion to replace all NULL bytes in the the file contents.
+    validXml = xml.replace(regEx, "");
+    return validXml
 },
   /* 
     @parseXML function

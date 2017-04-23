@@ -6,6 +6,12 @@
 * Dependencies
 * @bluebird, @fs, @underscore
 */
+
+//temp
+var ingestionScripts = require('../ingestion'),
+    util = require('util')
+
+
 var Promise = require('bluebird'), 
     fs = Promise.promisifyAll(require('fs')),
     _ = Promise.promisifyAll(require('underscore'))
@@ -24,7 +30,6 @@ var nightsWatch = (function() {
         }catch(e) {
             console.log(e)
         }
-
     }
 
     /**
@@ -152,7 +157,8 @@ var nightsWatch = (function() {
             watcher.statArray.push(
                 {
                     "FileName": file,
-                    "AddedTime": fileStats.ctime
+                    "AddedTime": fileStats.ctime,
+                    "Directory" : directory
                 }
             )
         })
@@ -236,21 +242,3 @@ var nightsWatch = (function() {
 }());
 
 module.exports = nightsWatch;
-
-// Example Usage
-// Declare "callback" function
-var callApi = function( files ) {
-    console.log("Files added calling api..")
-    _.each(files, function( file ) {
-        console.log(file.FileName)
-    })
-}
-// Initialize object
-var zafWatcher = nightsWatch;
-zafWatcher.WatchDirs = ["./zaf/betting", "./zaf/racecard"]
-zafWatcher.IntervalTime = 500
-// onAdd is the function used to define what should happen when files are added
-// to the given directories.
-// The watchers return value is alway an array of files added.
-zafWatcher.onAdd = callApi
-zafWatcher.Watch();

@@ -8,7 +8,8 @@ var processXml = require('./ProcessXml.js'),
 	initializeBettingObject = require('./InitializePABettingObject.js'),
 	initializeRaceCardObject = require('./InitializePARaceCardObject.js'),
 	setRaceCardValues = require('./SetPARaceCardValues.js'),
-	checkCountryCode = require('./CheckCountryCodes.js')
+	checkCountryCode = require('./CheckCountryCodes.js'),
+	nightsWatch = require('./nightsWatch')
 
 module.exports = {
 	processXml : processXml,
@@ -16,4 +17,5 @@ module.exports = {
 	initializeRaceCardObject : initializeRaceCardObject,
 	setRaceCardValues : setRaceCardValues,
 	checkCountryCode : checkCountryCode.checkCountryCode,
+	nightsWatch : nightsWatch,
 }

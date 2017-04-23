@@ -48,7 +48,6 @@ if ( processXml == null || initializeBettingObject == null) {
 	If successful logs PA JSON Object to console.
 	Logs unsuccessful parse errors to the console.
 */
-fileName.forEach(function(file){
 	processXml.readXML( file )
 	.then( processXml.parseXML )
 	.then( initializeBettingObject.init )
@@ -62,4 +61,3 @@ fileName.forEach(function(file){
 				+ "\nAction: " + error.Action
 			);
 	});
-})
