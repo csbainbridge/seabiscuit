@@ -58,7 +58,7 @@ module.exports = {
     } else {
       meetingId = paDataObject.PARaceCardObject.Meeting.ID
     }
-    raceId +=  meetingId.slice(0, 8) + raceTime.slice(0, 4) + meetingId.slice(8, 12);
+    raceId +=  meetingId.slice(0, 7) + raceTime.slice(0, 4) + meetingId.slice(7, 12);
     return raceId;
   },
   /**

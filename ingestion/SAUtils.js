@@ -1,40 +1,38 @@
-/*
-  @@SAUtils module
-  Provides useful functions that perform operations on SA betting data when setting
-  values within the {PA Betting Object}.
-*/
+/**
+ * Provides functions that perform operations on SA betting data when setting the values of the PA betting object.
+ */
 
 var saUtils = {
-  /*
-    @setRaceTimeValue
-    @param paBettingObject - PA Betting Object
-    @param saBettingObject - SA Betting Object
-
-    @desc - Sets the {Time} value in the {PA Betting Object} using {SA Betting Object}.
-  */
+  /**
+   * Sets the race race time.
+   * 
+   * @param {Object} paBettingObject The PA betting object.
+   * @param {Object} saBettingObject The SA betting object.
+   */
 	setRaceTimeValue : function( paBettingObject, saBettingObject) {
     raceTime = this.standardizeRaceTime(saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].$.time);
 		paBettingObject.PABettingObject.Meeting.Race.Time = raceTime;
 	},
-
-  /*
-    @standardizeRaceTime function
-    @param saTime - SA Betting Race Time {0000+0200}
-    @desc - Returns @raceTime that matches PA Race Card Race Time {0000+0100}
-  */
+  /**
+   * Modifies the race time sent in the SA betting data to match the race time shown on corresponding PA race cards.
+   * 
+   * @param {String} saTime The SA time string,
+   * @return {String} Returns a standaridized race time string (UK time {0000+0100} Matches PA Race Card)
+   */
   standardizeRaceTime : function( saTime ) {
-    return saTime.slice(0, 1) + parseInt(saTime[1]) - 1 + saTime.slice(2, 6) + parseInt(saTime[6] - 1 + saTime.slice(7, 9));
+    var prefix = saTime.slice(0, 1) + parseInt(saTime[1]) - 1
+    prefix === -1 ? prefix = 12 : prefix
+    return prefix + saTime.slice(2, 6) + parseInt(saTime[6] - 1 + saTime.slice(7, 9))
   },
-
-  /*
-    @pushToPABettingObject
-    @param paBettingObject - PA Betting Object
-    @param object - Standardized object to push to horse Array in the {PA Betting Object}
-
-    @desc - Iterates over each horse in the {Object} array, and pushes it to the {Horse} array in the {PA Betting Object}.
-  */ 
-  pushToPABettingObject : function( paBettingObject, object ) {
-    object.map(function( horse ) {
+  /**
+   * Pushes each horse object to the paBettingObject.
+   * 
+   * @param {Object} paBettingObject The paBettingObject
+   * @param {Array} array The array of horse objects
+   * @return {Object} Returns the paBettingObject
+   */
+  pushToPABettingObject : function( paBettingObject, array ) {
+    array.map(function( horse ) {
       paBettingObject.PABettingObject.Meeting.Race.Horse.push(horse)
     })
     return paBettingObject
@@ -46,6 +44,12 @@ var saUtils = {
     @desc - Iterates over each horse in the {SA Betting Object}, and pushes it to the {Horse} array.
     Returns {Horse} array.
   */
+  /**
+   * Gets the sa horse objects from the saBettingObject
+   * 
+   * @param {Object} saBettingObject
+   * @return {Array} Returns array of sa horse objects
+   */
   getHorseArray : function( saBettingObject ) {
     var horseArray = [];
     saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].HorseRef.map(function( horse ){
@@ -62,56 +66,134 @@ var saUtils = {
     @desc - Iterates over the {Horse} array, sets values within the {Object} depending on the {Message Type}.
     Returns {Object}
   */
-  createObjToPush : function( horseArray, object, messageType ) {
-    return horseArray.map(function( horse ) {
+  /**
+   * Creates an array of standardized horse objects based on the messageType.
+   * 
+   * @param {Array} horseArray
+   * @param {String} messageType
+   * @return {Object} Returns array of horse objects
+   */
+  createObjToPush : function( horseArray, messageType ) {
+    var array = horseArray.map(function( horse ) {
       switch( messageType ) {
         case "JockeyChange":
-          object.JockeyChange.Name = horse.JockeyChange["0"].$.name;
-          object.JockeyChange.Units = horse.JockeyChange["0"].$.units;
-          object.JockeyChange.Allowance = horse.JockeyChange["0"].$.allowance;
-          object.JockeyChange.Overweight = horse.JockeyChange["0"].$.overweight;
+          var jockeyChangeObject = {
+            "Name" : "",
+            "Bred" : "",
+            "Cloth" : "",
+            "JockeyChange" : {
+              "Name" : "",
+              "Units" : "",
+              "Allowance" : "",
+              "Overweight" : "",
+            }
+		 	    }
+          jockeyChangeObject.JockeyChange.Name = horse.JockeyChange["0"].$.name;
+          jockeyChangeObject.JockeyChange.Units = horse.JockeyChange["0"].$.units;
+          jockeyChangeObject.JockeyChange.Allowance = horse.JockeyChange["0"].$.allowance;
+          jockeyChangeObject.JockeyChange.Overweight = horse.JockeyChange["0"].$.overweight;
+          saUtils.setHorseDetails(jockeyChangeObject, horse)
+          return jockeyChangeObject
           break;
         case "NonRunner":
-          object.Status = "NonRunner"
+          var nonRunnerObject = {
+            "Status" : "",
+            "Name" : "",
+            "Bred" : "",
+            "Cloth" : "",
+          }
+          nonRunnerObject.Status = "NonRunner"
+          saUtils.setHorseDetails(nonRunnerObject, horse)
+          return nonRunnerObject
           break;
         case "Result":
+          var resultObject = {
+            "Name" : "",
+            "Bred" : "",
+            "Cloth" : "",
+            "StartingPrice" : {
+              "Numerator" : "",
+              "Denominator" : "",
+            },
+            "Result" : {
+              "FinishPos" : "",
+              "Disqualified" : "",
+              "BtnDistance" : "",
+            },
+          }
           horse.StartingPrice.map(function( startingPrice ) {
-              object.StartingPrice.Numerator = startingPrice.$.numerator
-              object.StartingPrice.Denominator = startingPrice.$.denominator
+              resultObject.StartingPrice.Numerator = startingPrice.$.numerator
+              resultObject.StartingPrice.Denominator = startingPrice.$.denominator
           })
           if (horse.Result) {
               horse.Result.map(function( result ) {
-              object.Result.FinishPos = result.$.finishPos;
-              object.Result.Disqualified = result.$.disqualified;
-              object.Result.BtnDistance = result.$.btnDistance;
+              resultObject.Result.FinishPos = result.$.finishPos;
+              resultObject.Result.Disqualified = result.$.disqualified;
+              resultObject.Result.BtnDistance = result.$.btnDistance;
             })
           }
+          saUtils.setHorseDetails(resultObject, horse)
+          return resultObject
           break; 
         case "Market":
-          saUtils.setShow(object, horse);
+        // Move this to setShow function
+          var marketObject = {
+            "Name" : "",
+            "Bred" : "",
+            "Cloth" : "",
+            "Show" : {
+              "TimeStamp" : "",
+              "Numerator" : "",
+              "Denominator" : "",
+              "Offer" : "",
+            }
+			    }
+          saUtils.setShow(marketObject, horse)
+          saUtils.setHorseDetails(marketObject, horse)
+          return marketObject
           break;
         case "Show":
-          saUtils.setShow(object, horse);
+          var showObject = {
+            "Name" : "",
+            "Bred" : "",
+            "Cloth" : "",
+            "Show" : {
+              "TimeStamp" : "",
+              "Numerator" : "",
+              "Denominator" : "",
+              "Offer" : "",
+            }
+          }
+          saUtils.setShow(showObject, horse)
+          saUtils.setHorseDetails(showObject, horse)
+          return showObject
           break;
         case "Withdrawn":
+          var withdrawnObject = {
+            "Name" : "",
+            "Bred" : "",
+            "Cloth" : "",
+            "WithdrawnPrice" : {
+              "Numerator" : "",
+              "Denominator" : "",
+            }
+          }
           horse.WithdrawnPrice.map(function( withdrawnPrice ) {
-            object.WithdrawnPrice.Numerator = withdrawnPrice.$.numerator;
-            object.WithdrawnPrice.Denominator = withdrawnPrice.$.denominator;
+            withdrawnObject.WithdrawnPrice.Numerator = withdrawnPrice.$.numerator;
+            withdrawnObject.WithdrawnPrice.Denominator = withdrawnPrice.$.denominator;
           })
+          saUtils.setHorseDetails(withdrawnObject, horse)
+          return withdrawnObject
         }
-      object.Name = horse.$.name;
-      object.Bred = horse.$.bred;
-      object.Cloth = horse.ClothRef["0"].$.number;
-      return object
     })
+    return array
   },
-  /*
-    @countRaceRunners
-    @param paBettingObject - PA Betting Object
-
-    @desc - Iterates over each horse in the {PA Betting Object} {Horse} array, and keeps a count.
-    Returns {PA Betting Object} with "Runners" value set to the total horse count.
-  */
+  /**
+   * Gets the number of runners in a race.
+   * 
+   * @param {Object} paBettingObject The PA Betting Object
+   * @return {Number} Returns the number of runners in a race
+   */
   countRaceRunners : function( paBettingObject ) {
     var runnerCount = 0;
     paBettingObject.PABettingObject.Meeting.Race.Horse.map(function( horse ){
@@ -119,13 +201,13 @@ var saUtils = {
     })
     return paBettingObject.PABettingObject.Meeting.Race.Runners = runnerCount;
   },
-  /*
-    @setShow
-    @param object - PA Betting Object.
-    @param horse - The current horse that is being iterated over.
-
-    @desc - Iterates over each show in the {Horse} array, and creates a new array containing the Show data for each horse. 
-  */
+  /**
+   * Sets the values of the Show/Market object.
+   * 
+   * @param {Object} object The Show/Market object
+   * @param {Object} horse The SA horse object.
+   * @return {Object} Returns the Show/Market object.
+   */
   setShow : function( object, horse ) {
     return horse.Show.map(function( show ) {
        object.Show.TimeStamp = show.$.timestamp;
@@ -134,6 +216,18 @@ var saUtils = {
        object.Show.Offer = show.$.noOffers;
     })
   },
+  /**
+   * Sets the default values of the object.
+   * 
+   * @param {Object} object The object being processed
+   * @param {Object} horse The SA horse object
+   */
+  setHorseDetails : function( object, horse ) {
+    object.Name = horse.$.name;
+    object.Bred = horse.$.bred;
+    object.Cloth = horse.ClothRef["0"].$.number;
+    return object
+  }
 }
 
 module.exports = saUtils

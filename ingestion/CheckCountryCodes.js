@@ -1,3 +1,11 @@
+/**
+ * CheckCountryCodes checks the country code of the betting object supplied, and calls a setter function based on this value.
+ */
+
+/**
+ * Dependencies
+ * @bluebird, @SetSABettingValues
+ */
 var Promise = require('bluebird'),
     setSABettingValues = require('./SetSABettingValues.js')
 
@@ -21,7 +29,7 @@ module.exports = {
                 })
             }
             if ( countryCode === "SA" ) {
-                resolve(setSABettingValues.checkMessageValues(messageType, paObject, bettingObject))
+                resolve(setSABettingValues.setBettingValues(messageType, paObject, bettingObject))
             }
         })
     }

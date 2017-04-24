@@ -31,14 +31,15 @@ var initializeBettingObject = {
 					"Country" : "",
 					"Date" : "",
 					"Status" : "",
+					"Weather" : "",
+					"Going" : "",
 					"Race" : {
 						"ID" : "",
 						"Status" : "",
 						"StatusTimeStamp" : "",
 						"Time" : "",
 						"Runners" : "",
-						"Weather" : "",
-						"Going" : "",
+					
 						"OffTime" : "",
 						"WinningTime" : "",
 						"Horse" : [],

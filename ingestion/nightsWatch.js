@@ -23,7 +23,7 @@ var nightsWatch = (function() {
     /**
     * Calls watcherOnTheWall function with @WatchDirs for the time specified in @IntervalTime.
     */
-    function Watch() {
+    function watch() {
         try {
             if(typeof watcher.onAdd!=='function'){throw "Error: " + typeof watcher.onAdd + " is not a function"}else if(watcher.onAdd.length !== 1){throw "Error: onAdd takes a single param of {Array} type"}
             setInterval(watcherOnTheWall(watcher.WatchDirs), watcher.IntervalTime)
@@ -219,7 +219,7 @@ var nightsWatch = (function() {
         })
     }
     var watcher = {
-        Watch: Watch,
+        watch: watch,
         onAdd: onAdd,
         WatchDirs : [],
         IntervalTime : 0,
