@@ -1,49 +1,64 @@
 var ingestionScripts = require('../ingestion'),
     processXml = ingestionScripts["processXml"],
     initializeBettingObject = ingestionScripts["initializeBettingObject"],
+    initializeRaceCardObject = ingestionScripts["initializeRaceCardObject"]
     setBettingValues = ingestionScripts["setBettingValues"],
+    setRaceCardValues = ingestionScripts["setRaceCardValues"]
     checkCountryCode = ingestionScripts["checkCountryCode"],
     zafWatcher = ingestionScripts["nightsWatch"],
-    util = require('util'),
-    Promise = require('bluebird'),
-    _ = require('underscore')
+    util = require('util')
 
 var processor = {
-    filePath : "",
     getFilePaths : function( files ) {
-        var filePaths = files.map(function(fileData){
+        var filePaths = files
+        .filter(function(i){return i != undefined})
+        .map(function(fileData){
             return fileData.Directory + "/" + fileData.FileName
         })
         filePaths.forEach(processor.parseFile)
     },
     parseFile : function( path ) {
-        filePath = path
         validXml = processXml.readXML(path),
         processXml.parseXML(validXml)
-        .then(processor.checkPathAndProcess)
-        .catch(function( error ){
-            console.log(error)
+        .then(function(processedXml) { 
+            if ( (/betting/).test(path) ) {
+                processor.postBetting(processedXml)
+            } else if ( (/racecard/).test(path) ) {
+                processor.postRaceCard(processedXml)
+            } else {
+                throw error({
+                    "Error": "Invalid directory configuration.",
+                    "Action": "Accepted subdirectories '/betting/' and '/racecard/. Example: zaf/betting and zaf/racecard."
+                })
+            }
+        })
+        .catch(function( error ) {
+            console.log("\n" + error.Error + "\: " + error.Action)
         })
     },
-    checkPathAndProcess : function( parsedXml ) {
-        var expression = new RegExp(/betting/)
-         if (expression.test(filePath)) {
-            initializeBettingObject.init(parsedXml)
-            .then(checkCountryCode)
-            .then(function( data ) {
-                console.log(util.inspect(data, false, null))
-            })
-            .catch(function(error) {
-                console.log("\n" + error.Error + "\: " + error.Action);
-            });
-        } else {
-            //Add ingestions scripts for race cards here
-        }
+    postBetting : function( processedXml ) {
+        initializeBettingObject.init(processedXml)
+        .then(checkCountryCode)
+        .then(function( json ) {
+            console.log(util.inspect(json, false, null))
+        })
+        .catch(function(error) {
+            console.log("\n" + error.Error + "\: " + error.Action);
+        });
+    },
+    postRaceCard : function( processedXml ) {
+        initializeRaceCardObject.init(processedXml)
+        .then(setRaceCardValues.setPARaceCardValues)
+        .then(function( json ) {
+            console.log(util.inspect(json, false, null))
+        })
+        .catch(function( error ){
+            console.log("\n" + error.Error + "\: " + error.Action)
+        })
     }
 }
 
-zafWatcher.WatchDirs = ["./zaf/betting"]
+zafWatcher.WatchDirs = ["./zaf/betting", './zaf/racecard']
 zafWatcher.IntervalTime = 500   
 zafWatcher.onAdd = processor.getFilePaths
 zafWatcher.watch();
-

@@ -8,7 +8,7 @@ var processXml = require('./ProcessXml.js'),
 	initializeBettingObject = require('./InitializePABettingObject.js'),
 	initializeRaceCardObject = require('./InitializePARaceCardObject.js'),
 	setRaceCardValues = require('./SetPARaceCardValues.js'),
-	checkCountryCode = require('./CheckCountryCodes.js'),
+	checkCountryCode = require('./CheckCountryCode.js'),
 	nightsWatch = require('./nightsWatch')
 
 module.exports = {
