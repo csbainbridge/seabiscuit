@@ -1,5 +1,5 @@
 /**
- * CheckCountryCodes checks the country code of the betting object supplied, and calls a setter function based on this value.
+ * CheckCountryCode checks the country code of the betting object supplied, and calls a setter function based on this value.
  */
 
 /**

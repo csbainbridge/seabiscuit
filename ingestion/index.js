@@ -1,8 +1,5 @@
 /**
- * Index is used to collect and export multiple modules within the ingestion directory.
- * 
- * Exports
- * @ProcessXml, @InitializePABettingObject, @InitializePARaceCardObject, @SetPARaceCardValues
+ * Used to export multiple modules within the ingestion directory.
  */
 var processXml = require('./ProcessXml.js'),
 	initializeBettingObject = require('./InitializePABettingObject.js'),
