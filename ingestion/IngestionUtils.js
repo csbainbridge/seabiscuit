@@ -63,11 +63,14 @@ module.exports = {
   },
   /**
    * Creates formatted timestamp string
-   * Format: YYYYMMDDTHHMMSS (Example: 20170415T213645)
+   * Format: YYYYMMDDHHMMSS (Example: 20170415213645) (UK Time)
    * 
    * @returns {String} Returns timestamp string
    */
    createTimeStamp : function() {
-    return new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
+    var date = new Date()
+    day = date.toISOString().slice(0, 10)
+    time = date.toTimeString().slice(0, 8)
+    return (day + time).slice(0, 19).replace(/[:-]/g, '')
   },
 }
