@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start:api": "node ./bin/api-server",
+    "start:production": "node ./bin/www"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -33,10 +34,11 @@
     "web",
     "application"
   ],
-  "author": {
-    "Lord Commander": "Curtis",
-    "First Ranger": "Dom",
-    "First Steward": "Ryan"
+  "authors": {
+    "Developer": "Curtis Bainbridge",
+    "Developer": "Dominic Williamson",
+    "QA": "Ryan Nicholson",
+    "Product Manager": "Isaac Hughes"
   },
   "license": "ISC"
 }

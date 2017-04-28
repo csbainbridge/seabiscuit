@@ -1,22 +1,18 @@
 #!/usr/bin/env node
 
 /**
- * Production use only.
- */
-
-/**
  * Module dependencies.
  */
 
-var app = require('../production-server');
-var debug = require('debug')('seabiscuit:productionserver');
+var app = require('../apps/api');
+var debug = require('debug')('seabiscuit:api');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8000');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
