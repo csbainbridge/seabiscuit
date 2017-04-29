@@ -61,6 +61,11 @@ var processor = {
         .then(function( json ) {
             console.log(util.inspect(json, false, null))
             //TODO: Once API is written add call to corresponding API function here.
+            // Development Post URL: localhost:3000/race/:raceid
+            // Production Post URL: seabiscuit.raceday.api/race/:raceid
+            // If data is meeting only related data, for example weather and going:
+            // Development Post URL: localhost:3000/meeting/update/:meeting
+            // Production Post URL: seabiscuit.raceday.api/meeting/update/:meeting
         })
         .catch(function(error) {
             console.log("\n" + error.Error + "\: " + error.Action);
@@ -77,6 +82,8 @@ var processor = {
         .then(function( json ) {
             console.log(util.inspect(json, false, null))
             //TODO: Once API is written add call to corresponding API function here.
+            // Development Post URL: localhost:3000/meeting/:meetingid
+            // Production Post URL: seabiscuit.raceday.api/meeting/:meetingid
         })
         .catch(function( error ){
             console.log("\n" + error.Error + "\: " + error.Action)

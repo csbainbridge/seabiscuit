@@ -2,8 +2,8 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var bettingApi = require('../routes/bettingApi');
+var bodyParser = require('body-parser')
+var racedayRouter = require('../routes/raceday-route-index');
 
 var app = express();
 
@@ -12,6 +12,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+/**
+ * TODO: Have a look at helmet for api security
+ */
+
+/**
+ * TODO: API Authentication Key generation 
+ * (Use a method where you can create API keys by which clients can use to get data from the Race Day API)
+ */
 
 /**
  * Middleware sets permissive CORS header on each request. Allows server to only be used as API server.
@@ -26,9 +34,11 @@ app.use(function(req, res, next) {
 })
 
 /**
- * Uses bettingApi route
- */
-app.use('/', bettingApi)
+ * Uses racedayApiRouter middleware
+ *
+*/
+app.use('/', racedayRouter)
+
 
 /**
  * Catches and forwards 404 error to error handler.
