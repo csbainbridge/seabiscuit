@@ -3,7 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
-var racedayRouter = require('../routes/raceday-route-index');
+var racedayRouter = require('../routes/api-route-index');
 
 var app = express();
 
