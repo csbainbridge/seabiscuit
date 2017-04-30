@@ -53,10 +53,21 @@ router.get('/:resource/:id', function(req, res, next) {
     }
 })
 
+ /**
+ * Race data includes:
+ * timestamps
+ * jockeychanges
+ * nonrunners
+ * withdrawals
+ * timestamps
+ * horses
+ * status'
+ */
 router.get('/:resource/:id/:data', function(req, res, next) {
     var resource = req.params.resource
     var id = req.params.id
     var data = req.params.data
+    var query = req.query
     switch(resource) {
         case "meeting":
             res.json({
@@ -67,23 +78,24 @@ router.get('/:resource/:id/:data', function(req, res, next) {
             })
             break;
         case "race":
-            /**
-             * Race data includes:
-             * timestamps
-             * jockeychanges
-             * nonrunners
-             * withdrawals
-             * timestamps
-             * horses
-             * status'
-             */
-            res.json({
-                message: "success",
-                resource: resource,
-                id: id,
-                data: data
-            })
-            break;
+            if ( data == "horse" && req.query ) {
+                res.json({
+                    message: "success",
+                    resource: resource,
+                    id: id,
+                    data: data,
+                    horseID: query.id
+                })
+            } else {
+                res.json({
+                    message: "success",
+                    resource: resource,
+                    id: id,
+                    data: data
+                })
+                break;
+            }
+           
     }
 })
 
