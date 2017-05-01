@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+// var controller = require('../');
 
 router.get('/:resource', function(req, res, next) {
     var resource = req.params.resource
@@ -22,6 +23,11 @@ router.get('/:resource', function(req, res, next) {
                 resource: resource
             })
             break;
+        case "stream":
+            res.json({
+                "message": "success",
+                resource: resource
+            })
     }
 })
 
