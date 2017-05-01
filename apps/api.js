@@ -39,7 +39,6 @@ app.use(function(req, res, next) {
 */
 app.use('/', racedayRouter)
 
-
 /**
  * Catches and forwards 404 error to error handler.
  */
