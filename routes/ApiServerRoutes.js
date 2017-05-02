@@ -1,7 +1,7 @@
 var express = require('express');
-var Promise = require('bluebird');
 var controllers = require('../controllers');
 var response = require('../utils/response');
+var apiPostHandler = require('../utils/APIPostHandler.js');
 var router = express.Router();
 
 router.get('/:resource', function(req, res, next) {
@@ -54,34 +54,38 @@ router.post('/:resource', function(req, res, next) {
      * 4) If any values are different update them.
      * 5) After processing the meeting data use the race controller to update the 
      */
-    controller.find(req.query)
-    .then(function(entities){
-        if ( entities.length === 0 ) {
-            controller.create(data)
-            .then(function(newEntity){
-                res.json({
-                    message: "success",
-                    data: newEntity
-                })
-            })
-            .catch(function(error){
-                res.json({
-                    message: "fail",
-                    data: error
-                })
-            })
-        } else {
-            res.json({
-                message: "success",
-                data: "entity already exists"
-            })
-        }
-    })
-    .catch(function(error){
-        res.json({
-            message: "fail",
-            data: error
-        })
+    // controller.find(req.query)
+    // .then(function(entities){
+    //     if ( entities.length === 0 ) {
+    //         controller.create(data)
+    //         .then(function(newEntity){
+    //             res.json({
+    //                 message: "success",
+    //                 data: newEntity
+    //             })
+    //         })
+    //         .catch(function(error){
+    //             res.json({
+    //                 message: "fail",
+    //                 data: error
+    //             })
+    //         })
+    //     } else {
+    //         res.json({
+    //             message: "success",
+    //             data: "entity already exists"
+    //         })
+    //     }
+    // })
+    // .catch(function(error){
+    //     res.json({
+    //         message: "fail",
+    //         data: error
+    //     })
+    // })
+    var responsePromise = apiPostHandler.init(req.query, data, controller);
+    responsePromise.then(function(response){
+         res.json(response)
     })
 })
 

@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 var racedayRouter = require('../routes/ApiServerRoutes');
-var db = require('../utils/db')
+var db = require('../utils/db');
 var app = express();
 
 require('dotenv').config()
