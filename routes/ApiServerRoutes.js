@@ -54,39 +54,10 @@ router.post('/:resource', function(req, res, next) {
      * 4) If any values are different update them.
      * 5) After processing the meeting data use the race controller to update the 
      */
-    // controller.find(req.query)
-    // .then(function(entities){
-    //     if ( entities.length === 0 ) {
-    //         controller.create(data)
-    //         .then(function(newEntity){
-    //             res.json({
-    //                 message: "success",
-    //                 data: newEntity
-    //             })
-    //         })
-    //         .catch(function(error){
-    //             res.json({
-    //                 message: "fail",
-    //                 data: error
-    //             })
-    //         })
-    //     } else {
-    //         res.json({
-    //             message: "success",
-    //             data: "entity already exists"
-    //         })
-    //     }
-    // })
-    // .catch(function(error){
-    //     res.json({
-    //         message: "fail",
-    //         data: error
-    //     })
-    // })
-    var responsePromise = apiPostHandler.init(req.query, data, controller);
-    responsePromise.then(function(response){
-         res.json(response)
-    })
+    apiPostHandler.init(req.query, data, controller)
+    .then(function(response){
+        res.send(response)
+    });
 })
 
 module.exports = router;

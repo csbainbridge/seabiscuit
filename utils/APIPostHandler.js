@@ -1,42 +1,24 @@
 var Promise = require('bluebird');
 
-var apiPostHandler = (function() {
+module.exports = (function() {
     var query;
     var data;
     var controller;
-    var response;
     function errorHandler(error){
-        return {
-            message: "fail",
-            data: error
-        }
-    }
-    function callCreate(){
-        var response = apiPostHandler.controller.create(apiPostHandler.data).then(function(newEntity){
-            return { message: "success", data: newEntity + ' created' };
-        })
-        .catch(errorHandler)
-        return response;
+        return { message: "fail", data: error }
     }
     function getEntities(entities){
-        return new Promise(function(resolve, reject){
-            if ( entities.length === 0) {
-                var response = callCreate()
-                resolve(response);
-            } else {
-                //TODO: If country already exists process meeting
-            }
-        })
+        if ( entities.length === 0) {
+            return apiPostHandler.controller.create(apiPostHandler.data).catch(errorHandler)
+        } else {
+            return { message: "fail", data: 'entity already exists' }
+        }
     }
     function init(query, data, controller) {
         apiPostHandler.query = query;
         apiPostHandler.data = data;
         apiPostHandler.controller = controller
-        var response = controller.find(query).then(getEntities).then(function(response){
-            return response
-        })
-        .catch(errorHandler)
-        return response
+        return controller.find(query).then(getEntities).catch(errorHandler)
     }
     var apiPostHandler = {
         init: init,
@@ -46,5 +28,3 @@ var apiPostHandler = (function() {
     }
     return apiPostHandler;
 }());
-
-module.exports = apiPostHandler;
