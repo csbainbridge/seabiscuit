@@ -31,7 +31,7 @@ var RaceSchema = mongoose.Schema({
     winning_time: { type: String, default: '' },
     time: { type: String, default: '' },
     statuses: [{
-        _id: Schema.Types.ObjectId,
+        _id: mongoose.Schema.Types.ObjectId,
         created_at: { type: Date, default: new Date() },
         supplier_timestamp: { type: String },
         status:  { type: String, default: '' }
@@ -43,9 +43,9 @@ var RaceSchema = mongoose.Schema({
     trifecta: { type: String, default: '' },
     max_runners: { type: String, default: '' },
     runners: { type: String, default: '' },
-    horses: [{ type: schema.Types.ObjectId, ref: 'Horse' }],
+    horses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Horse' }],
     returns: [{
-        _id: Schema.Types.ObjectId,
+        _id: mongoose.Schema.Types.ObjectId,
         created_at: { type: Date, default: new Date() },
         type: { type: String, default: '' },
         currencey: { type: String, default: ''},

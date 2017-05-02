@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var Promise = require('bluebird');
+var mongoose = require('mongoose')
 
 // http://mongoosejs.com/docs/populate.html
 //http://stackoverflow.com/questions/35795480/mongoose-query-to-get-data-from-multiple-collections
@@ -22,13 +23,13 @@ var MeetingSchema = mongoose.Schema({
     created_at: { type: Date, default: new Date() },
     x_reference: { type: String, min: 12, max: 12, default: '' },
     statuses: [{
-        _id: Schema.Types.ObjectId,
+        _id: mongoose.Schema.Types.ObjectId,
         created_at: { type: Date, default: new Date() },
         status:  { type: String, default: '' }
     }],
     course: { type: String, default: '' },
     date: { type: String, default: '' },
     going: { type: String, default: '' },
-    races: [{ type: mongoose.Schema.Type.ObjectId, ref: 'Race' }]
+    races: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Race' }]
 })
 module.exports = mongoose.model('Meeting', MeetingSchema);

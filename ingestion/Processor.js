@@ -59,7 +59,7 @@ var processor = {
         initializeBettingObject.init(processedXml)
         .then(checkCountryCode)
         .then(function( json ) {
-            console.log(util.inspect(json, false, null))
+            console.log(JSON.stringify(json))
             //TODO: Once API is written add call to corresponding API function here.
             // Development Post URL: localhost:3000/race/:raceid
             // Production Post URL: seabiscuit.raceday.api/race/:raceid
