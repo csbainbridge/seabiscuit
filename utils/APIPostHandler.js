@@ -1,5 +1,3 @@
-var Promise = require('bluebird');
-
 module.exports = (function() {
     var query;
     var data;
@@ -14,17 +12,14 @@ module.exports = (function() {
             return { message: "fail", data: 'entity already exists' }
         }
     }
-    function init(query, data, controller) {
+    function findOrCreate(query, data, controller) {
         apiPostHandler.query = query;
         apiPostHandler.data = data;
         apiPostHandler.controller = controller
         return controller.find(query).then(getEntities).catch(errorHandler)
     }
     var apiPostHandler = {
-        init: init,
-        query: query,
-        data: data,
-        controller: controller
+        findOrCreate: findOrCreate,
     }
     return apiPostHandler;
 }());

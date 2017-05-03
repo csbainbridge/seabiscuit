@@ -54,7 +54,7 @@ router.post('/:resource', function(req, res, next) {
      * 4) If any values are different update them.
      * 5) After processing the meeting data use the race controller to update the 
      */
-    apiPostHandler.init(req.query, data, controller)
+    apiPostHandler.findOrCreate(req.query, data, controller)
     .then(function(response){
         res.send(response)
     });
