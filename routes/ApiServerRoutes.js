@@ -1,7 +1,8 @@
 var express = require('express');
 var controllers = require('../controllers');
+var countryPostHandler = require('../utils/CountryPostHandler');
 var response = require('../utils/response');
-var apiPostHandler = require('../utils/APIPostHandler.js');
+// var apiPostHandler = require('../utils/APIPostHandler.js');
 var router = express.Router();
 
 router.get('/:resource', function(req, res, next) {
@@ -38,26 +39,38 @@ router.get('/:resource/:id', function(req, res, next) {
 router.post('/:resource', function(req, res, next) {
     var resource = req.params.resource
     var data = req.body
+    var query = req.query
     var controller = controllers[resource]
     var entities = 0;
     if ( controller == null ) {
         response.invalid(res)
     }
     /**
-     * TODO: ~~~
-     * 1) Move res.json to utils.response.js module
-     * 2) After getting the country entity need to check if the meeting exists in the meetings collection
-     *     if not create the new meeting entity and add then up date the country collection 
-     *     with the reference for the meeting.
-     * 3) If the meeting already exists compare the values within the race card data object against
-     *      the values stored in the meeting collection
-     * 4) If any values are different update them.
-     * 5) After processing the meeting data use the race controller to update the 
+     * TODO: This needs moving to a RaceCardPosthandler.js
+     * RaceCardPostHandler.js will take in all controllers an a parameter, even though this will reduce
+     * efficiency it will allow the script to compose together 
      */
-    apiPostHandler.findOrCreate(req.query, data, controller)
+
+    countryPostHandler.checkEntities(query, data, controller)
     .then(function(response){
-        res.send(response)
-    });
+        console.log(response)
+        // Maybe it would be best to create ApiPostHandler for Racecard
+        // TODO: Now need to create meetings using the meeting controller
+        controller = controllers["meeting"]
+        controller.create(data, response).then(function(meetingDocument){
+            controller.update(data, meetingDocument).then(function(success){
+                console.log(success)
+            })
+        
+        })
+        // Sort this out now
+        res.json(response)
+    })
+
+    // apiPostHandler.findOrCreate(req.query, data, controller)
+    // .then(function(response){
+    //     res.send(response)
+    // });
 })
 
 module.exports = router;

@@ -36,6 +36,7 @@ var setBettingValues = {
 				paBettingObject.PABettingObject.Meeting.Weather = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].Weather["0"].$.message;
 				break;
 			case "NonRunner":
+				// TODO: Move the top three statements to a function within tis object.
 				var horseArray = saUtils.getHorseArray(saBettingObject);
 				var objToPush = saUtils.createObjToPush(horseArray, messageType);
 				paBettingObject = saUtils.pushToPABettingObject(paBettingObject, objToPush);
@@ -43,6 +44,7 @@ var setBettingValues = {
 				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 				break;
 			case "Market":
+				// TODO: Move the top three statements to a function within tis object.
 				var horseArray = saUtils.getHorseArray(saBettingObject);
 				var objToPush = saUtils.createObjToPush(horseArray, messageType);
 				saUtils.pushToPABettingObject(paBettingObject, objToPush);
@@ -51,6 +53,7 @@ var setBettingValues = {
 				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 				break;
 			case "Show":
+				// TODO: Move the top three statements to a function within tis object.
 				var horseArray = saUtils.getHorseArray(saBettingObject);
 				var objToPush = saUtils.createObjToPush(horseArray, messageType);
 				saUtils.pushToPABettingObject(paBettingObject, objToPush);
@@ -69,6 +72,7 @@ var setBettingValues = {
 				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 				break;
 			case "Result":
+				// TODO: Move the top three statements to a function within tis object.
 				var horseArray = saUtils.getHorseArray(saBettingObject);
 				var objToPush = saUtils.createObjToPush(horseArray, messageType);
 				paBettingObject = saUtils.pushToPABettingObject(paBettingObject, objToPush);
@@ -101,6 +105,7 @@ var setBettingValues = {
 				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 				break;
 			case "JockeyChange":
+				// TODO: Move the top three statements to a function within tis object.
 				var horseArray = saUtils.getHorseArray(saBettingObject);
 				var objToPush = saUtils.createObjToPush(horseArray, messageType);
 				saUtils.pushToPABettingObject(paBettingObject, objToPush);
@@ -108,12 +113,15 @@ var setBettingValues = {
 				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 				break;
 			case "Withdrawn": 
+				// TODO: Move the top three statements to a function within tis object.
 				var horseArray = saUtils.getHorseArray(saBettingObject);
 				var objToPush = saUtils.createObjToPush(horseArray, messageType);
 				saUtils.pushToPABettingObject(paBettingObject, objToPush);
 				saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
 				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 				break;
+			// Add case False start
+			// Add case Stewards
 			default:
 				throw {"Error" : "Invalid Message Type: " + messageType,
 					"Action" : "Check XML data to confirm if the Message Type sent is valid."};
