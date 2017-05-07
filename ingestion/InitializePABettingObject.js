@@ -39,7 +39,8 @@ var initializeBettingObject = {
 						"StatusTimeStamp" : "",
 						"Time" : "",
 						"Runners" : "",
-					
+						"Stewards" : "",
+						"Objection" : "",
 						"OffTime" : "",
 						"WinningTime" : "",
 						"Horse" : [],

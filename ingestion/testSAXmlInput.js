@@ -6,31 +6,7 @@ var ingestionScripts = require('../ingestion');
 var util = require('util');
 
 // XML file to test
-var fileName = [
-	"/zaf/betting/sa20170418XKD13150001.xml",
-	"/zaf/betting/sa20170418XKD13150002.xml",
-	"/zaf/betting/sa20170418XKD13150003.xml",
-	"/zaf/betting/sa20170418XKD13150004.xml",
-	"/zaf/betting/sa20170418XKD13150005.xml",
-	"/zaf/betting/sa20170418XKD13150006.xml",
-	"/zaf/betting/sa20170418XKD13150007.xml",
-	"/zaf/betting/sa20170418XKD13150008.xml",
-	"/zaf/betting/sa20170418XKD13150009.xml",
-	"/zaf/betting/sa20170418XKD13150010.xml",
-	"/zaf/betting/sa20170418XKD13150011.xml",
-	"/zaf/betting/sa20170418XKD13150012.xml",
-	"/zaf/betting/sa20170418XKD13150013.xml",
-	"/zaf/betting/sa20170418XKD13150014.xml",
-	"/zaf/betting/sa20170418XKD13150015.xml",
-	"/zaf/betting/sa20170418XKD13150016.xml",
-	"/zaf/betting/sa20170418XKD13150017.xml",
-	"/zaf/betting/sa20170418XKD13150018.xml",
-	"/zaf/betting/sa20170418XKD13150019.xml",
-	"/zaf/betting/sa20170418XKD13150020.xml",
-	"/zaf/betting/sa20170418XKD13150021.xml",
-	"/zaf/betting/sa20170418XKD13150022.xml",
-	"/zaf/betting/sa20170418XKD13150023.xml",
-];
+var fileName = 'sa20170503XED14500002.xml';
 
 // Set processXml module as processXml and InitializePABettingObject module to initializePABettingObject
 var processXml = ingestionScripts["processXml"];
@@ -48,8 +24,8 @@ if ( processXml == null || initializeBettingObject == null) {
 	If successful logs PA JSON Object to console.
 	Logs unsuccessful parse errors to the console.
 */
-	processXml.readXML( file )
-	.then( processXml.parseXML )
+	xml = processXml.readXML( fileName )
+	processXml.parseXML(xml)
 	.then( initializeBettingObject.init )
 	.then( checkCountryCode )
 	.then(function ( paBettingObject ) {
