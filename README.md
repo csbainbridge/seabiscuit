@@ -1,4 +1,22 @@
-**PA Race Day Viewer**
+# Seabiscuit (PA Realtime Race Day Viewer) (A NodeJS & ReactJS Application)
 
-Racing Data Customer Support Driven Project (With management from Isaac Hughes)
-Web application used to view raceday live betting data.
+A realtime web application for viewing live racing data.
+
+Racing Data Customer Support Driven Project (With management from Isaac Hughes).
+
+## Install
+
+1. Install Node and MongoDB.
+2. `git clone https://github.com/csbainbridge/seabiscuit.git`
+3. `cd` into project directory.
+4. `npm install`
+
+
+## Starting the API Server
+1. Start MongoDB server on `localhost`
+2. `npm run start:api`
+3. Open web browser and got to `localhost:3000`
+
+
+
+
