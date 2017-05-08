@@ -37,8 +37,8 @@
     "application"
   ],
   "authors": {
+    "Developer": "Curtis Bainbridge",
     "Developer": "Dominic Williamson",
-    "QA": "Ryan Nicholson",
     "Product Manager": "Isaac Hughes"
   },
   "license": "ISC"
