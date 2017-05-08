@@ -15,7 +15,6 @@ Promise.promisifyAll(Meeting)
 module.exports = {
     create: function(data, countryDocument) {
         return new Promise(function( resolve, reject ) {
-            console.log(countryDocument)
             var document = {
                 _country: countryDocument._id,
                 x_reference: data.Meeting.ID,
@@ -58,7 +57,6 @@ module.exports = {
     },
     update: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
-            console.log(data)
             var statusObject = {
                 status: data.Meeting.Status // TODO: Will need to pass just the meeting object in (Otherwise PARaceCardObject and PABettingObject will not match)
             }

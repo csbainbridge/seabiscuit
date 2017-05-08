@@ -11,9 +11,7 @@ module.exports = (function() {
             .create(countryPostHandler.data)
             .catch(errorHandler)
         } else {
-            //TODO: Need to return the country ID here *****
-            console.log(entities)
-            return { message: "success", data: true }
+            return entities["0"]
         }
     }
     function checkEntities( query, data, controller ) {

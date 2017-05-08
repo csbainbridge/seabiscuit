@@ -1,8 +1,8 @@
 var controller = require('../controllers').meeting;
+var Promise = require('bluebird');
 
 module.exports = (function() {
     var data;
-    var countryEntity;
     function errorHandler( error ) {
         return { message: "fail", data: error }
     }
@@ -15,37 +15,30 @@ module.exports = (function() {
             })
         }
     }
-    function checkIfMeetingExists( entity ) {
-        if ( entity.length === 0 ) {
-            entity = controller.create(meetingPostHandler.data, meetingPostHandler.countryEntity)
-            return callUpdate(meetingPostHandler.data, entity)
+    function doesMeetingExist( countryEntity, meetingEntity ) {
+        if ( meetingEntity.length === 0 ) {
+            entity = controller.create(handler.data, countryEntity)
+            return callUpdate(handler.data, entity)
         } else {
-            return callUpdate(meetingPostHandler.data, entity)
+            return callUpdate(handler.data, entity)
         }
     }
-    function init( object ) {
-        meetingPostHandler.data = object.data.PARaceCardObject ? object.data.PARaceCardObject : object.data.PABettingObject;
-        
-        // TODO: Promise all ****
-        // return Promise.all([getCountry(), findMeeting()])
-        // .then(function(arr){
-        //     // countryEntity[0]
-        //     // meetingEntity[0]
-        //     // return checkIfEntityExists(meetingEntity, countryEntity)
-        // })
-        // .catch(errorHandler)
-        
-        return object.promise.then(function( countryEntity ){
-             meetingPostHandler.countryEntity = countryEntity;
-             return controller.find({x_reference: meetingPostHandler.data.Meeting.ID})
-            .then(checkIfMeetingExists)
-            .catch(errorHandler)
+    function getCountry( promise ) {
+        return promise.then(function(countryEntity){
+            return countryEntity
         })
     }
-    var meetingPostHandler = {
-        init: init,
-        data: data,
-        countryEntity: countryEntity
+    function init( object ) {
+        handler.data = object.data.PARaceCardObject ? object.data.PARaceCardObject : object.data.PABettingObject;
+        return Promise.all([getCountry(object.promise), controller.find({x_reference: handler.data.Meeting.ID})])
+        .spread(function( countryEntity, meetingEntity ) {
+            return doesMeetingExist(countryEntity, meetingEntity)
+        })
+        .catch(errorHandler)
     }
-    return meetingPostHandler
+    var handler = {
+        init: init,
+        data: data
+    }
+    return handler
 }());
