@@ -15,12 +15,13 @@ Promise.promisifyAll(Meeting)
 module.exports = {
     create: function(data, countryDocument) {
         return new Promise(function( resolve, reject ) {
+            console.log(countryDocument)
             var document = {
                 _country: countryDocument._id,
-                x_reference: data.PARaceCardObject.Meeting.ID,
-                course: data.PARaceCardObject.Meeting.Course,
-                date: data.PARaceCardObject.Meeting.Date,
-                going: data.PARaceCardObject.Meeting.Going,
+                x_reference: data.Meeting.ID,
+                course: data.Meeting.Course,
+                date: data.Meeting.Date,
+                going: data.Meeting.Going,
             }
             Meeting.createAsync(document)
             .then(function(meeting){
@@ -35,7 +36,7 @@ module.exports = {
         return new Promise(function( resolve, reject ) {
             Meeting.findAsync(params)
             .then(function(meetings) {
-                resolve(meeting) 
+                resolve(meetings) 
             })
             .catch(function(error) {
                 reject(error)
@@ -55,14 +56,14 @@ module.exports = {
             })
         })
     },
-    update: function( data, meetingDocument ) {
+    update: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
-            console.log(meetingDocument._id)
-            statusObject = {
-                status: data.PARaceCardObject.Meeting.Status // TODO: Will need to pass just the meeting object in (Otherwise PARaceCardObject and PABettingObject will not match)
+            console.log(data)
+            var statusObject = {
+                status: data.Meeting.Status // TODO: Will need to pass just the meeting object in (Otherwise PARaceCardObject and PABettingObject will not match)
             }
             Meeting.findOneAndUpdateAsync(
-                { _id: meetingDocument._id },
+                { _id: meetingEntity._id },
                 { $push: { statuses: statusObject} }, // TODO: This should be an argument of what to update?
                 { new: true }
             )

@@ -19,11 +19,11 @@ var mongoose = require('mongoose')
  */
 
 var MeetingSchema = mongoose.Schema({
-    _country: { type: String, ref: 'Country' },
-    created_at: { type: Date, default: new Date() },
+    _country: { type: mongoose.Schema.Types.ObjectId, ref: 'Country' },
+    created_at: { type: Date, default: Date.now },
     x_reference: { type: String, min: 12, max: 12, default: '' },
     statuses: [{
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         status:  { type: String, default: '' }
     }],
     course: { type: String, default: '' },

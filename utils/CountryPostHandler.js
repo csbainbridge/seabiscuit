@@ -11,7 +11,9 @@ module.exports = (function() {
             .create(countryPostHandler.data)
             .catch(errorHandler)
         } else {
-            return { message: "success", data: 'entity already exists' }
+            //TODO: Need to return the country ID here *****
+            console.log(entities)
+            return { message: "success", data: true }
         }
     }
     function checkEntities( query, data, controller ) {
@@ -23,7 +25,7 @@ module.exports = (function() {
         .find(countryPostHandler.query)
         .then(doesEntityExist)
         .catch(errorHandler)
-        return response
+        return response;
     }
     var countryPostHandler = {
        checkEntities: checkEntities,

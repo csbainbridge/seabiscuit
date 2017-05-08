@@ -80,7 +80,7 @@ var processor = {
         initializeRaceCardObject.init(processedXml)
         .then(setRaceCardValues.setPARaceCardValues)
         .then(function( json ) {
-            console.log(util.inspect(json, false, null))
+            console.log(JSON.stringify(json))
             //TODO: Once API is written add call to corresponding API function here.
             // Development Post URL: localhost:3000/meeting/:meetingid
             // Production Post URL: seabiscuit.raceday.api/meeting/:meetingid
