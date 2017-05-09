@@ -22,9 +22,9 @@ var mongoose = require('mongoose');
 
 HorseSchema = mongoose.Schema({
     _raceref: { type: Number, ref: 'Race' },
-    created_at: { type: Date, default: new Date() },
+    created_at: { type: Date, default: Date.now },
     statuses: [{
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         status: { type: String, default: '' }
     }],
     name: { type: String, default: '' },
@@ -36,7 +36,7 @@ HorseSchema = mongoose.Schema({
         value: { type: String, default: '' }
     },
     jockeys: [{
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         name: { type: String, default: '' },
         allowance: {
             units: { type: String, default: '' },
@@ -44,19 +44,19 @@ HorseSchema = mongoose.Schema({
         }
     }],
     shows: [{
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         supplier_timestamp: { type: String, default: '' },
         numerator: { type: String },
         denominator: { type: String },
         offer: { type: String, default: 'no' }
     }],
     starting_price: {
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         numerator: { type: String },
         denominator: { type: String }
     },
     result: {
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         pos: { type: String, default: '' },
         disqualified: { type: String, default: 'no' },
         btn_distance: { type: String, default: '' }

@@ -13,7 +13,7 @@ Promise.promisifyAll(Meeting)
  */
 
 module.exports = {
-    create: function(data, countryDocument) {
+    create: function( data, countryDocument ) {
         return new Promise(function( resolve, reject ) {
             var document = {
                 _country: countryDocument._id,
@@ -23,33 +23,33 @@ module.exports = {
                 going: data.Meeting.Going,
             }
             Meeting.createAsync(document)
-            .then(function(meeting){
+            .then(function( meeting ) {
                 resolve(meeting)
             })
-            .catch(function(error){
+            .catch(function( error ) {
                 reject(error)
             })
         })
     },
-    find: function(params) {
+    find: function( params ) {
         return new Promise(function( resolve, reject ) {
             Meeting.findAsync(params)
-            .then(function(meetings) {
+            .then(function( meetings ) {
                 resolve(meetings) 
             })
-            .catch(function(error) {
+            .catch(function( error ) {
                 reject(error)
                 return
             })
         })
     },
     findById: function( id ) {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function( resolve, reject ) {
             Meeting.findByIdAsync(id)
             .then(function( meeting ) {
                 resolve(meeting)
             })
-            .catch(function( error ){
+            .catch(function( error ) {
                 reject(error)
                 return
             })
@@ -57,18 +57,44 @@ module.exports = {
     },
     update: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
-            var statusObject = {
-                status: data.Meeting.Status // TODO: Will need to pass just the meeting object in (Otherwise PARaceCardObject and PABettingObject will not match)
+            var updateDocument = {}
+            console.log(meetingEntity.statuses.length)
+            if ( meetingEntity.statuses.length === 0 ) {
+                var statusObject = {
+                    status: data.Meeting.Status
+                }
+                updateDocument = {
+                    course: data.Meeting.Course,
+                    date: data.Meeting.Date,
+                    going: data.Meeting.Going,
+                    $push: { statuses: statusObject} 
+                }
+            } else if ( data.Meeting.Status !== meetingEntity.statuses[meetingEntity.statuses.length - 1].status ) {
+                var statusObject = {
+                    status: data.Meeting.Status
+                }
+                updateDocument = {
+                    course: data.Meeting.Course,
+                    date: data.Meeting.Date,
+                    going: data.Meeting.Going,
+                    $push: { statuses: statusObject} 
+                }
+            } else {
+                updateDocument = {
+                    course: data.Meeting.Course,
+                    date: data.Meeting.Date,
+                    going: data.Meeting.Going
+                }
             }
             Meeting.findOneAndUpdateAsync(
                 { _id: meetingEntity._id },
-                { $push: { statuses: statusObject} }, // TODO: This should be an argument of what to update?
+                updateDocument,
                 { new: true }
             )
-            .then(function( meeting ){
+            .then(function( meeting ) {
                 resolve(meeting)
             })
-            .catch(function( error ){
+            .catch(function( error ) {
                 reject(error)
             })
         })

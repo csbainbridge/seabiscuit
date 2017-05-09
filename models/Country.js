@@ -20,7 +20,7 @@ var mongoose = require('mongoose');
  
 
 var CountrySchema = mongoose.Schema({
-    created_at: { type: Date, default: new Date() },
+    created_at: { type: Date, default: Date.now },
     name: { type: String, default: '' },
     meetings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Meeting' }]
 })

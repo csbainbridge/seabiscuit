@@ -24,19 +24,20 @@ var mongoose = require('mongoose');
  */
 
 var RaceSchema = mongoose.Schema({
-    _meeting: { type: Number, ref: 'Meeting' },
-    created_at: { type: Date, default: new Date() },
+    _meeting: { type: mongoose.Schema.Types.ObjectId, ref: 'Meeting' },
+    created_at: { type: Date, default: Date.now },
     x_reference: { type: String, min: 16, max: 16, default: '' },
     off_time: { type: String, default: '' },
     winning_time: { type: String, default: '' },
     time: { type: String, default: '' },
     statuses: [{
         _id: mongoose.Schema.Types.ObjectId,
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         supplier_timestamp: { type: String },
         status:  { type: String, default: '' }
     }],
     title: { type: String, default: '' },
+    distance: { type: String, default: '' },
     handicap: { type: String, defualt: '' },
     race_type: { type: String, default: '' },
     track_type: { type: String, default: '' },
@@ -46,7 +47,7 @@ var RaceSchema = mongoose.Schema({
     horses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Horse' }],
     returns: [{
         _id: mongoose.Schema.Types.ObjectId,
-        created_at: { type: Date, default: new Date() },
+        created_at: { type: Date, default: Date.now },
         type: { type: String, default: '' },
         currencey: { type: String, default: ''},
         dividend: { type: String, default: '' },

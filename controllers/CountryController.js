@@ -20,7 +20,7 @@ var controller = (function() {
             })
         })
     }
-    function find(params) {
+    function find( params ) {
         return new Promise(function( resolve, reject ) {
             Country.findAsync(params)
             .then(function( countries ) {
@@ -32,7 +32,7 @@ var controller = (function() {
             })
         })
     }
-    function findById(id) {
+    function findById( id ) {
         return new Promise(function( resolve, reject ) {
             Country.findByIdAsync(id)
             .then(function( country ) {

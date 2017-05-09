@@ -10,7 +10,7 @@ module.exports = (function() {
         if ( Array.isArray(meetingEntity) ) {
             return controller.update(data, meetingEntity["0"])
         } else {
-            return meetingEntity.then(function( meetingEntity ){
+            return meetingEntity.then(function( meetingEntity ) {
                 return controller.update(data, meetingEntity)
             })
         }
@@ -18,13 +18,14 @@ module.exports = (function() {
     function doesMeetingExist( countryEntity, meetingEntity ) {
         if ( meetingEntity.length === 0 ) {
             entity = controller.create(handler.data, countryEntity)
-            return callUpdate(handler.data, entity)
+            // 
+            return entity
         } else {
-            return callUpdate(handler.data, entity)
+            return callUpdate(handler.data, meetingEntity)
         }
     }
     function getCountry( promise ) {
-        return promise.then(function(countryEntity){
+        return promise.then(function( countryEntity ) {
             return countryEntity
         })
     }
