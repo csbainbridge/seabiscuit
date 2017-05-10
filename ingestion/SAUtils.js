@@ -81,17 +81,19 @@ var saUtils = {
             "Name" : "",
             "Bred" : "",
             "Cloth" : "",
-            "JockeyChange" : {
+            "Jockey" : {
               "Name" : "",
-              "Units" : "",
-              "Allowance" : "",
-              "Overweight" : "",
+              "Allowance" : {
+                "Units" : "",
+                "Value" : ""
+              },
+              //"Overweight" : "", //TODO: Are overweights not in race card??
             }
 		 	    }
-          jockeyChangeObject.JockeyChange.Name = horse.JockeyChange["0"].$.name;
-          jockeyChangeObject.JockeyChange.Units = horse.JockeyChange["0"].$.units;
-          jockeyChangeObject.JockeyChange.Allowance = horse.JockeyChange["0"].$.allowance;
-          jockeyChangeObject.JockeyChange.Overweight = horse.JockeyChange["0"].$.overweight;
+          jockeyChangeObject.Jockey.Name = horse.JockeyChange["0"].$.name;
+          jockeyChangeObject.Jockey.Allowance.Units = horse.JockeyChange["0"].$.units;
+          jockeyChangeObject.Jockey.Allowance.Value = horse.JockeyChange["0"].$.allowance;
+          // jockeyChangeObject.JockeyChange.Overweight = horse.JockeyChange["0"].$.overweight; // TODO: See above
           saUtils.setHorseDetails(jockeyChangeObject, horse)
           return jockeyChangeObject
           break;
@@ -118,6 +120,7 @@ var saUtils = {
             "Result" : {
               "FinishPos" : "",
               "Disqualified" : "",
+              "AmendedPos" : "",
               "BtnDistance" : "",
             },
           }
@@ -130,6 +133,9 @@ var saUtils = {
               resultObject.Result.FinishPos = result.$.finishPos;
               resultObject.Result.Disqualified = result.$.disqualified;
               resultObject.Result.BtnDistance = result.$.btnDistance;
+              if ( result.$.amendedPos ) {
+                resultObject.Result.AmendedPos = result.$.amendedPos;
+              }
             })
           }
           saUtils.setHorseDetails(resultObject, horse)

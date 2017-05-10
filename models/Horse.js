@@ -21,7 +21,7 @@ var mongoose = require('mongoose');
  */
 
 HorseSchema = mongoose.Schema({
-    _raceref: { type: Number, ref: 'Race' },
+    _raceref: { type: mongoose.Schema.Types.ObjectId, ref: 'Race' },
     created_at: { type: Date, default: Date.now },
     statuses: [{
         created_at: { type: Date, default: Date.now },
@@ -51,15 +51,16 @@ HorseSchema = mongoose.Schema({
         offer: { type: String, default: 'no' }
     }],
     starting_price: {
-        created_at: { type: Date, default: Date.now },
+        created_at: { type: Date },
         numerator: { type: String },
         denominator: { type: String }
     },
     result: {
-        created_at: { type: Date, default: Date.now },
-        pos: { type: String, default: '' },
-        disqualified: { type: String, default: 'no' },
-        btn_distance: { type: String, default: '' }
+        created_at: { type: Date },
+        position: { type: String },
+        amended_position: { type: String },
+        disqualified: { type: String },
+        btn_distance: { type: String }
     },
 })
 

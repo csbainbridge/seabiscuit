@@ -58,7 +58,6 @@ module.exports = {
     update: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
-            console.log(meetingEntity.statuses.length)
             if ( meetingEntity.statuses.length === 0 ) {
                 var statusObject = {
                     status: data.Meeting.Status

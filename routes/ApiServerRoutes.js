@@ -60,7 +60,8 @@ router.post('/:resource', function( req, res, next ) {
      */
 
     
-    racePostHandler.init({promise: meetingPromise, data: data}).then(function( response ){
+    racePostHandler.init({promise: meetingPromise, data: data})
+    .then(function( response ){
         res.json(response)
     })
 

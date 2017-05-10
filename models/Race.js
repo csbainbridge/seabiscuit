@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var Horse = require('../models/Horse');
 // http://mongoosejs.com/docs/populate.html
 
 /**
