@@ -64,11 +64,12 @@ module.exports = {
                 max_runners: data.MaxRunners,
                 distance: data.Distance
             }
-            /**
-             * TODO: This will need to dynamically update the entity values
-             * depending on whether race card or betting data is passed.
-             */
-            // Update document for race card data
+            // Push horse entity ids into the horses array
+            if ( data.horseUpdate ) {
+                updateDocument = {
+                    $push: { horses: data.horseEntity }
+                }
+            }
             Race.findOneAndUpdateAsync(
                 { _id: raceEntity._id },
                 updateDocument,
@@ -82,29 +83,6 @@ module.exports = {
             })
         })
 
-    },
-    updateHorses: function( data, raceEntity ) {
-        return new Promise(function( resolve, reject ) {
-            var updateDocument = {
-                $push: {
-                    horses: {
-                        _id: data._id
-                    }
-                }
-            }
-            Race.findOneAndUpdateAsync(
-                { _id: raceEntity._id },
-                updateDocument,
-                { new: true }
-            )
-            .then(function(race){
-                resolve(race)
-            })
-            .catch(function(error){
-                reject(error)
-            })
-
-        })
     },
     delete: function() {
 

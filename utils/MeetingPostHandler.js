@@ -1,5 +1,6 @@
 var controller = require('../controllers').meeting;
 var Promise = require('bluebird');
+var _ = require('underscore')
 
 module.exports = (function() {
     var data;
@@ -18,7 +19,6 @@ module.exports = (function() {
     function doesMeetingExist( countryEntity, meetingEntity ) {
         if ( meetingEntity.length === 0 ) {
             entity = controller.create(handler.data, countryEntity)
-            // 
             return entity
         } else {
             return callUpdate(handler.data, meetingEntity)
@@ -29,9 +29,25 @@ module.exports = (function() {
             return countryEntity
         })
     }
+    function getMeetingUsingRaceEntity( raceEntity ) {
+        controller.find({_id: raceEntity._meeting})
+        .then(function( meetingEntity ){
+            if ( meetingEntity["0"].races.length === 0 ) {
+                controller.updateRaces(raceEntity, meetingEntity["0"])
+            }
+        })
+    }
+    function iteratePromises( promises ) {
+        promises.forEach(function( promise ){
+            promise.then(getMeetingUsingRaceEntity)
+        })
+    }
     function init( object ) {
         handler.data = object.data.PARaceCardObject ? object.data.PARaceCardObject : object.data.PABettingObject;
-        return Promise.all([getCountry(object.promise), controller.find({x_reference: handler.data.Meeting.ID})])
+        return Promise.all([
+            getCountry(object.promise),
+            controller.find({ x_reference: handler.data.Meeting.ID })
+        ])
         .spread(function( countryEntity, meetingEntity ) {
             return doesMeetingExist(countryEntity, meetingEntity)
         })
@@ -39,7 +55,8 @@ module.exports = (function() {
     }
     var handler = {
         init: init,
-        data: data
+        data: data,
+        iterateRacePromises: iterateRacePromises
     }
     return handler
 }());

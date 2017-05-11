@@ -14,18 +14,19 @@ module.exports = (function() {
     function doesHorseExist( raceEntity, horseEntity, horse ) {
         if ( horseEntity.length === 0 ) {
             entity = controller.create(horse, raceEntity)
+            return entity
         } else {
             return callUpdate(horse, horseEntity)
         }
     }
     function init( raceEntity, horseArray ) {
-        x = _.map(horseArray, function( horse ) {
+        promises = _.map(horseArray, function( horse ) {
             return controller.find({name: horse.Name})
             .then(function(horseEntity){
                 return doesHorseExist(raceEntity, horseEntity, horse)
             })
         })
-        return x
+        return promises
     }
     var handler = {
         init: init

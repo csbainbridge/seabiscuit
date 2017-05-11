@@ -35,6 +35,7 @@ module.exports = {
         return new Promise(function( resolve, reject ) {
             Meeting.findAsync(params)
             .then(function( meetings ) {
+                // console.log(meetings)
                 resolve(meetings) 
             })
             .catch(function( error ) {
@@ -95,6 +96,21 @@ module.exports = {
             })
             .catch(function( error ) {
                 reject(error)
+            })
+        })
+    },
+    updateRaces: function( data, meetingEntity ) {
+        return new Promise(function( resolve, reject ) {
+            Meeting.findOneAndUpdateAsync(
+                { _id: meetingEntity._id },
+                { $push: { races: data } },
+                { new: true }
+            )
+            .then(function( meeting ){
+                console.log(meeting)
+            })
+            .catch(function(error){
+                console.log(error)
             })
         })
     },

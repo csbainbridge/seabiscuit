@@ -1,3 +1,6 @@
+var _ = require('underscore');
+var countryController = require('../controllers').country;
+
 module.exports = (function() {
     var query;
     var data;
@@ -14,6 +17,9 @@ module.exports = (function() {
             return entities["0"]
         }
     }
+    function addMeetings() {
+        // TODO: Complete this function
+    }
     function checkEntities( query, data, controller ) {
         var response;
         countryPostHandler.query = query;
@@ -29,7 +35,8 @@ module.exports = (function() {
        checkEntities: checkEntities,
        query: query,
        data: data,
-       controller: controller
+       controller: controller,
+       addMeetings: addMeetings
     }
     return countryPostHandler;
 }());

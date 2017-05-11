@@ -10,7 +10,7 @@ Promise.promisifyAll(Country);
 var controller = (function() {
     function create(data) {
         return new Promise(function( resolve, reject ) {
-            Country.createAsync({ name: data.PARaceCardObject.Meeting.Country })
+            Country.createAsync({ name: data.PARaceCardObject.Meeting.Country }) // TODO: Need to handle betting data here
             .then(function(country){
                 resolve(country)
             })
@@ -44,8 +44,20 @@ var controller = (function() {
             })
         })
     }
-    function update() {
-
+    function update( data, countryEntity ) {
+        return new Promise(function( resolve, reject ) {
+            Country.findOneAndUpdateAsync(
+                { _id: countryEntity._id },
+                { $push: { meetings: data } },
+                { new: true }
+            )
+            .then(function( country ) {
+                // console.log(country)
+            })
+            .catch(function( error ) {
+                // console.log(error)
+            })
+        })
     }
     function remove() {
 

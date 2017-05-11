@@ -48,25 +48,16 @@ router.post('/:resource', function( req, res, next ) {
         response.invalid(res)
     }
 
-    //TODO: If there are any problems with handling both racecard and betting data for example Country should only be created when race cards
     countryPromise = countryPostHandler.checkEntities(query, data, controller)
     meetingPromise = meetingPostHandler.init({promise: countryPromise, data: data})
 
-    /**
-     * 1) Iterate over each race
-     * 2) Calling the racePostHandler passing in the race data and the meetingPromise
-     * 3) We need the meeting promise to set the _meeting cross reference id in the race document
-     * which will allow us to populate the meeting document with races
-     */
 
-    
-    racePostHandler.init({promise: meetingPromise, data: data})
-    .then(function( response ){
-        res.json(response)
-    })
+    racePromises = racePostHandler.init({promise: meetingPromise, data: data})
+    meetingPostHandler.iterateRacePromises(racePromises)
 
-    // TODO: Need to store the meetingPostHandler returned promise in a variable
-    // TODO: Then we need to call the init method of the racePostHandler method passing in the meeting promise, and data
+
+    // TODO: NOW GET THE MEETING FROM THE MEETING PROMISE AND PASS IT TO THE ADD MEETINGS FUNCTION OF
+    // THE COUNTRY POST HANDLER
 })
 
 module.exports = router;
