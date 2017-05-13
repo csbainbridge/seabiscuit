@@ -55,6 +55,7 @@ router.post('/:resource', function( req, res, next ) {
     racePromises = racePostHandler.init({promise: meetingPromise, data: data})
     meetingPostHandler.iterateRacePromises(racePromises)
 
+    countryPostHandler.addMeetings( meetingPromise )
 
     // TODO: NOW GET THE MEETING FROM THE MEETING PROMISE AND PASS IT TO THE ADD MEETINGS FUNCTION OF
     // THE COUNTRY POST HANDLER

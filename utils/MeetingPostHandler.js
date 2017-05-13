@@ -37,7 +37,7 @@ module.exports = (function() {
             }
         })
     }
-    function iteratePromises( promises ) {
+    function iterateRacePromises( promises ) {
         promises.forEach(function( promise ){
             promise.then(getMeetingUsingRaceEntity)
         })

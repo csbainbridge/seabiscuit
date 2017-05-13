@@ -31,18 +31,6 @@ module.exports = (function() {
             return countryEntity
         })
     }
-    // Need to test this to see if raceEntity is still passed
-    function createHorseEntities( raceEntity ) {
-        promises = horsePostHandler.init(raceEntity, race.Horse)
-        _.each(promises, function( promise ){
-            promise.then(function( entity ){
-                if ( raceEntity.horses.length === 0 ) {
-                    controller.update({ "horseUpdate": true, "horseEntity": entity }, raceEntity)
-                }
-            })
-        })
-        return raceEntity
-    }
     function init( object ) {
         handler.data = object.data.PARaceCardObject ? object.data.PARaceCardObject : object.data.PABettingObject;
         racePromises = _.map(handler.data.Meeting.Race, function( race ) {
@@ -50,7 +38,17 @@ module.exports = (function() {
             .spread(function( meetingEntity, raceEntity ) {
                 return doesRaceExist(meetingEntity, raceEntity, race)
             })
-            .then(createHorseEntities)
+            .then(function createHorseEntities(raceEntity) {
+                promises = horsePostHandler.init(raceEntity, race.Horse)
+                _.each(promises, function( promise ){
+                    promise.then(function( entity ){
+                        if ( raceEntity.horses.length === 0 ) {
+                            controller.update({ "horseUpdate": true, "horseEntity": entity }, raceEntity)
+                        }
+                    })
+                })
+                return raceEntity
+            })
             .catch(errorHandler)
         })
         return racePromises

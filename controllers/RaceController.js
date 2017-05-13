@@ -10,6 +10,9 @@ module.exports = {
                 x_reference: data.ID,
                 time: data.Time,
                 title: data.Title,
+                statuses: { 
+                    status: "Dormant"
+                },
                 handicap: data.Handicap,
                 race_type: data.RaceType,
                 track_type: data.TrackType,
