@@ -67,7 +67,6 @@ module.exports = {
                 max_runners: data.MaxRunners,
                 distance: data.Distance
             }
-            // Push horse entity ids into the horses array
             if ( data.horseUpdate ) {
                 updateDocument = {
                     $push: { horses: data.horseEntity }

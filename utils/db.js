@@ -18,7 +18,7 @@ module.exports = {
    */
   connect: function() {
     mongoose.connectAsync(process.env.DB_URL)
-    .then(function(){
+    .then(function(connection) {
       console.log('Connected to: ' + process.env.DB_URL)
     })
     .catch(function( error ) {
@@ -29,7 +29,6 @@ module.exports = {
    * Delete all from the data store
    */
   clear: function() {
-    mongoose.connection.db.dropDatabase()
-    console.log("Cleared Database: " + process.env.DBURL)
+     mongoose.connection.db.dropDatabase()
   }
 }

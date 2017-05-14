@@ -7,6 +7,7 @@
  * @underscore, @CountryController
  */
 var _ = require('underscore'),
+    handleError = require('../utils/ErrorHandler').error,
     countryController = require('../controllers').country;
 
 module.exports = (function() {
@@ -20,15 +21,6 @@ module.exports = (function() {
     var data;
     var controller;
     /**
-     * Returns error object
-     * 
-     * @param {String} error The stack trace for the error 
-     * @return {Object} Returns the error object.
-     */
-    function errorHandler( error ) {
-        return { message: "fail", data: error }
-    }
-    /**
      * Checks if the entities array contains any entity objects. 
      * When no entities exist creates a country entity.
      * 
@@ -38,7 +30,7 @@ module.exports = (function() {
         if ( entities.length === 0 ) {
             return countryPostHandler.controller
             .create(countryPostHandler.data)
-            .catch(errorHandler)
+            .catch(handleError)
         } else {
             return entities["0"]
         }
@@ -66,9 +58,12 @@ module.exports = (function() {
         response = countryPostHandler.controller
         .find(countryPostHandler.query)
         .then(doesEntityExist)
-        .catch(errorHandler)
+        .catch(handleError)
         return response;
     }
+    /**
+     * Object to return when module function is called.
+     */
     var countryPostHandler = {
        checkEntities: checkEntities,
        query: query,
