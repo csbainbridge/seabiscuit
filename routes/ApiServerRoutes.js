@@ -58,24 +58,29 @@ router.get('/:resource/:id', function( req, res, next ) {
 router.post('/:resource', function( req, res, next ) {
     var resource = req.params.resource
     var data = req.body
-    var query = req.query
+    var countryName = req.query.name
+    var dataFormat = req.query.type
     var controller = controllers[resource]
     var entities = 0;
     if ( controller == null ) {
         response.invalid(res)
     }
-
-    countryPromise = countryPostHandler.checkEntities(query, data, controller)
-    meetingPromise = meetingPostHandler.init({promise: countryPromise, data: data})
-
-
-    racePromises = racePostHandler.init({promise: meetingPromise, data: data})
-    meetingPostHandler.iterateRacePromises(racePromises)
-
-    countryPostHandler.addMeetings( meetingPromise )
+    if ( dataFormat === 'racecard') {
+        countryPromise = countryPostHandler.checkEntities(countryName, data, controller)
+        meetingPromise = meetingPostHandler.init({promise: countryPromise, data: data})
+        racePromises = racePostHandler.init({promise: meetingPromise, data: data})
+        meetingPostHandler.iterateRacePromises(racePromises)
+        countryPostHandler.addMeetings( meetingPromise )
+    } else {
+        // TODO: Create betting post handlers here.
+        // Reason: The main reason why I have decided to separate the handling of different types of data is to reduce the chance of introducing
+        //             bugs into the codebase
+    }
 
     // TODO: NOW GET THE MEETING FROM THE MEETING PROMISE AND PASS IT TO THE ADD MEETINGS FUNCTION OF
     // THE COUNTRY POST HANDLER
 })
+
+
 
 module.exports = router;

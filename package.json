@@ -17,7 +17,8 @@
     "mongoose": "^4.9.7",
     "morgan": "~1.8.1",
     "serve-favicon": "~2.4.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "xml2js": "^0.4.17"
   },
   "description": "PA XML Race Day Viewer",
   "main": "app.js",
@@ -37,7 +38,6 @@
     "application"
   ],
   "authors": {
-    "Developer": "Curtis Bainbridge",
     "Developer": "Dominic Williamson",
     "Product Manager": "Isaac Hughes"
   },
