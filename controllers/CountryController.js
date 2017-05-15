@@ -46,16 +46,26 @@ var controller = (function() {
     }
     function update( data, countryEntity ) {
         return new Promise(function( resolve, reject ) {
+            var updateDocument = {}
+            updateDocument = {
+                $push: { meetings: data }
+            }
+            if ( data.meetingUpdate ) {
+                console.log("Log: Meeting Update")
+                updateDocument = {
+                    $push: { meetings: data.meetingEntity }
+                }
+            }
             Country.findOneAndUpdateAsync(
                 { _id: countryEntity._id },
-                { $push: { meetings: data } },
+                updateDocument,
                 { new: true }
             )
             .then(function( country ) {
-                // console.log(country)
+                resolve(country)
             })
             .catch(function( error ) {
-                // console.log(error)
+                reject(error)
             })
         })
     }

@@ -70,7 +70,7 @@ router.post('/:resource', function( req, res, next ) {
         meetingPromise = meetingPostHandler.init({promise: countryPromise, data: data})
         racePromises = racePostHandler.init({promise: meetingPromise, data: data})
         meetingPostHandler.iterateRacePromises(racePromises)
-        countryPostHandler.addMeetings( meetingPromise )
+        countryPostHandler.addMeetings( meetingPromise ) // TODO: This is probably the reason why when multiple files are added at the same time, the same course value is set for all meetings
     } else {
         // TODO: Create betting post handlers here.
         // Reason: The main reason why I have decided to separate the handling of different types of data is to reduce the chance of introducing

@@ -35,12 +35,36 @@ module.exports = (function() {
             return entities["0"]
         }
     }
+    function updateMeetingsArray( meeting, countryEntity ) {
+        countryController.update({
+            "meetingUpdate": true,
+            "meetingEntity": meeting,
+        }, countryEntity["0"])
+    }
+    // TODO: Need to sort out when multiple files are POSTed at the same time their names
+    // are set to the same value. All other data is saved correctly to the database. 
+    // I think that this may be due to the fact that 
+    function checkIfCountryHasMeetings( meeting, countryEntity ) {
+        console.log(meeting)
+        console.log(countryEntity)
+        if ( countryEntity["0"].meetings.length === 0 ) {
+            updateMeetingsArray(meeting, countryEntity)
+        } else {
+            var meetingIdMap = new Map();
+            _.each(countryEntity["0"].meetings, function( meetingId ) {
+                 meetingIdMap.set(meetingId.toString(), meetingId.toString())
+            })
+            hasMeetingId = meetingIdMap.get(meeting._id.toString()) == meeting._id
+            if ( !hasMeetingId ) {
+                updateMeetingsArray(meeting, countryEntity)
+            }
+        }
+    }
     function addMeetings( meetingPromise ) {
-        // TODO: Complete this function
         meetingPromise.then(function( meeting ) {
-            console.log(meeting)
-            // Use _country to find the country entity
-            // Then compare each id of the meetings array in the country entity to the id of the meeting from the meetingPromise
+            countryController.find({ _id: meeting._country })
+            .then(checkIfCountryHasMeetings.bind(null, meeting))
+            .catch(handleError)
         })
     }
     /**

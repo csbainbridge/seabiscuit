@@ -11,6 +11,8 @@ var ingestionScripts = require('../ingestion'),
     zafWatcher = ingestionScripts["nightsWatch"],
     util = require('util')
 
+var request = require('request');
+
 var processor = {
     /**
      * Creates a new array of file paths for each file in the files array.
@@ -80,7 +82,27 @@ var processor = {
         initializeRaceCardObject.init(processedXml)
         .then(setRaceCardValues.setPARaceCardValues)
         .then(function( json ) {
-            console.log(JSON.stringify(json))
+            // TODO: Once the HttpRequestWork module is complete initialize the config object and
+            // call the worker method send
+            // return the resolved value to an additional then where we can log the results as required.
+            // TODO: It might be a good idea to write to a text file so that we can see if any POST requests fail
+            urlPrefix = "http://localhost:8080/country?name="
+            country = json.PARaceCardObject.Meeting.Country.replace(' ', '+')
+            type = "&type=racecard"
+            url = urlPrefix + country + type
+            console.log("POST to - " + url + " @ " + new Date())
+            request({
+                url: url,
+                method: "POST",
+                json: true,
+                body: json
+            }, function( error, response, body ) {
+                if ( error ) {
+                    console.log("POST Failure @ " + new Date())
+                }
+                // console.log("POST ")
+            })
+            // console.log(JSON.stringify(json))
             //TODO: Once API is written add call to corresponding API function here.
             // Development Post URL: localhost:3000/meeting/:meetingid
             // Production Post URL: seabiscuit.raceday.api/meeting/:meetingid

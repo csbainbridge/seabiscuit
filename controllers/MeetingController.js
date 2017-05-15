@@ -22,11 +22,12 @@ module.exports = {
                 date: data.Meeting.Date,
                 going: data.Meeting.Going,
             }
+            console.log(document)
             Meeting.createAsync(document)
             .then(function( meeting ) {
                 resolve(meeting)
             })
-            .catch(function( error ) {
+            .catch(function( error ) {           
                 reject(error)
             })
         })
@@ -107,10 +108,12 @@ module.exports = {
                 { new: true }
             )
             .then(function( meeting ){
-                console.log(meeting)
+                // TODO: Resolve this
+                // console.log(meeting)
             })
             .catch(function(error){
-                console.log(error)
+                // TODO: Reject this
+                // console.log(error)
             })
         })
     },

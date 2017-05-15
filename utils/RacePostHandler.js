@@ -76,7 +76,10 @@ module.exports = (function() {
     function init( object ) {
         handler.data = object.data.PARaceCardObject ? object.data.PARaceCardObject : object.data.PABettingObject;
         racePromises = _.map(handler.data.Meeting.Race, function( race ) {
-            return Promise.all([ getMeeting(object.promise), controller.find({ x_reference: race.ID }) ])
+            return Promise.all([ 
+                getMeeting(object.promise),
+                controller.find({ x_reference: race.ID }) 
+            ])
             .spread(function( meetingEntity, raceEntity ) {
                 return doesRaceExist(meetingEntity, raceEntity, race)
             })
@@ -85,7 +88,11 @@ module.exports = (function() {
                 _.each(promises, function( promise ) {
                     promise.then(function( entity ) {
                         if ( raceEntity.horses.length === 0 ) {
-                            controller.update({ "horseUpdate": true, "horseEntity": entity }, raceEntity)
+                            controller.update({ 
+                                "horseUpdate": true, 
+                                "horseEntity": entity },
+                                raceEntity
+                            )
                         }
                     })
                 })
