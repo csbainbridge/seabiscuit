@@ -52,7 +52,7 @@ module.exports = (function(){
         })
     }
     var postConfig = {
-        post: post
+        send: send
     }
     return postConfig
 }());

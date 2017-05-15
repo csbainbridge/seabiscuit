@@ -35,18 +35,30 @@ module.exports = (function() {
             return entities["0"]
         }
     }
+    /**
+     * Uses the country controller to update the meetings array in the country entity
+     * 
+     * @param {Object} meeting The meeting entity
+     * @param {Object} countryEntity The country entity
+     */
     function updateMeetingsArray( meeting, countryEntity ) {
         countryController.update({
             "meetingUpdate": true,
             "meetingEntity": meeting,
         }, countryEntity["0"])
     }
+
     // TODO: Need to sort out when multiple files are POSTed at the same time their names
     // are set to the same value. All other data is saved correctly to the database. 
     // I think that this may be due to the fact that 
+
+    /**
+     * Checks and updates the meetings array of the country entity.
+     * 
+     * @param {Object} meeting The meeting entity
+     * @param {Object} countryEntity The country entity
+     */
     function checkIfCountryHasMeetings( meeting, countryEntity ) {
-        console.log(meeting)
-        console.log(countryEntity)
         if ( countryEntity["0"].meetings.length === 0 ) {
             updateMeetingsArray(meeting, countryEntity)
         } else {
