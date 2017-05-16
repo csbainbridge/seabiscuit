@@ -88,7 +88,7 @@ var processor = {
             // return the resolved value to an additional then where we can log the results as required.
             // TODO: It might be a good idea to write to a text file so that we can see if any POST requests fail
             httpWorker.send({
-                url: "http://localhost:8080/country?name=" + json.PARaceCardObject.Meeting.Country + "&type=blue",
+                url: "http://localhost:8080/country?name=" + json.PARaceCardObject.Meeting.Country + "&type=racecard",
                 method: 'POST',
                 format: 'json',
                 data: json
