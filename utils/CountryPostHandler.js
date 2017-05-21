@@ -26,11 +26,9 @@ module.exports = (function() {
      * 
      * @param {Array} entities The array of entities
      */
-    function doesEntityExist( entities ) {
+    function doesEntityExist( data, controller, entities ) {
         if ( entities.length === 0 ) {
-            return countryPostHandler.controller
-            .create(countryPostHandler.data)
-            .catch(handleError)
+            return controller.create(data).catch(handleError)
         } else {
             return entities["0"]
         }
@@ -42,16 +40,8 @@ module.exports = (function() {
      * @param {Object} countryEntity The country entity
      */
     function updateMeetingsArray( meeting, countryEntity ) {
-        countryController.update({
-            "meetingUpdate": true,
-            "meetingEntity": meeting,
-        }, countryEntity["0"])
+        countryController.update({"meetingUpdate" : true, "meetingEntity" : meeting}, countryEntity["0"])
     }
-
-    // TODO: Need to sort out when multiple files are POSTed at the same time their names
-    // are set to the same value. All other data is saved correctly to the database. 
-    // I think that this may be due to the fact that 
-
     /**
      * Checks and updates the meetings array of the country entity.
      * 
@@ -74,9 +64,7 @@ module.exports = (function() {
     }
     function addMeetings( meetingPromise ) {
         meetingPromise.then(function( meeting ) {
-            countryController.find({ _id: meeting._country })
-            .then(checkIfCountryHasMeetings.bind(null, meeting))
-            .catch(handleError)
+            countryController.find({_id: meeting._country}).then(checkIfCountryHasMeetings.bind(null, meeting)).catch(handleError)
         })
     }
     /**
@@ -88,13 +76,7 @@ module.exports = (function() {
      */
     function checkEntities( query, data, controller ) {
         var response;
-        countryPostHandler.query = query;
-        countryPostHandler.data = data;
-        countryPostHandler.controller = controller;
-        response = countryPostHandler.controller
-        .find(countryPostHandler.query)
-        .then(doesEntityExist)
-        .catch(handleError)
+        response = controller.find(query).then(doesEntityExist.bind(null, data, controller)).catch(handleError)
         return response;
     }
     /**
@@ -102,9 +84,6 @@ module.exports = (function() {
      */
     var countryPostHandler = {
        checkEntities: checkEntities,
-       query: query,
-       data: data,
-       controller: controller,
        addMeetings: addMeetings
     }
     return countryPostHandler;

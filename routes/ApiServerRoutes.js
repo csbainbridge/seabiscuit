@@ -66,24 +66,18 @@ router.post('/:resource', function( req, res, next ) {
         response.invalid(res)
     }
     if ( dataFormat === 'racecard') {
-        console.log('racecard')
         countryPromise = countryPostHandler.checkEntities(countryName, data, controller)
-        meetingPromise = meetingPostHandler.init({promise: countryPromise, data: data})
-        racePromises = racePostHandler.init({promise: meetingPromise, data: data})
+        meetingPromise = meetingPostHandler.init({promise : countryPromise, data : data})
+        racePromises = racePostHandler.init({promise : meetingPromise, data : data})
         meetingPostHandler.iterateRacePromises(racePromises)
-        countryPostHandler.addMeetings( meetingPromise ) // TODO: This is probably the reason why when multiple files are added at the same time, the same course value is set for all meetings
+        countryPostHandler.addMeetings( meetingPromise )
     } else if ( dataFormat === 'betting' ) {
-        console.log('betting')
         // TODO: Create betting post handlers here.
         // Reason: The main reason why I have decided to separate the handling of different types of data is to reduce the chance of introducing
         //             bugs into the codebase
     } else {
         response.error(res, "Expected data format 'racecard' or 'betting'")
     }
-    console.log(req.query)
-
-    // TODO: NOW GET THE MEETING FROM THE MEETING PROMISE AND PASS IT TO THE ADD MEETINGS FUNCTION OF
-    // THE COUNTRY POST HANDLER
 })
 
 

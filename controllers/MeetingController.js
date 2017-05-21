@@ -22,7 +22,6 @@ module.exports = {
                 date: data.Meeting.Date,
                 going: data.Meeting.Going,
             }
-            console.log(document)
             Meeting.createAsync(document)
             .then(function( meeting ) {
                 resolve(meeting)
@@ -36,7 +35,6 @@ module.exports = {
         return new Promise(function( resolve, reject ) {
             Meeting.findAsync(params)
             .then(function( meetings ) {
-                // console.log(meetings)
                 resolve(meetings) 
             })
             .catch(function( error ) {
@@ -108,12 +106,10 @@ module.exports = {
                 { new: true }
             )
             .then(function( meeting ){
-                // TODO: Resolve this
-                // console.log(meeting)
+                resolve(meeting)
             })
             .catch(function(error){
-                // TODO: Reject this
-                // console.log(error)
+                reject(error)
             })
         })
     },

@@ -10,11 +10,11 @@ Promise.promisifyAll(Country);
 var controller = (function() {
     function create(data) {
         return new Promise(function( resolve, reject ) {
-            Country.createAsync({ name: data.PARaceCardObject.Meeting.Country }) // TODO: Need to handle betting data here
-            .then(function(country){
+            Country.createAsync({name : data.PARaceCardObject.Meeting.Country}) // TODO: Need to handle betting data here
+            .then(function( country ) {
                 resolve(country)
             })
-            .catch(function(error) {
+            .catch(function( error ) {
                 reject(error)
                 return
             })
@@ -51,15 +51,14 @@ var controller = (function() {
                 $push: { meetings: data }
             }
             if ( data.meetingUpdate ) {
-                console.log("Log: Meeting Update")
                 updateDocument = {
-                    $push: { meetings: data.meetingEntity }
+                    $push: { meetings : data.meetingEntity }
                 }
             }
             Country.findOneAndUpdateAsync(
-                { _id: countryEntity._id },
+                { _id : countryEntity._id },
                 updateDocument,
-                { new: true }
+                { new : true }
             )
             .then(function( country ) {
                 resolve(country)

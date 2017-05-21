@@ -44,12 +44,12 @@ module.exports = (function() {
      * @param {Object} meetingEntity 
      * @returns {Promise} Returns promised meeting object.
      */
-    function doesMeetingExist( countryEntity, meetingEntity ) {
+    function doesMeetingExist( countryEntity, meetingEntity, data ) {
         if ( meetingEntity.length === 0 ) {
-            entity = controller.create(handler.data, countryEntity)
+            entity = controller.create(data, countryEntity) // The global variable handler.data is always Turfontein which is why multiple model instances of turfontein meeting are added to the database.
             return entity
         } else {
-            return callUpdate(handler.data, meetingEntity)
+            return callUpdate(data, meetingEntity)
         }
     }
     /**
@@ -82,7 +82,10 @@ module.exports = (function() {
      */
     function iterateRacePromises( promises ) {
         promises.forEach(function( promise ){
-            promise.then(getMeetingUsingRaceEntity)
+            promise.then(getMeetingUsingRaceEntity) // TODO: Test to see if this still works
+            .catch(function( error ) {
+                console.log("Error updating races array of meeting entity" + "\n\n" + error)
+            })
         })
     }
     /**
@@ -92,13 +95,13 @@ module.exports = (function() {
      * @returns {Promise} Returns the promised meeting entity object 
      */
     function init( object ) {
-        handler.data = object.data.PARaceCardObject ? object.data.PARaceCardObject : object.data.PABettingObject;
+        var data = object.data.PARaceCardObject ? object.data.PARaceCardObject : object.data.PABettingObject;
         return Promise.all([
             getCountry(object.promise),
-            controller.find({ x_reference: handler.data.Meeting.ID })
+            controller.find({x_reference: data.Meeting.ID})
         ])
         .spread(function( countryEntity, meetingEntity ) {
-            return doesMeetingExist(countryEntity, meetingEntity)
+            return doesMeetingExist(countryEntity, meetingEntity, data)
         })
         .catch(handleError)
     }
@@ -107,7 +110,6 @@ module.exports = (function() {
      */
     var handler = {
         init: init,
-        data: data,
         iterateRacePromises: iterateRacePromises
     }
     return handler
