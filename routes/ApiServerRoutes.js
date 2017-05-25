@@ -66,7 +66,7 @@ router.post('/:resource', function( req, res, next ) {
         response.invalid(res)
     }
     if ( dataFormat === 'racecard') {
-        countryPromise = countryPostHandler.checkEntities(countryName, data, controller)
+        countryPromise = countryPostHandler.init(countryName, data, controller)
         meetingPromise = meetingPostHandler.init({promise : countryPromise, data : data})
         racePromises = racePostHandler.init({promise : meetingPromise, data : data})
         meetingPostHandler.iterateRacePromises(racePromises)

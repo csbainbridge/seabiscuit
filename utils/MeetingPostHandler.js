@@ -60,7 +60,7 @@ module.exports = (function() {
      */
     function getCountry( promise ) {
         return promise.then(function( countryEntity ) {
-            return countryEntity
+            return countryEntity["0"]
         })
     }
     /**

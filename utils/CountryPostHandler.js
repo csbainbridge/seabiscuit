@@ -12,28 +12,6 @@ var _ = require('underscore'),
 
 module.exports = (function() {
     /**
-     * Module globals
-     * query - The POST request query (Example: ?name=South+Africa)
-     * data - The JSON data (Example: PA Betting Object or PA Race Card Object)
-     * controller - The country controller to interface with the data store
-     */
-    var query;
-    var data;
-    var controller;
-    /**
-     * Checks if the entities array contains any entity objects. 
-     * When no entities exist creates a country entity.
-     * 
-     * @param {Array} entities The array of entities
-     */
-    function doesEntityExist( data, controller, entities ) {
-        if ( entities.length === 0 ) {
-            return controller.create(data).catch(handleError)
-        } else {
-            return entities["0"]
-        }
-    }
-    /**
      * Uses the country controller to update the meetings array in the country entity
      * 
      * @param {Object} meeting The meeting entity
@@ -74,16 +52,14 @@ module.exports = (function() {
      * @param {Object} data The JSON object from the POST request body
      * @param {Object} controller The country controller
      */
-    function checkEntities( query, data, controller ) {
-        var response;
-        response = controller.find(query).then(doesEntityExist.bind(null, data, controller)).catch(handleError)
-        return response;
+    function init( query, data, controller ) {
+        return controller.find(query).catch(handleError)
     }
     /**
      * Object to return when module function is called.
      */
     var countryPostHandler = {
-       checkEntities: checkEntities,
+       init: init,
        addMeetings: addMeetings
     }
     return countryPostHandler;

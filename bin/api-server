@@ -13,6 +13,7 @@ var debug = require('debug')('seabiscuit:api');
 var http = require('http');
 var db = require('../utils/db');
 
+
 /**
  * Connect to Mongo Database
  */
@@ -35,20 +36,9 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-/**
- * If server is in development mode, run clean up scripts
- */
-if (process.env.MODE === 'DEV') {
-  server.on('close', onClose)
-}
-
-
-
 
 /**
  * Normalize a port into a number, string, or false.
@@ -68,13 +58,6 @@ function normalizePort(val) {
   }
 
   return false;
-}
-
-/**
- * Event listener for HTTP server "close" event.
- */
-function onClose() {
-  db.clear();
 }
 
 /**

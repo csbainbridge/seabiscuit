@@ -8,9 +8,9 @@ Promise.promisifyAll(Country);
  */
 
 var controller = (function() {
-    function create(data) {
+    function create(countryName) {
         return new Promise(function( resolve, reject ) {
-            Country.createAsync({name : data.PARaceCardObject.Meeting.Country}) // TODO: Need to handle betting data here
+            Country.createAsync({name : countryName}) // TODO: Need to handle betting data here
             .then(function( country ) {
                 resolve(country)
             })
