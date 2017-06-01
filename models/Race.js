@@ -27,7 +27,7 @@ var RaceSchema = mongoose.Schema({
     _meeting: { type: mongoose.Schema.Types.ObjectId, ref: 'Meeting' },
     created_at: { type: Date, default: Date.now },
     x_reference: { type: String, min: 16, max: 16, default: '' },
-    off_time: { type: String, default: '' },
+    supplier_off_time: { type: String, default: '' },
     winning_time: { type: String, default: '' },
     time: { type: String, default: '' },
     statuses: [{
@@ -36,6 +36,7 @@ var RaceSchema = mongoose.Schema({
         supplier_timestamp: { type: String },
         status:  { type: String, default: '' }
     }],
+    stewards: { type: String, default: 'No' },
     title: { type: String, default: '' },
     distance: { type: String, default: '' },
     handicap: { type: String, defualt: '' },
@@ -49,9 +50,9 @@ var RaceSchema = mongoose.Schema({
         _id: mongoose.Schema.Types.ObjectId,
         created_at: { type: Date, default: Date.now },
         type: { type: String, default: '' },
-        currencey: { type: String, default: ''},
+        currency: { type: String, default: ''},
         dividend: { type: String, default: '' },
-        horses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Horse' }]
+        horses: { type: Array, default: '' }
     }]
 })
 

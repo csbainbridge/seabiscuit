@@ -29,6 +29,7 @@ var MeetingSchema = mongoose.Schema({
     course: { type: String, default: '' },
     date: { type: String, default: '' },
     going: { type: String, default: '' },
+    weather: { type: String, default: '' },
     races: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Race' }]
 })
 module.exports = mongoose.model('Meeting', MeetingSchema);

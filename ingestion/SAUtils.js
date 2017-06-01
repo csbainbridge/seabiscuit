@@ -87,13 +87,17 @@ var saUtils = {
                 "Units" : "",
                 "Value" : ""
               },
-              //"Overweight" : "", //TODO: Are overweights not in race card??
+              "Overweight" : {
+                "Units" : "",
+                "Value" : ""
+              }
             }
 		 	    }
           jockeyChangeObject.Jockey.Name = horse.JockeyChange["0"].$.name;
           jockeyChangeObject.Jockey.Allowance.Units = horse.JockeyChange["0"].$.units;
           jockeyChangeObject.Jockey.Allowance.Value = horse.JockeyChange["0"].$.allowance;
-          // jockeyChangeObject.JockeyChange.Overweight = horse.JockeyChange["0"].$.overweight; // TODO: See above
+          jockeyChangeObject.Jockey.Overweight.Value = horse.JockeyChange["0"].$.overweight;
+          jockeyChangeObject.Jockey.Overweight.Units = horse.JockeyChange["0"].$.units;
           saUtils.setHorseDetails(jockeyChangeObject, horse)
           return jockeyChangeObject
           break;
@@ -142,7 +146,6 @@ var saUtils = {
           return resultObject
           break; 
         case "Market":
-        // Move this to setShow function
           var marketObject = {
             "Name" : "",
             "Bred" : "",

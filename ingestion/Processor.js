@@ -62,15 +62,20 @@ var processor = {
         initializeBettingObject.init(processedXml)
         .then(checkCountryCode)
         .then(function( json ) {
-            console.log(JSON.stringify(json))
-            //TODO: Once API is written add call to corresponding API function here.
-            // Development Post URL: localhost:3000/race/:raceid
-            // Production Post URL: seabiscuit.raceday.api/race/:raceid
-            // If data is meeting only related data, for example weather and going:
-            // Development Post URL: localhost:3000/meeting/update/:meeting
-            // Production Post URL: seabiscuit.raceday.api/meeting/update/:meeting
+            httpWorker.send({
+                url: 'http://localhost:8080/country?name=' + json.PABettingObject.Meeting.Country + '&type=betting',
+                method: 'POST',
+                format: 'json',
+                data: json
+            })
+            .then(function( success ) {
+                console.log(success)
+            })
+            .catch(function( error ) {
+                console.log(error)
+            })
         })
-        .catch(function(error) {
+        .catch(function( error ) {
             console.log("\n" + error.Error + "\: " + error.Action);
         });
     },
@@ -83,25 +88,18 @@ var processor = {
         initializeRaceCardObject.init(processedXml)
         .then(setRaceCardValues.setPARaceCardValues)
         .then(function( json ) {
-            // TODO: Once the HttpRequestWork module is complete initialize the config object and
-            // call the worker method send
-            // return the resolved value to an additional then where we can log the results as required.
-            // TODO: It might be a good idea to write to a text file so that we can see if any POST requests fail
             httpWorker.send({
-                url: "http://localhost:8080/country?name=" + json.PARaceCardObject.Meeting.Country + "&type=racecard",
+                url: 'http://localhost:8080/country?name=' + json.PARaceCardObject.Meeting.Country + '&type=racecard',
                 method: 'POST',
                 format: 'json',
                 data: json
             })
-            .then(function(success){
+            .then(function( success ) {
                 console.log(success)
             })
-            .catch(function(error){
+            .catch(function( error ) {
                 console.log(error)
             })
-            //TODO: Once API is written add call to corresponding API function here.
-            // Development Post URL: localhost:3000/meeting/:meetingid
-            // Production Post URL: seabiscuit.raceday.api/meeting/:meetingid
         })
         .catch(function( error ){
             console.log("\n" + error.Error + "\: " + error.Action)

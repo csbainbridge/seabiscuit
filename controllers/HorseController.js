@@ -59,12 +59,103 @@ module.exports = {
             })
         })
     },
+    //TODO: Complete this function, will need to use case statement to check the message type.
+    bettingUpdate: function( data, horse, horseEntity ) {
+        return new Promise(function( resolve, reject ) {
+            var updateDocument = {}
+            if ( data.PABettingObject.Meeting.Country === "South Africa" ) {
+                switch(data.PABettingObject.MessageType) {
+                    case "NonRunner":
+                        updateDocument = {
+                            $push: {
+                                statuses: {
+                                    status: "NonRunner"
+                                }
+                            }
+                        }
+                        break;
+                    case "Market":
+                        updateDocument = {
+                            $push: {
+                                shows: {
+                                    supplier_timestamp: horse.Show.TimeStamp,
+                                    numerator: horse.Show.Numerator,
+                                    denominator: horse.Show.Denominator,
+                                    offer: horse.Show.Offer
+                                }
+                            }
+                        }
+                        break;
+                    case "Show":
+                        updateDocument = {
+                            $push: {
+                                shows: {
+                                    supplier_timestamp: horse.Show.TimeStamp,
+                                    numerator: horse.Show.Numerator,
+                                    denominator: horse.Show.Denominator,
+                                    offer: horse.Show.Offer
+                                }
+                            }
+                        }
+                        break;
+                    case "JockeyChange":
+                        updateDocument = {
+                            $push: {
+                                jockeys: {
+                                    allowance: {
+                                        value: horse.Jockey.Allowance.Value,
+                                        units: horse.Jockey.Allowance.Units,
+                                    },
+                                    overweight: {
+                                        value: horse.Jockey.Overweight.Value,
+                                        units: horse.Jockey.Overweight.Units
+                                    },
+                                    name: horse.Jockey.Name,
+                                }
+                            }
+                        }
+                        break;
+                    case "Withdrawn":
+                        updateDocument = {
+                            $push: {
+                                statuses: {
+                                    status: "Withdrawn"
+                                }
+                            }
+                        }
+                        break;
+                    case "Result":
+                        updateDocument = {
+                            starting_price: {
+                                numerator: horse.StartingPrice.Numerator,
+                                denominator: horse.StartingPrice.Denominator,
+                            },
+                            result: {
+                                position: horse.Result.FinishPos,
+                                disqualified: horse.Result.Disqualified,
+                                amended_position: horse.Result.AmendedPos,
+                                btn_distance: horse.Result.BtnDistance,
+                            }
+                        }
+                        break;
+                }
+            }
+            Horse.findOneAndUpdateAsync(
+                { _id: horseEntity._id },
+                updateDocument,
+                { new: true }
+            )
+            .then(function( horse ) {
+                // console.log(horse)
+            })
+            .catch(function( error ) {
+                // console.log(error)
+            })
+        })
+    },
     update: function( data, horseEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
-            //TODO: South African betting data - Need to use Case statement to this function
-            // Racecard Updates
-            // We don't need to repeat this code for race card and betting as the JSON object structure is the same
             if ( data.Jockey.Name !== horseEntity.jockeys[horseEntity.jockeys.length - 1].name ) {
                 updateDocument = {
                 $push: { 

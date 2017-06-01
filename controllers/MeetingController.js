@@ -21,6 +21,9 @@ module.exports = {
                 course: data.Meeting.Course,
                 date: data.Meeting.Date,
                 going: data.Meeting.Going,
+                statuses: { 
+                    status: "Dormant"
+                }
             }
             Meeting.createAsync(document)
             .then(function( meeting ) {
@@ -55,6 +58,36 @@ module.exports = {
             })
         })
     },
+    bettingUpdate: function( data, meetingEntity ) {
+        return new Promise(function( resolve, reject ) {
+            var updateDocument = {}
+            if ( data.PABettingObject.Meeting.Country === "South Africa" ) {
+                switch( data.PABettingObject.MessageType) {
+                    case "Going":
+                        updateDocument = {
+                            going: data.PABettingObject.Meeting.Going
+                        }
+                        break;
+                    case "Weather":
+                        updateDocument = {
+                            weather: data.PABettingObject.Meeting.Weather
+                        }
+                        break;
+                }
+            }
+            Meeting.findOneAndUpdateAsync(
+                { _id: meetingEntity._id },
+                updateDocument,
+                { new: true }
+            )
+            .then(function( meeting ) {
+                // console.log(meeting)
+            })
+            .catch(function( error ) {
+                // console.log(error)
+            })
+        })
+    },
     update: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
@@ -66,7 +99,9 @@ module.exports = {
                     course: data.Meeting.Course,
                     date: data.Meeting.Date,
                     going: data.Meeting.Going,
-                    $push: { statuses: statusObject} 
+                    $push: { 
+                        statuses: statusObject
+                    } 
                 }
             } else if ( data.Meeting.Status !== meetingEntity.statuses[meetingEntity.statuses.length - 1].status ) {
                 var statusObject = {
@@ -76,7 +111,9 @@ module.exports = {
                     course: data.Meeting.Course,
                     date: data.Meeting.Date,
                     going: data.Meeting.Going,
-                    $push: { statuses: statusObject} 
+                    $push: { 
+                        statuses: statusObject
+                    } 
                 }
             } else {
                 updateDocument = {

@@ -3,6 +3,7 @@ var express = require('express'),
     countryPostHandler = require('../utils/CountryPostHandler'),
     meetingPostHandler = require('../utils/MeetingPostHandler'),
     racePostHandler = require('../utils/RacePostHandler'),
+    bettingPostHandler = require('../post_handlers/betting/BettingPostHandler'),
     response = require('../utils/response'),
     router = express.Router();
 
@@ -75,6 +76,7 @@ router.post('/:resource', function( req, res, next ) {
         // TODO: Create betting post handlers here.
         // Reason: The main reason why I have decided to separate the handling of different types of data is to reduce the chance of introducing
         //             bugs into the codebase
+        bettingPostHandler.init(countryName, data)
     } else {
         response.error(res, "Expected data format 'racecard' or 'betting'")
     }

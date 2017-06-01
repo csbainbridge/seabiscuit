@@ -41,6 +41,10 @@ HorseSchema = mongoose.Schema({
         allowance: {
             units: { type: String, default: '' },
             value: { type: String, default: '' }
+        },
+        overweight: {
+            units: { type: String, default: '' },
+            value: { type: String, default: '' }
         }
     }],
     shows: [{
