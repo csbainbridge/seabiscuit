@@ -27,6 +27,7 @@ var RaceSchema = mongoose.Schema({
     _meeting: { type: mongoose.Schema.Types.ObjectId, ref: 'Meeting' },
     created_at: { type: Date, default: Date.now },
     x_reference: { type: String, min: 16, max: 16, default: '' },
+    sequence: { type: Number, default: 0 },
     supplier_off_time: { type: String, default: '' },
     winning_time: { type: String, default: '' },
     time: { type: String, default: '' },

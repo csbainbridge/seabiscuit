@@ -6,12 +6,10 @@ var handleError = require('../../utils/ErrorHandler').error,
 
 module.exports = (function() {
     function callMeetingUpdate( race, meetingEntity ) {
-        console.log(meetingEntity)
-        console.log(JSON.stringify(race))
         meetingController.bettingUpdate(race, meetingEntity["0"])
     }
     function callRaceUpdate( data, race, raceEntity ) {
-        raceController.correctRevisionSequence(data, race, raceEntity["0"])
+        raceController.correctSequence( data, race, raceEntity["0"] )
         if ( race.Horse.length > 0 ) {
             iterateHorses(data, race.Horse, raceEntity)
         }

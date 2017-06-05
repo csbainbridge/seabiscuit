@@ -36,7 +36,6 @@ module.exports = (function(){
                 method : config.method,
                 body : config.data
             }
-            console.log(JSON.stringify(req.body))
             addFormat(config.format, req)
             .then(request)
             .then(function() {

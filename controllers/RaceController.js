@@ -4,35 +4,39 @@ var _ = require('underscore');
 Promise.promisifyAll(Race)
 
 var controller = {
-    //TODO: Need to check if the object is empty
     revisionMap: new Map(),
-    correctRevisionSequence: function( data, race, raceEntity ) {
-        function iterateRevisions( revisions, race, raceEntity ) {
-            _.each(revisions, function( revision, i ) {
-                if ( data.PABettingObject.Revision === (revision.data.PABettingObject.Revision + 1) ) {
-                    controller.bettingUpdate(revision.data, race, raceEntity)
-                    revisions.splice(i, 1)
-                    iterateRevisions(revisions, race, raceEntity)
+    //NOTE: This still does not work when multiple betting files are sent out of sync and processed
+    correctSequence: function ( data, race, raceEntity ) {
+        if (controller.revisionMap.size > 0 ) {
+            function checkIfPreviouslyProcessed(data, revisions, raceEntity, race) {
+                var nextRevision = parseInt(data.PABettingObject.Revision) + 1
+                if ( revisions.get(nextRevision.toString()) ) {
+                    controller.bettingUpdate(data, data.PABettingObject.Meeting.Race, raceEntity)
+                    revisions.delete(data.PABettingObject.Revision)
+                    checkIfPreviouslyProcessed(revisions.get(nextRevision.toString()), revisions, raceEntity, race)
                 } else {
-                    revisions.push(data)
+                    controller.bettingUpdate(data, data.PABettingObject.Meeting.Race, raceEntity)
+                    var deleteRevision = parseInt(data.PABettingObject.Revision) - 1
+                    revisions.delete(deleteRevision.toString())
+                    revisions.set(data.PABettingObject.Revision, data)
                     controller.revisionMap.set(data.PABettingObject.Meeting.Race.ID, revisions)
                 }
-            })
-        }
-        // console.log(Object.keys(controller.revisionMap).length == 0)
-        // console.log(controller.revisionMap)
-        //TODO: DOES NOT WORK
-        if ( Object.keys(controller.revisionMap).length === 0 ) {
+            }
+            function checkIfNextInSequence(data, revisions, raceEntity, race) {
+                if ( parseInt(data.PABettingObject.Revision) === (raceEntity.sequence + 1) ) {
+                    checkIfPreviouslyProcessed(data, revisions, raceEntity, race)
+                } else {
+                    revisions.set(data.PABettingObject.Revision, data)
+                    controller.revisionMap.set(data.PABettingObject.Meeting.Race.ID, revisions)
+                }
+            }
+            checkIfNextInSequence(data, controller.revisionMap.get(data.PABettingObject.Meeting.Race.ID), raceEntity, race)
+        } else {
             var key = data.PABettingObject.Meeting.Race.ID;
-            var revisions = []
-            revisions.push(data)
+            var revisions = new Map();
+            revisions.set(data.PABettingObject.Revision, data);
             controller.revisionMap.set(key, revisions)
             controller.bettingUpdate(data, race, raceEntity)
-        } else {
-            console.log(controller.revisionMap)
-            console.log(data.PABettingObject.Meeting.Race.ID)
-            controller.revisionMap.get(data.PABettingObject.Meeting.Race.ID)
-            iterateRevisions(revisions, race, raceEntity)
         }
     },
     create: function( data, meetingEntity ) {
@@ -88,6 +92,7 @@ var controller = {
     bettingUpdate: function( data, race, raceEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
+            console.log(race)
             if ( data.PABettingObject.Meeting.Country === "South Africa" ) {
                 switch(data.PABettingObject.MessageType) {
                     case "RaceState":
@@ -148,18 +153,25 @@ var controller = {
                         }
                         break;
                 }
+                // if ( parseInt(data.PABettingObject.Revision) !== raceEntity.sequence + 1 ) {
+                //     console.log("BETTING UPDATE failure @ " + new Date() + " " + "Error: Out of sync")
+                // } else {
+                    updateDocument.sequence = parseInt(data.PABettingObject.Revision)
+                    console.log(updateDocument)
+                    Race.findOneAndUpdateAsync(
+                        { _id: raceEntity._id },
+                        updateDocument,
+                        { new: true }
+                    )
+                    .then(function( race ) {
+                        resolve(race)
+                    })
+                    .catch(function( error ) {
+                        reject(error)
+                    })
+                    
+                // }
             }
-            Race.findOneAndUpdateAsync(
-                { _id: raceEntity._id },
-                updateDocument,
-                { new: true }
-            )
-            .then(function( race ) {
-                resolve(race)
-            })
-            .catch(function( error ) {
-                reject(error)
-            })
         })
     },
     update: function( data, raceEntity ) {
