@@ -72,11 +72,13 @@ router.post('/:resource', function( req, res, next ) {
         racePromises = racePostHandler.init({promise : meetingPromise, data : data})
         meetingPostHandler.iterateRacePromises(racePromises)
         countryPostHandler.addMeetings( meetingPromise )
+        response.success(res, "POST " + resource + "/" + countryName + "/" + dataFormat + " @ " + new Date())
     } else if ( dataFormat === 'betting' ) {
         // TODO: Create betting post handlers here.
         // Reason: The main reason why I have decided to separate the handling of different types of data is to reduce the chance of introducing
         //             bugs into the codebase
         bettingPostHandler.init(countryName, data)
+         response.success(res, "POST " + resource + "/" + countryName + "/" + dataFormat + " @ " + new Date())
     } else {
         response.error(res, "Expected data format 'racecard' or 'betting'")
     }

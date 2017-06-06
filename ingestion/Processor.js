@@ -27,7 +27,56 @@ var processor = {
         .map(function(fileData){
             return fileData.Directory + "/" + fileData.FileName
         })
-        filePaths.forEach(processor.parseFile)
+        //filePaths.forEach(processor.parseFile) //TODO: Instead of using forEach need to do create a synchronous function
+        processor.postRaceDataSynchronously(filePaths)
+    },
+    postRaceDataSynchronously : function( filePaths ) {
+        var filePath = filePaths.pop();
+        validXml = processXml.readXML(filePath)
+        processXml.parseXML(validXml).then(function( processedXml ) {
+            if ( (/betting/).test(filePath) ) {
+                //TODO: Move to saveBetting method
+                initializeBettingObject.init(processedXml)
+                .then(checkCountryCode)
+                .then(function( json ) {
+                    request({
+                        url: 'http://localhost:8080/country?name=' + json.PABettingObject.Meeting.Country + '&type=betting',
+                        method: 'POST',
+                        body: json,
+                        json: true
+                    }, function( error, response, body ) {
+                        if ( filePaths.length ) {
+                            processor.postRaceDataSynchronously(filePaths)
+                        } else {
+                            console.log(body)
+                        }
+                    })
+                })
+                .catch(function( error ) {
+                    console.log("\n" + error.Error + "\: " + error.Action);
+                });
+            } else if ( (/racecard/).test(filePath) ) {
+                //TODO: Move to saveRaceCard method
+                initializeRaceCardObject.init(processedXml)
+                .then(setRaceCardValues.setPARaceCardValues)
+                .then(function( json ) {
+                    request({
+                        url: 'http://localhost:8080/country?name=' + json.PARaceCardObject.Meeting.Country + '&type=racecard',
+                        method: 'POST',
+                        body: json,
+                        json: true
+                    }, function( error, response, body) {
+                        if ( filePaths.length ) {
+                            processor.postRaceDataSynchronously(filePaths)
+                        } else {
+                            console.log(body)
+                        }
+                    })
+                })
+            }
+        }).catch(function( error ) {
+            console.log("\n" + error.Error + "\: " + error.Action)
+        })
     },
     /**
      * Processes the xml file at the passed file path, checking whether the path provided contains a race card or betting directory.
@@ -35,7 +84,7 @@ var processor = {
      * @param {String} path The file path
      */
     parseFile : function( path ) {
-        validXml = processXml.readXML(path),
+        validXml = processXml.readXML(path)
         processXml.parseXML(validXml)
         .then(function(processedXml) { 
             if ( (/betting/).test(path) ) {
