@@ -1,8 +1,20 @@
-var Horse = require('../models/Horse');
-var Promise = require('bluebird')
+/**
+ * Horse Controller contains methods to interface with seabiscuit race data database.
+ */
+
+var Horse = require('../models/Horse'),
+    Promise = require('bluebird')
+
+// Promisfy all method in the Horse Model Object instance.
 Promise.promisifyAll(Horse)
 
 module.exports = {
+    /**
+     * Creates a horse entity that belongs to a specific race using the PA Racecard Object passed.
+     * 
+     * @param {Object} data The PA Racecard Object.
+     * @param {Object} raceEntity The Race Entity Object.
+     */
     create: function( data, raceEntity ) {
         return new Promise(function( resolve, reject ) {
             var document = {
@@ -32,9 +44,15 @@ module.exports = {
             })
             .catch(function( error ) {
                 reject(error)
+                return
             })
         })
     },
+    /**
+     * Finds a horse using the parameters passed.
+     * 
+     * @param {String} params The Search term
+     */
     find: function( params ) {
         return new Promise(function( resolve, reject ) {
             Horse.findAsync(params)
@@ -47,6 +65,11 @@ module.exports = {
             })
         })
     },
+    /**
+     * Finds a horse using the unique ID passed.
+     * 
+     * @param {String} id the ID of a horse entity
+     */
     findById: function( id ) {
         return new Promise(function( resolve, reject ) {
             Horse.findByIdAsync(id)
@@ -59,7 +82,13 @@ module.exports = {
             })
         })
     },
-    //TODO: Complete this function, will need to use case statement to check the message type.
+    /**
+     * Updates a Horse Entity based on the data passed in the PA Betting Object.
+     * 
+     * @param {Object} data The PA Betting Object
+     * @param {Object} horse The Horse Object
+     * @param {Object} horseEntity The Horse Entity Object
+     */
     bettingUpdate: function( data, horse, horseEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
@@ -146,13 +175,20 @@ module.exports = {
                 { new: true }
             )
             .then(function( horse ) {
-                // console.log(horse)
+                resolve(horse)
             })
             .catch(function( error ) {
-                // console.log(error)
+                reject(error)
+                return
             })
         })
     },
+     /**
+     * Updates a Horse Entity based on the data passed in the PA Racecard Object.
+     * 
+     * @param {Object} data The PA Racecard Object
+     * @param {Object} horseEntity The Horse Entity Object
+     */
     update: function( data, horseEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
@@ -179,6 +215,7 @@ module.exports = {
             })
             .catch(function( error ) {
                 reject(error)
+                return
             })
         })
     },

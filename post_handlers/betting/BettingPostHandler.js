@@ -1,3 +1,11 @@
+/**
+ * Betting Post Handler handles betting data from POST request to route /country?name=country_name&type=betting 
+ */
+
+/**
+ * Dependencies
+ * @ErrorHandler, @MeetingController, @RaceController, @HorseController, @underscore
+ */
 var handleError = require('../../utils/ErrorHandler').error,
     meetingController = require('../../controllers/MeetingController'),
     raceController = require('../../controllers/RaceController'),
@@ -5,7 +13,16 @@ var handleError = require('../../utils/ErrorHandler').error,
     _ = require('underscore');
 
 module.exports = (function() {
+    // Module global
     var revisionMap = new Map();
+     /**
+     * Error correcting code that prevents data been saved to the database if it is received in the incorrect order.
+     * Data that is received out of sync is stored in a map, this data stored until the revision before it is received.
+     * 
+     * @param {Object} data The PA Betting Object
+     * @param {Object} race The Race Object
+     * @param {Object} raceEntity The Race Entity Object
+     */
     function correctBettingSequence( data, race, raceEntity ) {
         if ( revisionMap.size > 0 ) {
             function checkIfPreviouslyProcessed(data, revisions, raceEntity, race) {
@@ -28,6 +45,14 @@ module.exports = (function() {
                     revisionMap.set(data.PABettingObject.Meeting.Race.ID, revisions)
                 }
             }
+             /**
+             * Checks if the PA Betting Object received is the next revision required.
+             * 
+             * @param {Object} data The PA Betting Object
+             * @param {Map} revisions The Revisions Map
+             * @param {Object} raceEntity The Race Entity Object
+             * @param {Object} race  The Race Object
+             */
             function checkIfNextInSequence(data, revisions, raceEntity, race ) {
                 if ( parseInt(data.PABettingObject.Revision) === (raceEntity.current_revision + 1) ) {
                     checkIfPreviouslyProcessed(data, revisions, raceEntity, race)
@@ -48,19 +73,33 @@ module.exports = (function() {
             }
         }
     }
+     /**
+     * Calls the bettingUpdate method of the Meeting Controller.
+     * 
+     * @param {Object} race The Race Object
+     * @param {Object} meetingEntity The Meeting Entity Object
+     */
     function callMeetingUpdate( race, meetingEntity ) {
         meetingController.bettingUpdate(race, meetingEntity["0"])
     }
+     /**
+     * Calls the correctBettingSequence function of this module.
+     * 
+     * @param {Object} data The PA Betting Object
+     * @param {Object} race The Race Object
+     * @param {Object} raceEntity The Race Entity Object
+     */
     function callRaceUpdate( data, race, raceEntity ) {
         correctBettingSequence( data, race, raceEntity["0"] )
-        //TODO: Horse data is still saved Synchronously, therefore it may be wise to move the correct sequence
-        // function into this module, then within the correctSequence function afrter controller.bettingUpdate
-        // if ( race.Horse.length > 0 ) {
-        //     iterateHorses(data, race.Horse, raceEntity)
-        // }
     }
+     /**
+     * Synchronous function that recursively processes each horse object in the Horse Array.
+     * 
+     * @param {Object} data The PA Betting Object
+     * @param {Array} horseArray The Horse Array
+     * @param {Object} raceEntity The Race Entity Object
+     */
     function iterateHorsesSynchronously( data, horseArray, raceEntity ) {
-        //TODO: Maybe try create a Sync function here instead of using async each
         var horse = horseArray.pop();
         horseController.find({name: horse.Name, _raceref: raceEntity._id}).then(function( horseEntity ) {
             horseController.bettingUpdate(data, horse, horseEntity["0"])
@@ -68,21 +107,30 @@ module.exports = (function() {
         if ( horseArray.length ) {
             iterateHorsesSynchronously(data, horseArray, raceEntity)
         }
-        // _.each(horseArray, function( horse ) {
-        //     horseController.find({name: horse.Name, _raceref: raceEntity["0"]._id}).then(function( horseEntity ) {
-        //         horseController.bettingUpdate(data, horse, horseEntity["0"])
-        //     })
-        // })
     }
+     /**
+     * Entry function for processing of the Race Object. Finds the race received in the PA Betting Object in the database.
+     * 
+     * @param {Object} race The Race Object
+     * @param {Object} data The PA Betting Object
+     */
     function iterateRaces( race, data ) {
         raceController.find({x_reference: race.ID}).then(callRaceUpdate.bind(null, data, race)).catch(handleError)
     }
+    /**
+     * Root function that processes meeting data, and checks if the PA Betting Object contains a Race Object
+     * 
+     * @param {Object} data The PA Betting Object
+     */
     function init( countryName, data ) {
         meetingController.find({x_reference: data.PABettingObject.Meeting.ID}).then(callMeetingUpdate.bind(null, data))
         if ( data.PABettingObject.Meeting.Race.ID !== "" ) {
             iterateRaces(data.PABettingObject.Meeting.Race, data)   
         }
     }
+    /**
+    * Object to return when the module function is called.
+    */
     var bettingPostHandler = {
         init: init
     }

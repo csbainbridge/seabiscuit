@@ -7,8 +7,8 @@
  * @underscore, @HorseController, @bluebird, @ErrorHandler
  */
 
-var controller = require('../controllers').horse,
-    handleError = require('../utils/ErrorHandler').error,
+var controller = require('../../controllers').horse,
+    handleError = require('../../utils/ErrorHandler').error,
     Promise = require('bluebird'),
     _ = require('underscore');
 

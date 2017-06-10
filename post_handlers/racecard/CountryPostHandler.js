@@ -7,8 +7,8 @@
  * @underscore, @CountryController
  */
 var _ = require('underscore'),
-    handleError = require('../utils/ErrorHandler').error,
-    countryController = require('../controllers').country;
+    handleError = require('../../utils/ErrorHandler').error,
+    countryController = require('../../controllers').country;
 
 module.exports = (function() {
     /**

@@ -6,14 +6,14 @@
  * Dependencies
  * @RaceController, @HorsePostHandler, @bluebird, @underscore
  */
-var controller = require('../controllers').race,
-    handleError = require('../utils/ErrorHandler').error
-    horsePostHandler = require('../utils/HorsePostHandler'),
+var controller = require('../../controllers').race,
+    handleError = require('../../utils/ErrorHandler').error
+    horsePostHandler = require('../racecard/HorsePostHandler'),
     Promise = require('bluebird'),
     _ = require('underscore');
 
-var Horse = require('../models/Horse');
-var Race = require('../models/Race');
+var Horse = require('../../models/Horse');
+var Race = require('../../models/Race');
 
 Promise.promisifyAll(Race)
 

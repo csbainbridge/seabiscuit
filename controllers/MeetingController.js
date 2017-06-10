@@ -1,18 +1,20 @@
-var Meeting = require('../models/Meeting')
-var Promise = require('bluebird');
-Promise.promisifyAll(Meeting)
-
 /**
- * CRUD
- * 
- * Create
- * Read
- * Update
- * Delete
- *  
+ * Meeting Controller contains methods to interface with the seabiscuit race day database
  */
 
+var Meeting = require('../models/Meeting'),
+    Promise = require('bluebird');
+
+// Promisfy all methods in the Meeting Model Object instance.
+Promise.promisifyAll(Meeting)
+
 module.exports = {
+    /**
+     * Creates a Meeting entity that belongs to a specific country using the PA Racecard Object passed.
+     * 
+     * @param {Object} data The PA Racecard Object
+     * @param {Object} countryEntity The Country Entity Object
+     */
     create: function( data, countryDocument ) {
         return new Promise(function( resolve, reject ) {
             var document = {
@@ -31,9 +33,15 @@ module.exports = {
             })
             .catch(function( error ) {           
                 reject(error)
+                return
             })
         })
     },
+    /**
+     * Finds a meeting using the parameters passed.
+     * 
+     * @param {String} params The Search term 
+     */
     find: function( params ) {
         return new Promise(function( resolve, reject ) {
             Meeting.findAsync(params)
@@ -46,6 +54,11 @@ module.exports = {
             })
         })
     },
+    /**
+     * Finds a meeting using the unique ID passed.
+     * 
+     * @param {String} id The ID of a meeting entity
+     */
     findById: function( id ) {
         return new Promise(function( resolve, reject ) {
             Meeting.findByIdAsync(id)
@@ -58,6 +71,12 @@ module.exports = {
             })
         })
     },
+     /**
+     * Updates a Meeting Entity based on the data passed in the PA Betting Object.
+     * 
+     * @param {Object} data The PA Betting Object
+     * @param {Object} meetingEntity The Meeting Entity Object
+     */
     bettingUpdate: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
@@ -81,13 +100,20 @@ module.exports = {
                 { new: true }
             )
             .then(function( meeting ) {
-                // console.log(meeting)
+                resolve(meeting)
             })
             .catch(function( error ) {
-                // console.log(error)
+                reject(error)
+                return
             })
         })
     },
+     /**
+     * Updates a Meeting Entity based on the data passed in the PA Racecard Object.
+     * 
+     * @param {Object} data The PA Racecard Object
+     * @param {Object} meetingEntity The Meeting Entity Object
+     */
     update: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
@@ -132,9 +158,15 @@ module.exports = {
             })
             .catch(function( error ) {
                 reject(error)
+                return
             })
         })
     },
+     /**
+     * Updates the array of race ids in the 
+     * 
+     * @param {Object} data The PA Racecard Object.
+     */
     updateRaces: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
             Meeting.findOneAndUpdateAsync(

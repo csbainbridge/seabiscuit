@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:api": "node ./bin/api-server",
-    "start:production": "node ./bin/www"
+    "start:api": "node ./bin/api-server > logs/api.log",
+    "start:www": "node ./bin/www > logs/web.log",
+    "start:ingest": "node ./ingestion/Processor > logs/ingestion.log"
   },
   "dependencies": {
     "bluebird": "^3.5.0",

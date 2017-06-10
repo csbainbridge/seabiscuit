@@ -4,7 +4,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
-var racedayRouter = require('../routes/ApiServerRoutes');
+var apiRoutes = require('../routes/ApiServerRoutes');
 var app = express();
 
 require('dotenv').config()
@@ -39,7 +39,9 @@ app.use(function(req, res, next) {
  * Uses racedayApiRouter middleware
  *
 */
-app.use('/', racedayRouter)
+app.use('/', apiRoutes)
+
+app.set()
 
 /**
  * Catches and forwards 404 error to error handler.

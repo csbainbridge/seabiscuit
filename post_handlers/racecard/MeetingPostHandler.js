@@ -6,8 +6,8 @@
  * Dependencies
  * @MeetingController, @bluebird, @underscore
  */
-var controller = require('../controllers').meeting,
-    handleError = require('../utils/ErrorHandler').error,
+var controller = require('../../controllers').meeting,
+    handleError = require('../../utils/ErrorHandler').error,
     Promise = require('bluebird'),
     _ = require('underscore')
 

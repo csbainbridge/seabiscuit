@@ -1,8 +1,8 @@
 var express = require('express'),
     controllers = require('../controllers'),
-    countryPostHandler = require('../utils/CountryPostHandler'),
-    meetingPostHandler = require('../utils/MeetingPostHandler'),
-    racePostHandler = require('../utils/RacePostHandler'),
+    countryPostHandler = require('../post_handlers/racecard/CountryPostHandler'),
+    meetingPostHandler = require('../post_handlers/racecard/MeetingPostHandler'),
+    racePostHandler = require('../post_handlers/racecard/RacePostHandler'),
     bettingPostHandler = require('../post_handlers/betting/BettingPostHandler'),
     response = require('../utils/response'),
     router = express.Router();

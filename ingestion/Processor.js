@@ -27,7 +27,6 @@ var processor = {
         .map(function(fileData){
             return fileData.Directory + "/" + fileData.FileName
         })
-        //filePaths.forEach(processor.parseFile) //TODO: Instead of using forEach need to do create a synchronous function
         processor.postRaceDataSynchronously(filePaths)
     },
     postRaceDataSynchronously : function( filePaths ) {
@@ -35,47 +34,12 @@ var processor = {
         validXml = processXml.readXML(filePath)
         processXml.parseXML(validXml).then(function( processedXml ) {
             if ( (/betting/).test(filePath) ) {
-                //TODO: Move to saveBetting method
-                initializeBettingObject.init(processedXml)
-                .then(checkCountryCode)
-                .then(function( json ) {
-                    request({
-                        url: 'http://localhost:8080/country?name=' + json.PABettingObject.Meeting.Country + '&type=betting',
-                        method: 'POST',
-                        body: json,
-                        json: true
-                    }, function( error, response, body ) {
-                        if ( filePaths.length ) {
-                            processor.postRaceDataSynchronously(filePaths)
-                        } else {
-                            console.log(body)
-                        }
-                    })
-                })
-                .catch(function( error ) {
-                    console.log("\n" + error.Error + "\: " + error.Action);
-                });
+                processor.postBetting(processedXml, filePaths)
             } else if ( (/racecard/).test(filePath) ) {
-                //TODO: Move to saveRaceCard method
-                initializeRaceCardObject.init(processedXml)
-                .then(setRaceCardValues.setPARaceCardValues)
-                .then(function( json ) {
-                    request({
-                        url: 'http://localhost:8080/country?name=' + json.PARaceCardObject.Meeting.Country + '&type=racecard',
-                        method: 'POST',
-                        body: json,
-                        json: true
-                    }, function( error, response, body) {
-                        if ( filePaths.length ) {
-                            processor.postRaceDataSynchronously(filePaths)
-                        } else {
-                            console.log(body)
-                        }
-                    })
-                })
+                processor.postRaceCard(processedXml, filePaths)
             }
         }).catch(function( error ) {
-            console.log("\n" + error.Error + "\: " + error.Action)
+            console.log(new Date() + "\n" + error.Error + "\: " + error.Action)
         })
     },
     /**
@@ -86,7 +50,7 @@ var processor = {
     parseFile : function( path ) {
         validXml = processXml.readXML(path)
         processXml.parseXML(validXml)
-        .then(function(processedXml) { 
+        .then(function( processedXml ) { 
             if ( (/betting/).test(path) ) {
                 processor.saveBetting(processedXml)
             } else if ( (/racecard/).test(path) ) {
@@ -99,61 +63,58 @@ var processor = {
             }
         })
         .catch(function( error ) {
-            console.log("\n" + error.Error + "\: " + error.Action)
+            console.log(new Date() + "\n" + error.Error + "\: " + error.Action)
         })
     },
     /**
-     * Converts betting xml data to json format and calls betting api.
+     * Converts betting xml data to json format and POSTs to seabiscuit api server
      * 
      * @param {String} processedXml The contents of the XML file as a string.
      */
-    saveBetting : function( processedXml ) {
+    postBetting : function( processedXml, filePaths ) {
         initializeBettingObject.init(processedXml)
         .then(checkCountryCode)
         .then(function( json ) {
-            httpWorker.send({
+            request({
                 url: 'http://localhost:8080/country?name=' + json.PABettingObject.Meeting.Country + '&type=betting',
                 method: 'POST',
-                format: 'json',
-                data: json
-            })
-            .then(function( success ) {
-                console.log(success)
-            })
-            .catch(function( error ) {
-                console.log(error)
+                body: json,
+                json: true
+            }, function( error, response, body ) {
+                if ( filePaths.length ) {
+                    processor.postRaceDataSynchronously(filePaths)
+                } else {
+                    console.log(body.data)
+                }
             })
         })
         .catch(function( error ) {
-            console.log("\n" + error.Error + "\: " + error.Action);
+            console.log(new Date() + "\n" + error.Error + "\: " + error.Action);
         });
     },
     /**
-     * Converts race card xml data to json format and calls race card api.
+     * Converts race card xml data to json format and POSTs to seabiscuit api server.
      * 
      * @param {String} processedXml The contents of the XML file as a string.
      */
-    saveRaceCard : function( processedXml ) {
+    postRaceCard : function( processedXml, filePaths ) {
         initializeRaceCardObject.init(processedXml)
         .then(setRaceCardValues.setPARaceCardValues)
         .then(function( json ) {
-            httpWorker.send({
+            request({
                 url: 'http://localhost:8080/country?name=' + json.PARaceCardObject.Meeting.Country + '&type=racecard',
                 method: 'POST',
-                format: 'json',
-                data: json
-            })
-            .then(function( success ) {
-                console.log(success)
-            })
-            .catch(function( error ) {
-                console.log(error)
+                body: json,
+                json: true
+            }, function( error, response, body) {
+                if ( filePaths.length ) {
+                    processor.postRaceDataSynchronously(filePaths)
+                } else {
+                    console.log(body.data)
+                }
             })
         })
-        .catch(function( error ){
-            console.log("\n" + error.Error + "\: " + error.Action)
-        })
-    }
+    },
 }
 
 /**
@@ -163,7 +124,7 @@ var processor = {
  * onAdd: Function called when a new file is added to the directories.
  * watch(): Execute.
  */
-zafWatcher.WatchDirs = ["./zaf/betting", './zaf/racecard']
+zafWatcher.WatchDirs = ["./ingestion/zaf/betting", './ingestion/zaf/racecard']
 zafWatcher.IntervalTime = 500   
 zafWatcher.onAdd = processor.getFilePaths
 zafWatcher.watch();

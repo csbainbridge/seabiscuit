@@ -21,22 +21,28 @@ var db = {
     mongoose.connectAsync(process.env.DB_URL)
     .then(db.setup)
     .then(function() {
-      console.log('Connected to: ' + process.env.DB_URL)
+      console.log(new Date() + ' Connected to: ' + process.env.DB_URL)
     })
     .catch(function( error ) {
-      console.log('Connection Failed: ' + error)
+      console.log(new Date() + ' Connection Failed: ' + error)
     })
   },
+  /**
+   * Setup static database entities
+   * Purpose: Countries could not be dynamically created due to async processing of race card data,
+   * therefore they are created in the setup method of the db module
+   */
   setup: function() {
     return new Promise(function( resolve, reject ) {
       mongoose.connection.db.dropDatabase();
       countryController.create("South Africa")
-      .then(function(success) {
-        console.log(success.name + " entity created successfully")
+      .then(function( success ) {
+        console.log(new Date() + ' ' + success.name + " entity created")
         resolve()
       })
       .catch(function(error) {
         reject(error)
+        return
       })
     })
   }
