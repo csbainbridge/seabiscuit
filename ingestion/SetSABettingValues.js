@@ -63,9 +63,13 @@ var setBettingValues = {
 				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
 				break;
 			case "Result":
-				setBettingValues.initHorseObjects(saBettingObject, messageType, paBettingObject)
 				saUtils.setRaceTimeValue(paBettingObject, saBettingObject);
-				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject);
+				paBettingObject.PABettingObject.Meeting.Race.ID = ingestionUtils.createRaceId(paBettingObject)
+				if ( !saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].HorseRef ) {
+					console.log("ALERT: " + paBettingObject.PABettingObject.Meeting.Race.ID + " (Revision: " + paBettingObject.PABettingObject.Revision + ") " + messageType + " file contains no result data " + new Date())
+				} else {
+					setBettingValues.initHorseObjects(saBettingObject, messageType, paBettingObject);
+				}
 				break;
 			case "WinningTime":
 				paBettingObject.PABettingObject.Meeting.Race.WinningTime = saBettingObject.HorseRacingX.Message["0"].MeetRef["0"].RaceRef["0"].WinningTime["0"].$.time;

@@ -26,6 +26,10 @@ To ensure to the ingestion process works correctly you will first need to create
 1. `cd` into project directory
 2. `npm run start:ingest`
 
+## Starting the Web Server
+
+1. `cd` into project directory
+2. `npm run start:web`
 
 
 

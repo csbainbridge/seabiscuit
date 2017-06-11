@@ -119,10 +119,12 @@ var saUtils = {
               "BtnDistance" : "",
             },
           }
-          horse.StartingPrice.map(function( startingPrice ) {
-              resultObject.StartingPrice.Numerator = startingPrice.$.numerator
-              resultObject.StartingPrice.Denominator = startingPrice.$.denominator
-          })
+          if ( horse.StartingPrice ) {
+              horse.StartingPrice.map(function( startingPrice ) {
+                resultObject.StartingPrice.Numerator = startingPrice.$.numerator
+                resultObject.StartingPrice.Denominator = startingPrice.$.denominator
+              })
+          }
           if (horse.Result) {
               horse.Result.map(function( result ) {
               resultObject.Result.FinishPos = result.$.finishPos;

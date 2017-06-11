@@ -147,7 +147,6 @@ var controller = {
                         }
                         break;
                 }
-                console.log(updateDocument)
                 updateDocument.current_revision = parseInt(data.PABettingObject.Revision)
                 Race.findOneAndUpdateAsync(
                     { _id: raceEntity._id },
