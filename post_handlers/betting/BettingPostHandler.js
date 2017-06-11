@@ -24,7 +24,7 @@ module.exports = (function() {
      * @param {Object} raceEntity The Race Entity Object
      */
     function correctBettingSequence( data, race, raceEntity ) {
-        if ( revisionMap.size > 0 && revisionMap.get(data.PABettingObject.Meeting.Race.ID) !== undefined ) {
+        if ( revisionMap.size > 0 && revisionMap.get(data.PABettingObject.Meeting.Race.ID) !== undefined) {
             function checkIfPreviouslyProcessed(data, revisions, raceEntity, race) {
                 var nextRevision = parseInt(data.PABettingObject.Revision) + 1
                 if ( revisions.get(nextRevision.toString()) ) {
@@ -43,6 +43,7 @@ module.exports = (function() {
                     revisions.delete(deleteRevision.toString())
                     revisions.set(data.PABettingObject.Revision, data)
                     revisionMap.set(data.PABettingObject.Meeting.Race.ID, revisions)
+                    return;
                 }
             }
              /**
@@ -60,6 +61,7 @@ module.exports = (function() {
                     revisions.set(data.PABettingObject.Revision, data)
                     revisionMap.set(data.PABettingObject.Meeting.Race.ID, revisions)
                 }
+                return;
             }
             checkIfNextInSequence(data, revisionMap.get(data.PABettingObject.Meeting.Race.ID), raceEntity, race)
         } else {
@@ -67,10 +69,13 @@ module.exports = (function() {
             var revisions = new Map();
             revisions.set(data.PABettingObject.Revision, data);
             revisionMap.set(key, revisions)
-            raceController.bettingUpdate(data, race, raceEntity)
-            if ( data.PABettingObject.Meeting.Race.Horse.length > 0 ) {
-                iterateHorsesSynchronously(data, data.PABettingObject.Meeting.Race.Horse, raceEntity)
+            if ( parseInt(data.PABettingObject.Revision) === 1 ) {
+                raceController.bettingUpdate(data, race, raceEntity)
+                if ( data.PABettingObject.Meeting.Race.Horse.length > 0 ) {
+                    iterateHorsesSynchronously(data, data.PABettingObject.Meeting.Race.Horse, raceEntity)
+                }
             }
+            return;
         }
     }
      /**
@@ -80,7 +85,7 @@ module.exports = (function() {
      * @param {Object} meetingEntity The Meeting Entity Object
      */
     function callMeetingUpdate( race, meetingEntity ) {
-        meetingController.bettingUpdate(race, meetingEntity["0"])
+        return meetingController.bettingUpdate(race, meetingEntity["0"])
     }
      /**
      * Calls the correctBettingSequence function of this module.
@@ -90,7 +95,7 @@ module.exports = (function() {
      * @param {Object} raceEntity The Race Entity Object
      */
     function callRaceUpdate( data, race, raceEntity ) {
-        correctBettingSequence( data, race, raceEntity["0"] )
+        return correctBettingSequence( data, race, raceEntity["0"] )
     }
      /**
      * Synchronous function that recursively processes each horse object in the Horse Array.
@@ -115,7 +120,7 @@ module.exports = (function() {
      * @param {Object} data The PA Betting Object
      */
     function iterateRaces( race, data ) {
-        raceController.find({x_reference: race.ID}).then(callRaceUpdate.bind(null, data, race)).catch(handleError)
+        return raceController.find({x_reference: race.ID}).then(callRaceUpdate.bind(null, data, race)).catch(handleError)
     }
     /**
      * Root function that processes meeting data, and checks if the PA Betting Object contains a Race Object
@@ -123,10 +128,14 @@ module.exports = (function() {
      * @param {Object} data The PA Betting Object
      */
     function init( countryName, data ) {
-        meetingController.find({x_reference: data.PABettingObject.Meeting.ID}).then(callMeetingUpdate.bind(null, data))
-        if ( data.PABettingObject.Meeting.Race.ID !== "" ) {
-            iterateRaces(data.PABettingObject.Meeting.Race, data)   
-        }
+        return meetingController.find({x_reference: data.PABettingObject.Meeting.ID})
+        .then(callMeetingUpdate.bind(null, data))
+        .then(function( success ) {
+            if ( data.PABettingObject.Meeting.Race.ID !== "" ) {
+                iterateRaces(data.PABettingObject.Meeting.Race, data)   
+            }
+            return;
+        })
     }
     /**
     * Object to return when the module function is called.

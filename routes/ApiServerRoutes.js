@@ -72,10 +72,20 @@ router.post('/:resource', function( req, res, next ) {
         racePromises = racePostHandler.init({promise : meetingPromise, data : data})
         meetingPostHandler.iterateRacePromises(racePromises)
         countryPostHandler.addMeetings( meetingPromise )
-        response.success(res, "POST " + resource + "/" + countryName + "/" + dataFormat + " @ " + new Date())
+        .then(function( success ) {
+            response.success(res, "racecard data")
+        })
+        .catch(function( error ) {
+            response.error(res, error)
+        })
     } else if ( dataFormat === 'betting' ) {
         bettingPostHandler.init(countryName, data)
-         response.success(res, "POST " + resource + "/" + countryName + "/" + dataFormat + " @ " + new Date())
+        .then(function( success ) {
+            response.success(res, "betting data")
+        })
+        .catch(function( error ) {
+            response.error(res, error)
+        })
     } else {
         response.error(res, "Expected data format 'racecard' or 'betting'")
     }

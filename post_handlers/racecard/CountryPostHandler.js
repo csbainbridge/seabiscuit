@@ -41,8 +41,8 @@ module.exports = (function() {
         }
     }
     function addMeetings( meetingPromise ) {
-        meetingPromise.then(function( meeting ) {
-            countryController.find({_id: meeting._country}).then(checkIfCountryHasMeetings.bind(null, meeting)).catch(handleError)
+        return meetingPromise.then(function( meeting ) {
+            return countryController.find({_id: meeting._country}).then(checkIfCountryHasMeetings.bind(null, meeting)).catch(handleError)
         })
     }
     /**

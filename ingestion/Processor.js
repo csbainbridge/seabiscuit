@@ -34,35 +34,11 @@ var processor = {
         validXml = processXml.readXML(filePath)
         processXml.parseXML(validXml).then(function( processedXml ) {
             if ( (/betting/).test(filePath) ) {
-                processor.postBetting(processedXml, filePaths)
+                processor.postBetting(processedXml, filePath, filePaths)
             } else if ( (/racecard/).test(filePath) ) {
-                processor.postRaceCard(processedXml, filePaths)
+                processor.postRaceCard(processedXml, filePath, filePaths)
             }
         }).catch(function( error ) {
-            console.log(new Date() + "\n" + error.Error + "\: " + error.Action)
-        })
-    },
-    /**
-     * Processes the xml file at the passed file path, checking whether the path provided contains a race card or betting directory.
-     * 
-     * @param {String} path The file path
-     */
-    parseFile : function( path ) {
-        validXml = processXml.readXML(path)
-        processXml.parseXML(validXml)
-        .then(function( processedXml ) { 
-            if ( (/betting/).test(path) ) {
-                processor.saveBetting(processedXml)
-            } else if ( (/racecard/).test(path) ) {
-                processor.saveRaceCard(processedXml)
-            } else {
-                throw error({
-                    "Error": "Invalid directory configuration.",
-                    "Action": "Accepted subdirectories '/betting/' and '/racecard/. Example: zaf/betting and zaf/racecard."
-                })
-            }
-        })
-        .catch(function( error ) {
             console.log(new Date() + "\n" + error.Error + "\: " + error.Action)
         })
     },
@@ -71,7 +47,7 @@ var processor = {
      * 
      * @param {String} processedXml The contents of the XML file as a string.
      */
-    postBetting : function( processedXml, filePaths ) {
+    postBetting : function( processedXml, filePath, filePaths) {
         initializeBettingObject.init(processedXml)
         .then(checkCountryCode)
         .then(function( json ) {
@@ -84,7 +60,7 @@ var processor = {
                 if ( filePaths.length ) {
                     processor.postRaceDataSynchronously(filePaths)
                 } else {
-                    console.log(body.data)
+                    console.log(new Date() + " " + body.data + " from " + filePath + " POSTed successfully")
                 }
             })
         })
@@ -97,7 +73,7 @@ var processor = {
      * 
      * @param {String} processedXml The contents of the XML file as a string.
      */
-    postRaceCard : function( processedXml, filePaths ) {
+    postRaceCard : function( processedXml, filePath, filePaths, message ) {
         initializeRaceCardObject.init(processedXml)
         .then(setRaceCardValues.setPARaceCardValues)
         .then(function( json ) {
@@ -110,7 +86,7 @@ var processor = {
                 if ( filePaths.length ) {
                     processor.postRaceDataSynchronously(filePaths)
                 } else {
-                    console.log(body.data)
+                    console.log(new Date() + " " + body.data + " from " + filePath + " POSTed successfully")
                 }
             })
         })

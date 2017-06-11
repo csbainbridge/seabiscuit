@@ -82,7 +82,7 @@ module.exports = (function() {
      */
     function iterateRacePromises( promises ) {
         promises.forEach(function( promise ){
-            promise.then(getMeetingUsingRaceEntity) // TODO: Test to see if this still works
+            promise.then(getMeetingUsingRaceEntity)
             .catch(function( error ) {
                 console.log("Error updating races array of meeting entity" + "\n\n" + error)
             })
