@@ -23,9 +23,7 @@ module.exports = {
                 course: data.Meeting.Course,
                 date: data.Meeting.Date,
                 going: data.Meeting.Going,
-                statuses: { 
-                    status: "Dormant"
-                }
+                statuses: { status: "Dormant" }
             }
             Meeting.createAsync(document)
             .then(function( meeting ) {
@@ -80,6 +78,7 @@ module.exports = {
     bettingUpdate: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
+            // If the data is South African check the message type
             if ( data.PABettingObject.Meeting.Country === "South Africa" ) {
                 switch( data.PABettingObject.MessageType) {
                     case "Going":

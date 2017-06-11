@@ -57,15 +57,6 @@ var saUtils = {
     });
     return horseArray
   },
-  /*
-    @createObjToPush - Creates {Object} that is pushed to the {PA Betting Object} using the @pushToPABettingObject function.
-    @param horseArray - Array of horses from the SA Betting Data object.
-    @param object - PA Betting Object
-    @param messageType - Message Type sent from the data supplier.
-
-    @desc - Iterates over the {Horse} array, sets values within the {Object} depending on the {Message Type}.
-    Returns {Object}
-  */
   /**
    * Creates an array of standardized horse objects based on the messageType.
    * 

@@ -1,10 +1,22 @@
-var Race = require('../models/Race');
-var Promise = require('bluebird');
-var handleError = require('../utils/ErrorHandler').error;
-var _ = require('underscore');
+/**
+ * Race Controller contains methods to interface with the seabiscuit race day database
+ */
+
+var Race = require('../models/Race'),
+    Promise = require('bluebird'),
+    handleError = require('../utils/ErrorHandler').error,
+    _ = require('underscore');
+
+// Promisfy all methods in the Meeting Model Object instance
 Promise.promisifyAll(Race)
 
 var controller = {
+    /**
+     * Creates a Race Entity that belongs to a specific meeting using the PA Racecard Object passed.
+     * 
+     * @param {Object} data The PA Racecard Object
+     * @param {Object} meetingEntity The Country Entity Object
+     */
     create: function( data, meetingEntity ) {
         return new Promise(function( resolve, reject ) {
             var document = {
@@ -12,9 +24,7 @@ var controller = {
                 x_reference: data.ID,
                 time: data.Time,
                 title: data.Title,
-                statuses: { 
-                    status: "Dormant"
-                },
+                statuses: { status: "Dormant" },
                 handicap: data.Handicap,
                 race_type: data.RaceType,
                 track_type: data.TrackType,
@@ -28,9 +38,15 @@ var controller = {
             })
             .catch(function( error ) {
                 reject(error)
+                return
             })
         })
     },
+    /**
+     * Finds a race using the parameters passed.
+     * 
+     * @param {String} params The Search term
+     */
     find: function( params ) {
         return new Promise(function( resolve, reject ) {
             Race.findAsync(params)
@@ -43,6 +59,11 @@ var controller = {
             }) 
         })
     },
+    /**
+     * Finds a meeting using the unique ID passed.
+     * 
+     * @param {String} id The ID of a race entity
+     */
     findById: function( id ) {
         return new Promise(function( resolve, reject ) {
             Race.findByIdAsync(id)
@@ -55,9 +76,17 @@ var controller = {
             })
         })
     },
+    /**
+     * Updates a Race Entity based on the data passed in the PA Betting Object.
+     * 
+     * @param {Object} data The PA Betting Object
+     * @param {Object} race The race object
+     * @param {Object} meetingEntity The Meeting Entity Object
+     */
     bettingUpdate: function( data, race, raceEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
+            // If the data is South African check the message type
             if ( data.PABettingObject.Meeting.Country === "South Africa" ) {
                 switch(data.PABettingObject.MessageType) {
                     case "RaceState":
@@ -118,6 +147,7 @@ var controller = {
                         }
                         break;
                 }
+                console.log(updateDocument)
                 updateDocument.current_revision = parseInt(data.PABettingObject.Revision)
                 Race.findOneAndUpdateAsync(
                     { _id: raceEntity._id },
@@ -129,10 +159,17 @@ var controller = {
                 })
                 .catch(function( error ) {
                     reject(error)
+                    return
                 })
             }
         })
     },
+    /**
+     * Updates a Race Entity based on the data passed in the PA Racecard Object
+     * 
+     * @param {Object} data The PA Racecard Object
+     * @param {Object} raceEntity The Race Entity Object
+     */
     update: function( data, raceEntity ) {
         return new Promise(function( resolve, reject ) {
             var updateDocument = {}
@@ -164,6 +201,7 @@ var controller = {
             })
             .catch(function( error ) {
                 reject(error)
+                return
             })
         })
 

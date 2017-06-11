@@ -169,6 +169,7 @@ module.exports = {
                         break;
                 }
             }
+            console.log(updateDocument)
             Horse.findOneAndUpdateAsync(
                 { _id: horseEntity._id },
                 updateDocument,

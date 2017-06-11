@@ -114,6 +114,9 @@ var processor = {
                 }
             })
         })
+        .catch(function( error ) {
+            console.log(new Date() + "\n" + error.Error + "\: " + error.Action);
+        })
     },
 }
 

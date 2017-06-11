@@ -23,8 +23,11 @@ module.exports = (function() {
      * @param {Object} race The Race Object
      * @param {Object} raceEntity The Race Entity Object
      */
+    // TODO: In the IF statement that checks whether the size of the map is greater than 0
+    // Also need to check the map to see if the Race ID exists
+    // As this will not work for multiple betting files.
     function correctBettingSequence( data, race, raceEntity ) {
-        if ( revisionMap.size > 0 ) {
+        if ( revisionMap.size > 0 && revisionMap.get(data.PABettingObject.Meeting.Race.ID) === true ) {
             function checkIfPreviouslyProcessed(data, revisions, raceEntity, race) {
                 var nextRevision = parseInt(data.PABettingObject.Revision) + 1
                 if ( revisions.get(nextRevision.toString()) ) {

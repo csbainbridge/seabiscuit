@@ -47,6 +47,7 @@ var initializeRaceCardObject = {
 					"Error" : "Unrecognised Race Card Object",
 					"Action" : "Please check that the format of the data sent from the data supplier has not changed",
 				})
+				return
 			}
 			resolve({
 				"RaceCardObject" : parsedRaceCard,

@@ -74,9 +74,6 @@ router.post('/:resource', function( req, res, next ) {
         countryPostHandler.addMeetings( meetingPromise )
         response.success(res, "POST " + resource + "/" + countryName + "/" + dataFormat + " @ " + new Date())
     } else if ( dataFormat === 'betting' ) {
-        // TODO: Create betting post handlers here.
-        // Reason: The main reason why I have decided to separate the handling of different types of data is to reduce the chance of introducing
-        //             bugs into the codebase
         bettingPostHandler.init(countryName, data)
          response.success(res, "POST " + resource + "/" + countryName + "/" + dataFormat + " @ " + new Date())
     } else {

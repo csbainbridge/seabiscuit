@@ -11,7 +11,6 @@
 var ingestionScripts = require('../ingestion'),
     util = require('util')
 
-
 var Promise = require('bluebird'), 
     fs = Promise.promisifyAll(require('fs')),
     _ = Promise.promisifyAll(require('underscore'))
