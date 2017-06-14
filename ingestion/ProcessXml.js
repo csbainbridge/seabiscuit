@@ -36,14 +36,14 @@ module.exports = {
    * @param {String} xml The xml string to parse.
    * @return {Promise} Returns and resolved or rejected promise object.
    */
-  parseXML : function( xml ) {
+  parseXML : function( xml, filePath ) {
     var xmlParser = new xml2js.Parser({trim: true,});
     return new Promise(function( resolve, reject ) {
         xmlParser.parseString(xml, function( error, json ) {
           if ( error ) {
             reject({
               "Error" : error,
-              "Action" : "Please check the XML from the data supplier.",
+              "Action" : "Please check the XML (" + filePath + ")",
             });
             return
           }

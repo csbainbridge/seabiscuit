@@ -32,14 +32,14 @@ var processor = {
     postRaceDataSynchronously : function( filePaths ) {
         var filePath = filePaths.pop();
         validXml = processXml.readXML(filePath)
-        processXml.parseXML(validXml).then(function( processedXml ) {
+        processXml.parseXML(validXml, filePath).then(function( processedXml ) {
             if ( (/betting/).test(filePath) ) {
                 processor.postBetting(processedXml, filePath, filePaths)
             } else if ( (/racecard/).test(filePath) ) {
                 processor.postRaceCard(processedXml, filePath, filePaths)
             }
         }).catch(function( error ) {
-            console.log(new Date() + "\n" + error.Error + "\: " + error.Action)
+            console.log(new Date() + "\n" + error.Error + "\nAction: " + error.Action)
         })
     },
     /**
