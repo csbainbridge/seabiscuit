@@ -12,7 +12,8 @@ var app = require('../apps/api');
 var debug = require('debug')('seabiscuit:api');
 var http = require('http');
 var db = require('../utils/db');
-
+var controllers = require('../controllers')
+var url = require('url');
 
 /**
  * Connect to Mongo Database
@@ -28,10 +29,12 @@ var port = normalizePort(process.env.PORT || '9765');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTP and WebSocket Servers
  */
 
 var server = http.createServer(app);
+// var wss = new WebSocket.Server({ server });
+// var clients = [];
 
 /**
  * Listen on provided port, on all network interfaces.

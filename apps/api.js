@@ -4,7 +4,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
-var apiRoutes = require('../routes/ApiServerRoutes');
+var api = require('../routes/api');
 var app = express();
 
 require('dotenv').config()
@@ -13,6 +13,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname.slice(0, 36), 'src')))
+
 
 /**
  * TODO: Have a look at helmet for api security
@@ -27,21 +29,20 @@ app.use(cookieParser());
  * Middleware sets permissive CORS header on each request. Allows server to only be used as API server.
  * Disables caching, latest betting data is always received.
  */
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Request-With');
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
-  res.header('Cache-Control', 'no-cache');
-  next();
-})
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Request-With');
+//   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+//   res.header('Cache-Control', 'no-cache');
+//   next();
+// })
+
 
 /**
  * Uses racedayApiRouter middleware
  *
 */
-app.use('/', apiRoutes)
-
-app.set()
+app.use('/', api)
 
 /**
  * Catches and forwards 404 error to error handler.

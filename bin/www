@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var app = require('../production-server');
+var app = require('../apps/production');
 var debug = require('debug')('seabiscuit:productionserver');
 var http = require('http');
 

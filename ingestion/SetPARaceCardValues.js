@@ -117,7 +117,7 @@ var setRaceCardValues = {
 					},
 				},
 			}
-			horseObject.Name = horse.$.name;
+			horseObject.Name = horse.$.name.toLowerCase();
 			horseObject.Bred = horse.$.bred;
 			horseObject.Cloth = horse.Cloth["0"].$.number;
 			horseObject.Drawn = horse.Drawn["0"].$.stall;

@@ -9,6 +9,7 @@
 var controller = require('../../controllers').race,
     handleError = require('../../utils/ErrorHandler').error
     horsePostHandler = require('../racecard/HorsePostHandler'),
+    notificationController = require('../../controllers').notification,
     Promise = require('bluebird'),
     _ = require('underscore');
 
@@ -48,6 +49,12 @@ module.exports = (function() {
     function doesRaceExist( meetingEntity, raceEntity, race ) {
         if ( raceEntity.length === 0 ) {
             entity = controller.create(race, meetingEntity)
+            entity.then(function( race ) {
+                notificationController.create(race)
+            })
+            .catch(function( error ) {
+                console.log(error)
+            })
             return entity
         } else {
             return callUpdate(race, raceEntity)

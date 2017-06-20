@@ -31,19 +31,20 @@ var controller = (function() {
      * 
      * @param {String} params The Search term
      */
+    //TODO: Create controller method called find and populate
     function find( params ) {
         return new Promise(function( resolve, reject ) {
             Country.findAsync(params)
             .then(function( countries ) {
                 resolve(countries)
             })
-            .catch(function( error ) {
+            .catch(function( error ){
                 reject(error)
                 return
             })
         })
     }
-    /**
+    /**s
      * Finds a country using the unique ID passed.
      * 
      * @param {String} id The ID of a country entity
@@ -57,6 +58,26 @@ var controller = (function() {
             .catch(function( error ) {
                 reject(error)
                 return
+            })
+        })
+    }
+    //TODO: Need to call this function when using web sockets
+    function findAndPopulate( params ) {
+        return new Promise(function( resolve, reject ){
+            Country.find(params)
+            .populate("meetings")
+            .exec(function(error, countries) {
+                if ( error ) {
+                    reject(error)
+                    return
+                }
+                var options = {
+                    path: "meetings.races",
+                    model: "Race"
+                }
+                Country.populate(countries, options, function( error, races ) {
+                    resolve(races)
+                })
             })
         })
     }
@@ -95,6 +116,7 @@ var controller = (function() {
         create: create,
         find: find,
         findById: findById,
+        findAndPopulate,
         update: update
     }
     return controller

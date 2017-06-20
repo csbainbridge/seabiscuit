@@ -7,6 +7,7 @@ var express = require('express'),
     response = require('../utils/response'),
     router = express.Router();
 
+
 /**
  * Handles HTTP GET request for returning all entities related to the resource requested.
  * Current resources available: @Country, @Meeting, @Race, @Horse
@@ -14,14 +15,15 @@ var express = require('express'),
  * @returns {Object} Returns success object with entities
  */
 router.get('/:resource', function( req, res, next ) {
-    var resource = req.params.resource
-    var controller = controllers[resource]
+    var resource = req.params.resource,
+        controller = controllers[resource]
+    console.log(controller)
     if (controller == null ) {
         response.invalid(res)
-    }
+    } 
     controller.find(req.query)
     .then(function( entities ) {
-        response.success(res, entities)
+        response.success(res, entities) 
     })
     .catch(function( error ) {
         response.error(res, error)
@@ -35,9 +37,8 @@ router.get('/:resource', function( req, res, next ) {
  * @returns {Object} Returns success object with entity
  */
 router.get('/:resource/:id', function( req, res, next ) {
-    var resource = req.params.resource
-    var id = req.params.id
-    var controller = controllers[resource]
+    var resource = req.params.resource,
+        id = req.params.id,controller = controllers[resource]
     if ( controller == null ) {
        response.invalid(res)
     }
@@ -56,6 +57,9 @@ router.get('/:resource/:id', function( req, res, next ) {
  *  ROUTE: /country?name=country_name_value (Where the country name value is the name value within the racing data being submitted.)
  * 
  */
+//TODO: Need to find out if there is a way to import the instance of the websocket server here so that the data can be pushed to the client,
+// currently I am pushing the entire database every second to the client, this might be tedius when implementing a notification system, as we wont be able to tell
+// exactly what data has been changed.
 router.post('/:resource', function( req, res, next ) {
     var resource = req.params.resource
     var data = req.body
@@ -90,7 +94,5 @@ router.post('/:resource', function( req, res, next ) {
         response.error(res, "Expected data format 'racecard' or 'betting'")
     }
 })
-
-
 
 module.exports = router;

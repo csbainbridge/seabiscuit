@@ -1,0 +1,6 @@
+[0mGET / [36m304 [0m14.038 ms - -[0m
+[0mGET /stylesheets/style.css [33m404 [0m3.069 ms - 1061[0m
+[0mGET / [36m304 [0m1.906 ms - -[0m
+[0mGET /stylesheets/style.css [33m404 [0m1.082 ms - 1061[0m
+[0mGET /src/javascript/app.js [36m304 [0m1.790 ms - -[0m
+[0mGET /stylesheets/style.css [33m404 [0m1.558 ms - 1061[0m

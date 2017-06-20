@@ -1,0 +1,2900 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE HorseRacingCard SYSTEM "HorseRacingCard.dtd">
+<HorseRacingCard>
+  <Meeting status="Dormant" id="88623" country="South Africa" course="Kenilworth" date="20170610">
+    <DrawAdvantage>Low numbers are best in sprints.</DrawAdvantage>
+    <AdvancedGoing>Good</AdvancedGoing>
+    <Race trifecta="No" id="733785" date="20170610" time="1020+0100" raceType="Flat" trackType="Turf" handicap="No" class="" showcase="No" maxRunners="14">
+      <Title>Welcome To Kenilworth Maiden Juvenile Plate (Fillies)</Title>
+      <AddedMoney currency="ZAR" amount="80008"/>
+      <PenaltyValue currency="ZAR" amount="50007"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="50007"/>
+        <Prize position="2" amount="16008"/>
+        <Prize position="3" amount="7996"/>
+        <Prize position="4" amount="3998"/>
+        <Prize position="5" amount="1999"/>
+      </Prizes>
+      <Eligibility type="2YO only"/>
+      <Distance units="yards" value="1094" text="0m 4f 214y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2293018" name="Aquilina" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="61907" name="Michael John Robinson"/>
+        <Owner name="Messrs E A Braun, C M Domingo, A A Mohamed, C S Sh"/>
+        <Breeder name=""/>
+        <Jockey id="1147063" name="Luyolo Mxothwa"/>
+        <JockeyColours filename="20170610ken102001.png" description="Red, jade green rings, striped sleeves, and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Antonius Pius" bred="USA" yearBorn="2001"/>
+        <Breeding type="Dam" name="Genteel Approach" bred="SAF" yearBorn="2008"/>
+        <Breeding type="DamSire" name="Right Approach" bred="UK" yearBorn="1999"/>
+        <FoalDate date="20141020"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2265778" name="Casual Diamond" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="9"/>
+        <FormFigures figures="532" type="FlatSix"/>
+        <LastRunDays type="Flat" days="91"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr L K Kirsten"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken102002.png" description="Primrose, gold cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Var" bred="USA" yearBorn="1999"/>
+        <Breeding type="Dam" name="Casual Jewel" bred="SAF" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Al Mufti" bred="USA" yearBorn="1985"/>
+        <FoalDate date="20141008"/>
+        <ForecastPrice>
+          <Price numerator="9" denominator="4"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293019" name="Cha Cha Chorizo" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="13"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr M E Leaf"/>
+        <Breeder name=""/>
+        <Jockey id="28799" name="K Zechner"/>
+        <JockeyColours filename="20170610ken102003.png" description="Blue, gold sash, blue cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Oratorio" bred="IRE" yearBorn="2002"/>
+        <Breeding type="Dam" name="Jet Trail" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <FoalDate date="20141028"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2258151" name="Dynamite Gill" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="12"/>
+        <FormFigures figures="070" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="100326" name="Paul Reeves" nationality="SAF"/>
+        <Owner name="Mr R Hass T/a Reinels Stud"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken102004.png" description="Red, blue maltese cross and sleeves, red cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Noordhoek Flyer" bred="SNL" yearBorn="2006"/>
+        <Breeding type="Dam" name="Gia's Dynamite" bred="SAF" yearBorn="1996"/>
+        <Breeding type="DamSire" name="National Assembly" bred="CAN"/>
+        <FoalDate date="20141030"/>
+        <ForecastPrice>
+          <Price numerator="25" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2286380" name="Freedom Charter" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="6" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Messrs P G De Beyer, B Lemos &amp; Wehann Smith"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken102005.png" description="Crimson and silver grey stripes, crimson cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Elusive Fort" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="Betty Burke" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <FoalDate date="20141025"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293020" name="Lalena" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="100474" name="Darryl Hodgson" nationality="SAF"/>
+        <Owner name="Mr H Adams"/>
+        <Breeder name=""/>
+        <Jockey id="19213" name="W C Marwing"/>
+        <JockeyColours filename="20170610ken102006.png" description="Royal blue and silver hoops, hooped sleeves, quartered cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Gimmethegreenlight" bred="AUS" yearBorn="2008"/>
+        <Breeding type="Dam" name="Lady Var" bred="SAF" yearBorn="2008"/>
+        <Breeding type="DamSire" name="Var" bred="USA" yearBorn="1999"/>
+        <FoalDate date="20140912"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2277202" name="Mainland" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="46" type="FlatSix"/>
+        <LastRunDays type="Flat" days="45"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Messrs M W Bass, B J Makepeace &amp; M J T Wickens &amp; M"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken102007.png" description="Light blue, chocolate armband, collar, cuffs and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Main Aim" bred="UK" yearBorn="2005"/>
+        <Breeding type="Dam" name="Captain's Heart" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <FoalDate date="20140906"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293021" name="Miss Crusade" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Mr W N Frost, Mr &amp; Mrs R B McGregor &amp; Mrs J A Wint"/>
+        <Breeder name=""/>
+        <Jockey id="1142951" name="Leon Govender"/>
+        <JockeyColours filename="20170610ken102008.png" description="Black and yellow quartered diagonally, hooped sleeves, yellow cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Crusade" bred="USA" yearBorn="2009"/>
+        <Breeding type="Dam" name="Kushoni Langa" bred="AUS" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Desert Sun" bred="UK" yearBorn="1988"/>
+        <FoalDate date="20140901"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2269650" name="Mr World Wide" bred="SAF">
+        <Cloth number="9"/>
+        <Drawn stall="10"/>
+        <FormFigures figures="08006" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="118975" name="Mohammed Allie" nationality="SAF"/>
+        <Owner name="Messrs M C Petkar &amp; D J Smit"/>
+        <Breeder name=""/>
+        <Jockey id="42260" name="L Africa"/>
+        <JockeyColours filename="20170610ken102009.png" description="White, orange stars, sleeves and cap"/>
+        <Tackle type="Blinkers" count="2"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Noordhoek Flyer" bred="SNL" yearBorn="2006"/>
+        <Breeding type="Dam" name="Spectre Lady" bred="SAF" yearBorn="2008"/>
+        <Breeding type="DamSire" name="Spectrum" bred="IRE" yearBorn="1992"/>
+        <FoalDate date="20140916"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293022" name="My Girl Bella" bred="SAF">
+        <Cloth number="10"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Messrs Justin Branco &amp; S A Hanna"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken102010.png" description="Red, black maltese cross, white sleeves, red cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Mambo In Seattle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Grey Rose" bred="SAF" yearBorn="2007"/>
+        <Breeding type="DamSire" name="Tiger Ridge" bred="USA" yearBorn="1996"/>
+        <FoalDate date="20140909"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2290267" name="Obeying The Night" bred="SAF">
+        <Cloth number="11"/>
+        <Drawn stall="14"/>
+        <FormFigures figures="9" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41347" name="Harold Crawford"/>
+        <Owner name="Messrs H W J Crawford, B D Dawson, J Mento &amp; R X W"/>
+        <Breeder name=""/>
+        <Jockey id="1162107" name="Louis Burke">
+          <Allowance units="pounds" value="9"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken102011.png" description="Blue and white quartered, white sleeves, blue armbands, gold cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Warm White Night" bred="SAF" yearBorn="2005"/>
+        <Breeding type="Dam" name="Money Tree" bred="SAF" yearBorn="2008"/>
+        <Breeding type="DamSire" name="Var" bred="USA" yearBorn="1999"/>
+        <FoalDate date="20141008"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2284006" name="Pumeza" bred="SAF">
+        <Cloth number="12"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="3" type="FlatSix"/>
+        <LastRunDays type="Flat" days="42"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41297" name="Eric Sands"/>
+        <Owner name="Messrs A E Sands &amp; John Smith &amp; Dr H L Sarembock"/>
+        <Breeder name=""/>
+        <Jockey id="28082" name="Marco V'Rensburg"/>
+        <JockeyColours filename="20170610ken102012.png" description="White, black epaulettes, quartered cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Tiger Ridge" bred="USA" yearBorn="1996"/>
+        <Breeding type="Dam" name="Belcanto" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Goldkeeper" bred="USA"/>
+        <FoalDate date="20141001"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="2"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293023" name="Shades Of Pink" bred="SAF">
+        <Cloth number="13"/>
+        <Drawn stall="11"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Pink Tractor Syndicate (nom: Mrs Amanda Carey)"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken102013.png" description="Pink, white stars, white sleeves, pink stars, pink cap, white star"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Count Dubois" bred="UK" yearBorn="1998"/>
+        <Breeding type="Dam" name="Shades Of Winter" bred="SAF" yearBorn="2001"/>
+        <Breeding type="DamSire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <FoalDate date="20140807"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2291243" name="Travel Guide" bred="SAF">
+        <Cloth number="14"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Maine Chance Farms (pty) Ltd (nom: Dr W A &amp; Mrs N"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken102014.png" description="Yellow, black sleeves, yellow armbands, cuffs and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Trippi" bred="USA" yearBorn="1997"/>
+        <Breeding type="Dam" name="Tramontana" bred="IRE" yearBorn="1900"/>
+        <Breeding type="DamSire" name="Peintre Celebre" bred="USA" yearBorn="1994"/>
+        <FoalDate date="20140823"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733786" date="20170610" time="1050+0100" raceType="Flat" trackType="Turf" handicap="No" class="" showcase="No" maxRunners="13">
+      <Title>Soccer 6 Maiden Juvenile Plate (Fillies)</Title>
+      <AddedMoney currency="ZAR" amount="80008"/>
+      <PenaltyValue currency="ZAR" amount="50007"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="50007"/>
+        <Prize position="2" amount="16008"/>
+        <Prize position="3" amount="7996"/>
+        <Prize position="4" amount="3998"/>
+        <Prize position="5" amount="1999"/>
+      </Prizes>
+      <Eligibility type="2YO only"/>
+      <Distance units="yards" value="1094" text="0m 4f 214y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2279582" name="Above Eleven" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="53" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr N Jonsson"/>
+        <Breeder name=""/>
+        <Jockey id="1147063" name="Luyolo Mxothwa"/>
+        <JockeyColours filename="20170610ken105001.png" description="Cyclamen, spectrum green crossed sashes, white sleeves, cyclamen cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <Breeding type="Dam" name="Ivor's Girl" bred="SAF"/>
+        <Breeding type="DamSire" name="Northern Guest" bred="USA" yearBorn="1977"/>
+        <FoalDate date="20141101"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="2"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2275920" name="Better Together" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="9" type="FlatSix"/>
+        <LastRunDays type="Flat" days="78"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Drakenstein Stud (nom: Mrs G A Rupert)"/>
+        <Breeder name=""/>
+        <Jockey id="31372" name="Oswald Noach"/>
+        <JockeyColours filename="20170610ken105002.png" description="Blue, white panel, blue sleeves and cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="What A Winter" bred="SAF" yearBorn="2007"/>
+        <Breeding type="Dam" name="Mina Salaam" bred="SAF" yearBorn="2007"/>
+        <Breeding type="DamSire" name="Medaglia D'oro" bred="USA" yearBorn="1999"/>
+        <FoalDate date="20141004"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2283128" name="Capaill" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="2" type="FlatSix"/>
+        <LastRunDays type="Flat" days="45"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Mr P Phelan"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken105003.png" description="Scarlet, emerald green diamond, scarlet sleeves, striped cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Pathfork" bred="USA" yearBorn="2008"/>
+        <Breeding type="Dam" name="Mousike" bred="SAF"/>
+        <Breeding type="DamSire" name="Dynasty" bred="SAF" yearBorn="1999"/>
+        <FoalDate date="20140821"/>
+        <ForecastPrice>
+          <Price numerator="9" denominator="4"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2277198" name="Champagne Dream" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="11"/>
+        <FormFigures figures="00" type="FlatSix"/>
+        <LastRunDays type="Flat" days="45"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Messrs P G De Beyer &amp; M H Holland"/>
+        <Breeder name=""/>
+        <Jockey id="28799" name="K Zechner"/>
+        <JockeyColours filename="20170610ken105004.png" description="Crimson and silver grey stripes, crimson cap"/>
+        <Tackle type="Blinkers" count="1"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Rebel King" bred="SAF" yearBorn="2003"/>
+        <Breeding type="Dam" name="Champagne 'n Roses" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Goldmark" bred="SAF"/>
+        <FoalDate date="20140903"/>
+        <ForecastPrice>
+          <Price numerator="25" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293024" name="Duntoche" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="13"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41283" name="Glen Puller" nationality="SAF"/>
+        <Owner name="Mr A Baum"/>
+        <Breeder name=""/>
+        <Jockey id="28754" name="Piet Botha"/>
+        <JockeyColours filename="20170610ken105005.png" description="White, red diamond, black sleeves, red cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Rebel King" bred="SAF" yearBorn="2003"/>
+        <Breeding type="Dam" name="Day To Day" bred="SAF" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Modern Day" bred="USA" yearBorn="1993"/>
+        <FoalDate date="20140919"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2261328" name="Moonlight Dancer" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="8-005" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41347" name="Harold Crawford"/>
+        <Owner name="Messrs H &amp; R Wilkinson"/>
+        <Breeder name=""/>
+        <Jockey id="28082" name="Marco V'Rensburg"/>
+        <JockeyColours filename="20170610ken105006.png" description="Royal blue, gold stars and collar,white sleeves, gold cuffs,white cap,gold star, r blue peak"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Great Britain" bred="UK" yearBorn="2002"/>
+        <Breeding type="Dam" name="Badger Express" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="Badger Land" bred="USA"/>
+        <FoalDate date="20141129"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293025" name="Poppys Idol" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="100326" name="Paul Reeves" nationality="SAF"/>
+        <Owner name="Mrs C Reeves"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken105007.png" description="Fuchsia, lime green diamond, fuchsia sleeves and cap, lime green diamond"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Great Britain" bred="UK" yearBorn="2002"/>
+        <Breeding type="Dam" name="Poppy Law" bred="SAF" yearBorn="2007"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20141103"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2277205" name="Public Prosecutor" bred="AUS">
+        <Cloth number="8"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="4" type="FlatSix"/>
+        <LastRunDays type="Flat" days="42"/>
+        <RaceHistoryStat type="BeatenFavourite" value="1"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Drakenstein Stud (nom: Mrs G A Rupert) &amp; Wehann Sm"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken105008.png" description="Blue"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Star Witness" bred="AUS" yearBorn="2007"/>
+        <Breeding type="Dam" name="Emblem Of Liberty" bred="SAF" yearBorn="2004"/>
+        <Breeding type="DamSire" name="National Emblem" bred="SAF" yearBorn="1992"/>
+        <FoalDate date="20140830"/>
+        <ForecastPrice>
+          <Price numerator="6" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2277206" name="Quakeshake" bred="SAF">
+        <Cloth number="9"/>
+        <Drawn stall="12"/>
+        <FormFigures figures="0" type="FlatSix"/>
+        <LastRunDays type="Flat" days="73"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Mr D G Abery"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken105009.png" description="White, blue diamond and sleeves, white seams, blue cap, white peak"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Await The Dawn" bred="USA" yearBorn="2007"/>
+        <Breeding type="Dam" name="Jet Park" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <FoalDate date="20141013"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2277207" name="Rush Hour Girl" bred="SAF">
+        <Cloth number="10"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="5" type="FlatSix"/>
+        <LastRunDays type="Flat" days="73"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41154" name="Patrick Kruyer"/>
+        <Owner name="Messrs Rick Achmat, A Girolo &amp; A Reynolds"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken105010.png" description="Brown, red hoops, mauve sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Windrush" bred="USA"/>
+        <Breeding type="Dam" name="Captain's Catch" bred="SAF" yearBorn="2007"/>
+        <Breeding type="DamSire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <FoalDate date="20141028"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293026" name="Silver Streamer" bred="SAF">
+        <Cloth number="11"/>
+        <Drawn stall="9"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="36495" name="Mike Stewart"/>
+        <Owner name="Mr T Yates &amp; Mrs E Yates"/>
+        <Breeder name=""/>
+        <Jockey id="1162107" name="Louis Burke">
+          <Allowance units="pounds" value="9"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken105011.png" description="Purple, bright yellow star, purple slvs,bright yellow stars,purple cap,bright yellow stars"/>
+        <Colour type="gr"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Rebel King" bred="SAF" yearBorn="2003"/>
+        <Breeding type="Dam" name="Silver Jet" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <FoalDate date="20141104"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2286382" name="Tough Love" bred="SAF">
+        <Cloth number="12"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="8" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr E A Braun &amp; Cape Leopard Trust (nom: Mr A Head)"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken105012.png" description="Royal blue, emerald green, red and white quartered, emerald green sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Querari" bred="GER" yearBorn="2006"/>
+        <Breeding type="Dam" name="Gamma Ray" bred="SAF" yearBorn="2007"/>
+        <Breeding type="DamSire" name="Victory Moon" bred="SAF" yearBorn="1999"/>
+        <FoalDate date="20140906"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293027" name="Viva In The Wild" bred="SAF">
+        <Cloth number="13"/>
+        <Drawn stall="10"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="61907" name="Michael John Robinson"/>
+        <Owner name="Mrs L J Robinson &amp; Messrs G L Blank, G D Tooch, D"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken105013.png" description="Royal blue, white v bib, royal blue sleeves, red cap, white peak"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Sail From Seattle" bred="CAN" yearBorn="2003"/>
+        <Breeding type="Dam" name="Vivacious Star" bred="SAF" yearBorn="2008"/>
+        <Breeding type="DamSire" name="Victory Moon" bred="SAF" yearBorn="1999"/>
+        <FoalDate date="20141108"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733787" date="20170610" time="1125+0100" raceType="Flat" trackType="Turf" handicap="No" class="" showcase="No" maxRunners="15">
+      <Title>Book A Table At Our Next Race Meeting 021 797 6037 Maiden Plate</Title>
+      <AddedMoney currency="ZAR" amount="80008"/>
+      <PenaltyValue currency="ZAR" amount="50007"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="50007"/>
+        <Prize position="2" amount="16008"/>
+        <Prize position="3" amount="7996"/>
+        <Prize position="4" amount="3998"/>
+        <Prize position="5" amount="1999"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="1312" text="0m 5f 212y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2221186" name="Cossack Guard" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="322-222" type="FlatSix"/>
+        <LastRunDays type="Flat" days="77"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Royal Albatross Investments (pty) Ltd (nom : Mr R"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken112501.png" description="Dark blue and maroon hoops, dark blue sleeves, light blue cap"/>
+        <Colour type="gr"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Gimmethegreenlight" bred="AUS" yearBorn="2008"/>
+        <Breeding type="Dam" name="Cossack Star" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Complete Warrior" bred="USA" yearBorn="2001"/>
+        <FoalDate date="20130923"/>
+        <ForecastPrice>
+          <Price numerator="11" denominator="4"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2251809" name="Counting Stars" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="9"/>
+        <FormFigures figures="97-72" type="FlatSix"/>
+        <LastRunDays type="Flat" days="45"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Mr P G De Beyer, Mesdames L De Jager &amp; J A Wintle"/>
+        <Breeder name=""/>
+        <Jockey id="28799" name="K Zechner"/>
+        <JockeyColours filename="20170610ken112502.png" description="Royal blue, yellow band of diamonds, red sleeves and cap, yellow diamond"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Var" bred="USA" yearBorn="1999"/>
+        <Breeding type="Dam" name="Dollar Crisis" bred="SAF" yearBorn="1995"/>
+        <Breeding type="DamSire" name="Goldmark" bred="SAF"/>
+        <FoalDate date="20131006"/>
+        <ForecastPrice>
+          <Price numerator="9" denominator="4"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2254231" name="Harvey Spector" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="12"/>
+        <FormFigures figures="0-83374" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Dr H L Sarembock, Messrs P C Sarembock, L B Schkol"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken112503.png" description="White, black crossed sashes, pink sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Toreador" bred="IRE" yearBorn="1999"/>
+        <Breeding type="Dam" name="Verbatim" bred="SAF" yearBorn="2008"/>
+        <Breeding type="DamSire" name="Var" bred="USA" yearBorn="1999"/>
+        <FoalDate date="20131025"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2215014" name="Desert Lark" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="9-52644" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41299" name="Bill Prestage"/>
+        <Owner name="Mr &amp; Mrs W G Prestage"/>
+        <Breeder name=""/>
+        <Jockey id="19213" name="W C Marwing"/>
+        <JockeyColours filename="20170610ken112504.png" description="Orange, yellow collar, orange and yellow checked sleeves, orange cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Gitano Hernando" bred="UK" yearBorn="2006"/>
+        <Breeding type="Dam" name="Musical Lark" bred="ZIM"/>
+        <Breeding type="DamSire" name="Goldkeeper" bred="USA"/>
+        <FoalDate date="20130907"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2257679" name="Jay Rock" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="89-59" type="FlatSix"/>
+        <LastRunDays type="Flat" days="56"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41283" name="Glen Puller" nationality="SAF"/>
+        <Owner name="Messrs R C M Caris, F M Carruthers, P Fourie, E He"/>
+        <Breeder name=""/>
+        <Jockey id="28754" name="Piet Botha"/>
+        <JockeyColours filename="20170610ken112505.png" description="Blue and red halved diagonally, blue collar, striped sleeves, quartered cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Jay Peg" bred="SAF" yearBorn="2005"/>
+        <Breeding type="Dam" name="Rocking And Raving" bred="SAF"/>
+        <Breeding type="DamSire" name="Mistral Dancer" bred="CAN"/>
+        <FoalDate date="20131101"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2205514" name="Tall Mo" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="10"/>
+        <FormFigures figures="8-06" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41274" name="Vaughan Marshall"/>
+        <Owner name="Mr G S Knowles"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken112506.png" description="Green, white epaulettes, green cap, white spots"/>
+        <Tackle type="Blinkers" count="2"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Ideal World" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Escallonia" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20130819"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293028" name="Magical Mambo" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="13"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41302" name="Greg Ennion"/>
+        <Owner name="Mr A R &amp; Mrs A B L Beck"/>
+        <Breeder name=""/>
+        <Jockey id="28061" name="Jannie Bekker"/>
+        <JockeyColours filename="20170610ken112507.png" description="Brown, white v bib, white cap, brown spots"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Mambo In Seattle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Savannah Breeze" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Badger Land" bred="USA"/>
+        <FoalDate date="20131018"/>
+        <ForecastPrice>
+          <Price numerator="25" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293029" name="Merger" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="15"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41154" name="Patrick Kruyer"/>
+        <Owner name="Mr J W &amp; Mrs J K Armitage &amp; Mrs S P Kruyer"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken112508.png" description="All red"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Ashaawes" bred="USA" yearBorn="2003"/>
+        <Breeding type="Dam" name="Commingle" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Jallad" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20131029"/>
+        <ForecastPrice>
+          <Price numerator="25" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2257680" name="On Winter's Traces" bred="SAF">
+        <Cloth number="9"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="0-0" type="FlatSix"/>
+        <LastRunDays type="Flat" days="147"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Miss April Glaspie"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken112509.png" description="Maroon, gold spot, sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="c"/>
+        <Breeding type="Sire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <Breeding type="Dam" name="Morning Rain" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Jallad" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20131112"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2281478" name="Proud Dynasty" bred="SAF">
+        <Cloth number="10"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="96" type="FlatSix"/>
+        <LastRunDays type="Flat" days="42"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="100474" name="Darryl Hodgson" nationality="SAF"/>
+        <Owner name="Messrs H Adams &amp; D Chinsammy"/>
+        <Breeder name=""/>
+        <Jockey id="28082" name="Marco V'Rensburg"/>
+        <JockeyColours filename="20170610ken112510.png" description="Red, black epaulettes and cap"/>
+        <Colour type="gr"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Dynasty" bred="SAF" yearBorn="1999"/>
+        <Breeding type="Dam" name="Even Money" bred="SAF" yearBorn="2002"/>
+        <Breeding type="DamSire" name="Rich Man's Gold" bred="USA"/>
+        <FoalDate date="20130719"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293030" name="Rattleseattle" bred="SAF">
+        <Cloth number="11"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41347" name="Harold Crawford"/>
+        <Owner name="Mrs L M Kotze"/>
+        <Breeder name=""/>
+        <Jockey id="31372" name="Oswald Noach"/>
+        <JockeyColours filename="20170610ken112511.png" description="Navy blue and turquoise hoops, yellow sleeves, navy blue cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Mambo In Seattle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Tree Of Perfection" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Toreador" bred="IRE" yearBorn="1999"/>
+        <FoalDate date="20130820"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293031" name="Mamba Alley" bred="SAF">
+        <Cloth number="12"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Messrs Rick Achmat, D M Kannemeyer &amp; A Mahlangu &amp;"/>
+        <Breeder name=""/>
+        <Jockey id="42260" name="L Africa"/>
+        <JockeyColours filename="20170610ken112512.png" description="Yellow and blue stripes, green sleeves, blue cap, red stars"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Mambo In Seattle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Tetre Noir" bred="SAF" yearBorn="2008"/>
+        <Breeding type="DamSire" name="Black Minnaloushe" bred="USA" yearBorn="1998"/>
+        <FoalDate date="20140911"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293032" name="Over Zealous" bred="SAF">
+        <Cloth number="13"/>
+        <Drawn stall="14"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr J W O'kane &amp; Jonathan Snaith"/>
+        <Breeder name=""/>
+        <Jockey id="1162107" name="Louis Burke">
+          <Allowance units="pounds" value="9"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken112513.png" description="White, royal blue maltese cross, royal blue sleeves, halved cap"/>
+        <Colour type="b"/>
+        <Sex type="c"/>
+        <Breeding type="Sire" name="Golden Sword" bred="UK" yearBorn="1984"/>
+        <Breeding type="Dam" name="Lite A Fire" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="National Emblem" bred="SAF" yearBorn="1992"/>
+        <FoalDate date="20140827"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293033" name="Radlet" bred="SAF">
+        <Cloth number="14"/>
+        <Drawn stall="11"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Messrs R Gujadhur &amp; T Gujadhur &amp; Dr H K Gujadhur"/>
+        <Breeder name=""/>
+        <Jockey id="1146997" name="Heavelon V'd Hoven"/>
+        <JockeyColours filename="20170610ken112514.png" description="Light blue, red crossed sashes, light blue sleeves, red cap"/>
+        <Colour type="ch"/>
+        <Sex type="c"/>
+        <Breeding type="Sire" name="Philanthropist" bred="USA" yearBorn="2001"/>
+        <Breeding type="Dam" name="Super Sarah" bred="SAF" yearBorn="2004"/>
+        <Breeding type="DamSire" name="Wolfhound" bred="USA" yearBorn="1989"/>
+        <FoalDate date="20141019"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293034" name="The Third Man" bred="SAF">
+        <Cloth number="15"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="3"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Messrs R Gujadhur &amp; T Gujadhur &amp; Dr H K Gujadhur"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken112515.png" description="Light blue, red crossed sashes, light blue sleeves, red cap"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Judpot" bred="USA" yearBorn="1900"/>
+        <Breeding type="Dam" name="Summer Angel" bred="SAF"/>
+        <Breeding type="DamSire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <FoalDate date="20141019"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733788" date="20170610" time="1205+0100" raceType="Flat" trackType="Turf" handicap="No" class="" showcase="No" maxRunners="12">
+      <Title>tabonline.co.za Maiden Plate (F &amp; M)</Title>
+      <AddedMoney currency="ZAR" amount="80008"/>
+      <PenaltyValue currency="ZAR" amount="50007"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="50007"/>
+        <Prize position="2" amount="16008"/>
+        <Prize position="3" amount="7996"/>
+        <Prize position="4" amount="3998"/>
+        <Prize position="5" amount="1999"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="1312" text="0m 5f 212y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2206624" name="Time To Think" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="45-2322" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <RaceHistoryStat type="BeatenFavourite" value="2"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Drakenstein Stud (nom: Mrs G A Rupert)"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken120501.png" description="Blue, white panel, blue sleeves and cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Philanthropist" bred="USA" yearBorn="2001"/>
+        <Breeding type="Dam" name="Tick Tock" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <FoalDate date="20130804"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="2"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2246915" name="Seattle Silva" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="52-9235" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Mrs D J Sherrell"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken120502.png" description="Black, white sleeves, black armbands and cap, white peak"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Sail From Seattle" bred="CAN" yearBorn="2003"/>
+        <Breeding type="Dam" name="Tuvana Silva" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Silvano" bred="GER" yearBorn="1996"/>
+        <FoalDate date="20131001"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2254831" name="Jurupari" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="9-95" type="FlatSix"/>
+        <LastRunDays type="Flat" days="63"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41283" name="Glen Puller" nationality="SAF"/>
+        <Owner name="Messrs F M Carruthers, G R Puller &amp; Ian Robinson,"/>
+        <Breeder name=""/>
+        <Jockey id="28754" name="Piet Botha"/>
+        <JockeyColours filename="20170610ken120503.png" description="Dayglo pink and dayglo green quartered, dayglo pink sleeves, dayglo green seams, orange cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Querari" bred="GER" yearBorn="2006"/>
+        <Breeding type="Dam" name="Venturesome" bred="SAF" yearBorn="1999"/>
+        <Breeding type="DamSire" name="Rakeen" bred="USA" yearBorn="1987"/>
+        <FoalDate date="20130919"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2234020" name="Insinya" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="12"/>
+        <FormFigures figures="48-5" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Mr P G De Beyer"/>
+        <Breeder name=""/>
+        <Jockey id="28799" name="K Zechner"/>
+        <JockeyColours filename="20170610ken120504.png" description="Crimson and silver grey stripes, crimson cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Noordhoek Flyer" bred="SNL" yearBorn="2006"/>
+        <Breeding type="Dam" name="Serengetti" bred="SAF" yearBorn="2002"/>
+        <Breeding type="DamSire" name="Jallad" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20130928"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2247576" name="Ayyaleh" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="870855" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="100326" name="Paul Reeves" nationality="SAF"/>
+        <Owner name="Mesdames G M Davies &amp; C Reeves &amp; Messrs Glen Godda"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken120505.png" description="Red, blue epaulettes, collar and cuffs, red and blue hooped cap"/>
+        <Tackle type="Blinkers" count="4"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Mambo In Seattle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="National Arabian" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="National Assembly" bred="CAN"/>
+        <FoalDate date="20130902"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293035" name="Brave Move" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="11"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="114728" name="Adam Marcus" nationality="SAF"/>
+        <Owner name="Brave Bid Syndicate (nom: Mr Yagan Nair) &amp; Mr B Ma"/>
+        <Breeder name=""/>
+        <Jockey id="19213" name="W C Marwing"/>
+        <JockeyColours filename="20170610ken120506.png" description="Black, red diagonal spots and sleeves, black armbands and cap, red spots"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Horse Chestnut" bred="SAF" yearBorn="1996"/>
+        <Breeding type="Dam" name="Brave Bid" bred="SAF" yearBorn="2004"/>
+        <Breeding type="DamSire" name="Qui Danzig" bred="USA" yearBorn="1987"/>
+        <FoalDate date="20130905"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2283134" name="Bring Me More" bred="AUS">
+        <Cloth number="7"/>
+        <Drawn stall="10"/>
+        <FormFigures figures="03" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41188" name="Geoff Woodruff" nationality="SAF"/>
+        <Owner name="Mayfair Speculators (pty) Ltd (nom: Mr D L Brugman"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken120507.png" description="Emerald green, yellow stars, black sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Sebring" bred="AUS" yearBorn="2005"/>
+        <Breeding type="Dam" name="Social Glow" bred="AUS" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Aghaadir" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20131008"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2290269" name="Duchess Of Prussia" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="9" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <Age years="5"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="36495" name="Mike Stewart"/>
+        <Owner name="Mr H H &amp; Mrs M Zeppel"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken120508.png" description="White, red maltese cross and sleeves, white cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Silvano" bred="GER" yearBorn="1996"/>
+        <Breeding type="Dam" name="Fame Academy" bred="SAF"/>
+        <Breeding type="DamSire" name="Elliodor" bred="FR"/>
+        <FoalDate date="20120823"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2232275" name="Ginger Rose" bred="SAF">
+        <Cloth number="9"/>
+        <Drawn stall="9"/>
+        <FormFigures figures="09-" type="FlatSix"/>
+        <LastRunDays type="Flat" days="273"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Ms E S Bain &amp; Messrs P G De Beyer &amp; H J Parkes"/>
+        <Breeder name=""/>
+        <Jockey id="1140647" name="J Smitsdorff"/>
+        <JockeyColours filename="20170610ken120509.png" description="Crimson and silver grey stripes, crimson cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Elusive Fort" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="Stately Bride" bred="SAF" yearBorn="1996"/>
+        <Breeding type="DamSire" name="Jallad" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20131019"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2293036" name="Summer Olimpics" bred="SAF">
+        <Cloth number="10"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="" type="FlatSix"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="61907" name="Michael John Robinson"/>
+        <Owner name="Mr G W Burgoyne"/>
+        <Breeder name=""/>
+        <Jockey id="1147063" name="Luyolo Mxothwa"/>
+        <JockeyColours filename="20170610ken120510.png" description="Shocking pink and white stripes, white sleeves, shocking pink cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Royal Air Force" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="Olimpica" bred="ARG"/>
+        <Breeding type="DamSire" name="Southern Halo" bred="USA"/>
+        <FoalDate date="20130925"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2286378" name="Ballroom Dance" bred="SAF">
+        <Cloth number="11"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="9" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <RaceHistoryStat type="BeatenFavourite" value="1"/>
+        <Age years="3"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Mr C D Mitchell"/>
+        <Breeder name=""/>
+        <Jockey id="1142951" name="Leon Govender"/>
+        <JockeyColours filename="20170610ken120511.png" description="Orange, black fleur de lis, white sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Mambo In Seattle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Tavita" bred="SAF" yearBorn="2007"/>
+        <Breeding type="DamSire" name="Rakeen" bred="USA" yearBorn="1987"/>
+        <FoalDate date="20141026"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2280983" name="Woodstock Fairy" bred="SAF">
+        <Cloth number="12"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="0" type="FlatSix"/>
+        <LastRunDays type="Flat" days="56"/>
+        <Age years="3"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Mr T L Bailes"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken120512.png" description="Yellow, red diamonds, red sleeves, yellow cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Var" bred="USA" yearBorn="1999"/>
+        <Breeding type="Dam" name="Olympic Storm" bred="SAF" yearBorn="2002"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20141002"/>
+        <ForecastPrice>
+          <Price numerator="25" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733789" date="20170610" time="1245+0100" raceType="Flat" trackType="Turf" handicap="No" class="" showcase="No" maxRunners="13">
+      <Title>Place Your Bets On Your Mobile www.tabsa.mobi Maiden Plate</Title>
+      <AddedMoney currency="ZAR" amount="80008"/>
+      <PenaltyValue currency="ZAR" amount="50007"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="50007"/>
+        <Prize position="2" amount="16008"/>
+        <Prize position="3" amount="7996"/>
+        <Prize position="4" amount="3998"/>
+        <Prize position="5" amount="1999"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="1531" text="0m 6f 211y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2279359" name="Off Broadway" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="522" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <RaceHistoryStat type="BeatenFavourite" value="2"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Chrigor Stud (pty) Ltd (nom: Mrs S Hattingh) &amp; Ven"/>
+        <Breeder name=""/>
+        <Jockey id="28799" name="K Zechner"/>
+        <JockeyColours filename="20170610ken124501.png" description="Yellow and royal blue checked diamonds, red sleeves and cap, royal blue diamond"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Var" bred="USA" yearBorn="1999"/>
+        <Breeding type="Dam" name="Liberty Dance" bred="SAF"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20131009"/>
+        <ForecastPrice>
+          <Price numerator="2" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2239490" name="Two Brothers" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="7-244" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="114728" name="Adam Marcus" nationality="SAF"/>
+        <Owner name="Messrs Bryn Ressell &amp; N M Shirtliff"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken124502.png" description="Black and red hoops, red and yellow hooped sleeves, black and yellow hooped cap"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Trippi" bred="USA" yearBorn="1997"/>
+        <Breeding type="Dam" name="Garota De Ipanema" bred="BRZ" yearBorn="2004"/>
+        <Breeding type="DamSire" name="Roi Normand" bred="USA"/>
+        <FoalDate date="20131119"/>
+        <ForecastPrice>
+          <Price numerator="11" denominator="4"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2279358" name="Manhattan Ice" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="12"/>
+        <FormFigures figures="949" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Mrs G E Meaker &amp; Royal Albatross Investments (pty)"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken124503.png" description="Red, yellow diamonds, yellow sleeves, red cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Philanthropist" bred="USA" yearBorn="2001"/>
+        <Breeding type="Dam" name="Summer Ice" bred="SAF"/>
+        <Breeding type="DamSire" name="Spectrum" bred="IRE" yearBorn="1992"/>
+        <FoalDate date="20131106"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2244980" name="Lancer" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="95660-8" type="FlatSix"/>
+        <LastRunDays type="Flat" days="98"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="61907" name="Michael John Robinson"/>
+        <Owner name="Mr J H Van Heerden"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken124504.png" description="Gold and maroon checks, gold sleeves and cap, maroon peak"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Soar With Eagles" bred="USA" yearBorn="2003"/>
+        <Breeding type="Dam" name="Song Thrush" bred="SAF"/>
+        <Breeding type="DamSire" name="Spectrum" bred="IRE" yearBorn="1992"/>
+        <FoalDate date="20131016"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2248034" name="Dayonaut" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="8-58522" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <Age years="6"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="100326" name="Paul Reeves" nationality="SAF"/>
+        <Owner name="Mr A Baum"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken124505.png" description="White, red diamond, black sleeves, red cap"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Argonaut" bred="SAF" yearBorn="2004"/>
+        <Breeding type="Dam" name="Day To Day" bred="SAF" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Modern Day" bred="USA" yearBorn="1993"/>
+        <FoalDate date="20110901"/>
+        <ForecastPrice>
+          <Price numerator="7" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2248008" name="Tough Harry" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="13"/>
+        <FormFigures figures="70-298" type="FlatSix"/>
+        <LastRunDays type="Flat" days="120"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="119968" name="Renate Plessis" nationality="SAF"/>
+        <Owner name="Favour Stud (nom: Mrs Engelize Du Preez)"/>
+        <Breeder name=""/>
+        <Jockey id="1147063" name="Luyolo Mxothwa"/>
+        <JockeyColours filename="20170610ken124506.png" description="White, green collar, white sleeves, green stars and cuffs, white cap, green stars"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Harry Hall" bred="SAF" yearBorn="2007"/>
+        <Breeding type="Dam" name="Tough Wood" bred="SAF" yearBorn="1996"/>
+        <Breeding type="DamSire" name="Complete Warrior" bred="USA" yearBorn="2001"/>
+        <FoalDate date="20130821"/>
+        <ForecastPrice>
+          <Price numerator="50" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2254229" name="Dreaming Big" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="080897" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41283" name="Glen Puller" nationality="SAF"/>
+        <Owner name="Mr A Baum"/>
+        <Breeder name=""/>
+        <Jockey id="28754" name="Piet Botha"/>
+        <JockeyColours filename="20170610ken124507.png" description="White, red diamond, black sleeves, red cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="National Emblem" bred="SAF" yearBorn="1992"/>
+        <Breeding type="Dam" name="Ashton Meadow" bred="SAF" yearBorn="1999"/>
+        <Breeding type="DamSire" name="Ashtontown" bred="SAF" yearBorn="1993"/>
+        <FoalDate date="20130915"/>
+        <ForecastPrice>
+          <Price numerator="100" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2254230" name="Fujin" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="00-" type="FlatSix"/>
+        <LastRunDays type="Flat" days="172"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="36495" name="Mike Stewart"/>
+        <Owner name="Mr H H &amp; Mrs M Zeppel"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken124508.png" description="White, red maltese cross and sleeves, white cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Windrush" bred="USA"/>
+        <Breeding type="Dam" name="Home Sweet Home" bred="SAF"/>
+        <Breeding type="DamSire" name="Victory Moon" bred="SAF" yearBorn="1999"/>
+        <FoalDate date="20131003"/>
+        <ForecastPrice>
+          <Price numerator="100" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2257681" name="Our Emperor" bred="SAF">
+        <Cloth number="9"/>
+        <Drawn stall="9"/>
+        <FormFigures figures="0-" type="FlatSix"/>
+        <LastRunDays type="Flat" days="186"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Messrs D G Abery, G S Knowles, Bryn Ressell &amp; N M"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken124509.png" description="White, blue diamond and sleeves, white seams, blue cap, white peak"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Dynasty" bred="SAF" yearBorn="1999"/>
+        <Breeding type="Dam" name="Express Queen" bred="SAF" yearBorn="2002"/>
+        <Breeding type="DamSire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <FoalDate date="20130906"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2281471" name="Chanone's Theory" bred="SAF">
+        <Cloth number="10"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="80" type="FlatSix"/>
+        <LastRunDays type="Flat" days="11"/>
+        <Age years="3"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="41274" name="Vaughan Marshall"/>
+        <Owner name="Mr David Ng"/>
+        <Breeder name=""/>
+        <Jockey id="42260" name="L Africa"/>
+        <JockeyColours filename="20170610ken124510.png" description="Yellow, white sleeves, royal blue cap, yellow diamond"/>
+        <Colour type="ch"/>
+        <Sex type="c"/>
+        <Breeding type="Sire" name="Gitano Hernando" bred="UK" yearBorn="2006"/>
+        <Breeding type="Dam" name="Promises To Keep" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Windrush" bred="USA"/>
+        <FoalDate date="20141009"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2276528" name="Cyber Law" bred="SAF">
+        <Cloth number="11"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="054" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <Age years="3"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="41297" name="Eric Sands"/>
+        <Owner name="Mr A E Sands"/>
+        <Breeder name=""/>
+        <Jockey id="28082" name="Marco V'Rensburg"/>
+        <JockeyColours filename="20170610ken124511.png" description="Red and black hoops, white sleeves, red cuffs, red and black quartered cap"/>
+        <Colour type="b"/>
+        <Sex type="c"/>
+        <Breeding type="Sire" name="Alado" bred="UK" yearBorn="2001"/>
+        <Breeding type="Dam" name="Cyber Toy" bred="SAF" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Modern Day" bred="USA" yearBorn="1993"/>
+        <FoalDate date="20141021"/>
+        <ForecastPrice>
+          <Price numerator="6" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2286384" name="Spectra Force" bred="SAF">
+        <Cloth number="12"/>
+        <Drawn stall="11"/>
+        <FormFigures figures="93" type="FlatSix"/>
+        <LastRunDays type="Flat" days="11"/>
+        <Age years="3"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="41347" name="Harold Crawford"/>
+        <Owner name="Messrs S W F Barnard, H &amp; R Wilkinson &amp; P T Zeeman"/>
+        <Breeder name=""/>
+        <Jockey id="31372" name="Oswald Noach"/>
+        <JockeyColours filename="20170610ken124512.png" description="Royal blue, gold stars and collar,white sleeves, gold cuffs,white cap,gold star, r blue peak"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Royal Air Force" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="Faithful Olga" bred="SAF" yearBorn="2007"/>
+        <Breeding type="DamSire" name="Spectrum" bred="IRE" yearBorn="1992"/>
+        <FoalDate date="20141022"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2291770" name="Supreme Winter" bred="SAF">
+        <Cloth number="13"/>
+        <Drawn stall="10"/>
+        <FormFigures figures="8" type="FlatSix"/>
+        <LastRunDays type="Flat" days="7"/>
+        <Age years="3"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="119968" name="Renate Plessis" nationality="SAF"/>
+        <Owner name="Messrs Andre Louw, F N Englezakis &amp; Favour Stud (n"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken124513.png" description="White, white sleeves, light blue stars, collar and cuffs, red cap"/>
+        <Colour type="ch"/>
+        <Sex type="c"/>
+        <Breeding type="Sire" name="What A Winter" bred="SAF" yearBorn="2007"/>
+        <Breeding type="Dam" name="Supreme Duel" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="Royal Chalice" bred="SAF"/>
+        <FoalDate date="20140929"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733790" date="20170610" time="1320+0100" raceType="Flat" trackType="Turf" handicap="No" class="" showcase="No" maxRunners="8">
+      <Title>Racing Association Maiden Plate (F &amp; M)</Title>
+      <AddedMoney currency="ZAR" amount="80008"/>
+      <PenaltyValue currency="ZAR" amount="50007"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="50007"/>
+        <Prize position="2" amount="16008"/>
+        <Prize position="3" amount="7996"/>
+        <Prize position="4" amount="3998"/>
+        <Prize position="5" amount="1999"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="1969" text="1m 0f 209y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2189448" name="Colorado Rose" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="622-422" type="FlatSix"/>
+        <LastRunDays type="Flat" days="67"/>
+        <RaceHistoryStat type="BeatenFavourite" value="1"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41284" name="Joey Ramsden" nationality="SAF"/>
+        <Owner name="Mayfair Speculators (pty) Ltd (nom: Mr D L Brugman"/>
+        <Breeder name=""/>
+        <Jockey id="19213" name="W C Marwing"/>
+        <JockeyColours filename="20170610ken132001.png" description="Emerald green, yellow stars, black sleeves and cap"/>
+        <Tackle type="Blinkers" count="6"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Sail From Seattle" bred="CAN" yearBorn="2003"/>
+        <Breeding type="Dam" name="Shocking Pink" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="Centenary" bred="USA"/>
+        <FoalDate date="20130915"/>
+        <ForecastPrice>
+          <Price numerator="2" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2192198" name="Sandy Bay" bred="AUS">
+        <Cloth number="2"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="7346-63" type="FlatSix"/>
+        <LastRunDays type="Flat" days="67"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41284" name="Joey Ramsden" nationality="SAF"/>
+        <Owner name="Mayfair Speculators (pty) Ltd (nom: Mr D L Brugman"/>
+        <Breeder name=""/>
+        <Jockey id="28061" name="Jannie Bekker"/>
+        <JockeyColours filename="20170610ken132002.png" description="Emerald green, yellow stars, black sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Exceed And Excel" bred="AUS" yearBorn="2000"/>
+        <Breeding type="Dam" name="Sesenta" bred="AUS"/>
+        <Breeding type="DamSire" name="Encosta De Lago" bred="AUS"/>
+        <FoalDate date="20131013"/>
+        <ForecastPrice>
+          <Price numerator="3" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2258858" name="Janice's Secret" bred="AUS">
+        <Cloth number="3"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="0-3372" type="FlatSix"/>
+        <LastRunDays type="Flat" days="35"/>
+        <RaceHistoryStat type="BeatenFavourite" value="2"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="128337" name="Burger/van Reenen"/>
+        <Owner name="Mr C B McKenna"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken132003.png" description="Royal blue, lime hoops, royal blue sleeves, lime and royal blue hooped cap"/>
+        <Colour type="b/br"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Commands" bred="AUS" yearBorn="1996"/>
+        <Breeding type="Dam" name="Convertible" bred="AUS"/>
+        <Breeding type="DamSire" name="Hector Protector" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20131119"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2270820" name="Raise Your Hand" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="80595" type="FlatSix"/>
+        <LastRunDays type="Flat" days="11"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41295" name="Piet Steyn"/>
+        <Owner name="Mr &amp; Mrs T D Andrews"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken132004.png" description="Rose pink, grey hoops, hooped sleeves, rose pink cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Royal Air Force" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="Farewell Song" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <FoalDate date="20130825"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2229609" name="Hither Green" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="509846" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41347" name="Harold Crawford"/>
+        <Owner name="Mr A F J Duncan"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken132005.png" description="Black, white collar, cuffs and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Gimmethegreenlight" bred="AUS" yearBorn="2008"/>
+        <Breeding type="Dam" name="Rubirosa" bred="SAF" yearBorn="1999"/>
+        <Breeding type="DamSire" name="Rakeen" bred="USA" yearBorn="1987"/>
+        <FoalDate date="20130908"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2273541" name="Superslew" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="093" type="FlatSix"/>
+        <LastRunDays type="Flat" days="35"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="114728" name="Adam Marcus" nationality="SAF"/>
+        <Owner name="Mr M C Gerber"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken132006.png" description="Blue, yellow epaulettes and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Mambo In Seattle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Hatun Suyay" bred="USA"/>
+        <Breeding type="DamSire" name="Strong Hope" bred="USA" yearBorn="2005"/>
+        <FoalDate date="20130823"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2170471" name="Put The Berries" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="498656" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <Age years="5"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="128337" name="Burger/van Reenen"/>
+        <Owner name="Messrs C H Bester, C J Burger &amp; W A I Du Preez &amp; D"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken132007.png" description="Yellow and black quartered, halved sleeves, black cap, yellow peak"/>
+        <Tackle type="Blinkers" count="10"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Royal Air Force" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="Crescent Lily" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Counter Action" bred="SAF" yearBorn="1992"/>
+        <FoalDate date="20121001"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2272267" name="Lady Li Lay" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="54" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="125571" name="Willem Nel"/>
+        <Owner name="Mrs S Plattner"/>
+        <Breeder name=""/>
+        <Jockey id="1140647" name="J Smitsdorff"/>
+        <JockeyColours filename="20170610ken132008.png" description="Grass Green, Gold seams, Indigo Collar, Sleeves And Cap, Grass Green Cuffs"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Silvano" bred="GER" yearBorn="1996"/>
+        <Breeding type="Dam" name="Lady Dane" bred="AUS"/>
+        <Breeding type="DamSire" name="Danehill" bred="USA" yearBorn="1986"/>
+        <FoalDate date="20131022"/>
+        <ForecastPrice>
+          <Price numerator="4" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733791" date="20170610" time="1355+0100" raceType="Flat" trackType="Turf" handicap="Yes" class="" showcase="No" maxRunners="8">
+      <Title>itsarush.co.za Mr 81 Handicap</Title>
+      <AddedMoney currency="ZAR" amount="95999"/>
+      <PenaltyValue currency="ZAR" amount="60001"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="60001"/>
+        <Prize position="2" amount="19193"/>
+        <Prize position="3" amount="9605"/>
+        <Prize position="4" amount="4794"/>
+        <Prize position="5" amount="2405"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="2188" text="1m 1f 208y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="1966379" name="Friendly Tibbs" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="144284" type="FlatSix"/>
+        <LastRunDays type="Flat" days="53"/>
+        <RaceHistoryStat type="Course" value="5"/>
+        <RaceHistoryStat type="CourseDistance" value="2"/>
+        <Age years="7"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="41295" name="Piet Steyn"/>
+        <Owner name="Messrs Bryn Ressell &amp; E L P Steyn"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken135501.png" description="Black and red hoops, red and yellow hooped sleeves, black and yellow hooped cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Casey Tibbs" bred="IRE" yearBorn="1994"/>
+        <Breeding type="Dam" name="Sweet Margot" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Saumarez" bred="UK" yearBorn="1987"/>
+        <FoalDate date="20101018"/>
+        <ForecastPrice>
+          <Price numerator="6" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="1946541" name="Red Peril" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="81321-8" type="FlatSix"/>
+        <LastRunDays type="Flat" days="53"/>
+        <RaceHistoryStat type="Course" value="2"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="7"/>
+        <Weight text="9 5" units="pounds" value="131"/>
+        <Trainer id="41299" name="Bill Prestage"/>
+        <Owner name="Mr &amp; Mrs W G Prestage"/>
+        <Breeder name=""/>
+        <Jockey id="19213" name="W C Marwing"/>
+        <JockeyColours filename="20170610ken135502.png" description="Orange, yellow collar, orange and yellow checked sleeves, orange cap"/>
+        <Tackle type="Blinkers" count="16"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <Breeding type="Dam" name="Final Blush" bred="SAF"/>
+        <Breeding type="DamSire" name="Jallad" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20100917"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2161952" name="Rahvar" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="56-0963" type="FlatSix"/>
+        <LastRunDays type="Flat" days="15"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="5"/>
+        <Weight text="9 4" units="pounds" value="130"/>
+        <Trainer id="119968" name="Renate Plessis" nationality="SAF"/>
+        <Owner name="Favour Stud (nom: Mrs Engelize Du Preez)"/>
+        <Breeder name=""/>
+        <Jockey id="1147063" name="Luyolo Mxothwa"/>
+        <JockeyColours filename="20170610ken135503.png" description="White, green collar, white sleeves, green stars and cuffs, white cap, green stars"/>
+        <Tackle type="Blinkers" count="18"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Var" bred="USA" yearBorn="1999"/>
+        <Breeding type="Dam" name="Rocking And Raving" bred="SAF"/>
+        <Breeding type="DamSire" name="Mistral Dancer" bred="CAN"/>
+        <FoalDate date="20121002"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2144510" name="Cape Laddie" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="38-3245" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="5"/>
+        <Weight text="9 2" units="pounds" value="128"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Khaya Stables (pty) Ltd"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken135504.png" description="Yellow, black stripe, striped sleeves, yellow cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <Breeding type="Dam" name="First Arrival" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="Northern Guest" bred="USA" yearBorn="1977"/>
+        <FoalDate date="20121106"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2244981" name="Platinum Prince" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="810411" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <RaceHistoryStat type="Course" value="3"/>
+        <Age years="4"/>
+        <Weight text="9 1" units="pounds" value="127"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mrs P J &amp; Mr H C Devine"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken135505.png" description="Red, black maltese cross, white cap"/>
+        <Tackle type="Blinkers" count="4"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Silvano" bred="GER" yearBorn="1996"/>
+        <Breeding type="Dam" name="Spirit Ofthe Dance" bred="SAF" yearBorn="2001"/>
+        <Breeding type="DamSire" name="Goldmark" bred="SAF"/>
+        <FoalDate date="20131125"/>
+        <ForecastPrice>
+          <Price numerator="2" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2261969" name="Twilight Trip" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="4-311" type="FlatSix"/>
+        <LastRunDays type="Flat" days="49"/>
+        <RaceHistoryStat type="Course" value="2"/>
+        <Age years="4"/>
+        <Weight text="8 10" units="pounds" value="122"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Messrs Bryn Ressell &amp; N M Shirtliff"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken135506.png" description="White and blue halved horizontally, pink sleeves, blue cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Trippi" bred="USA" yearBorn="1997"/>
+        <Breeding type="Dam" name="Love Is In The Air" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <FoalDate date="20131014"/>
+        <ForecastPrice>
+          <Price numerator="2" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="1762443" name="Cigar Boy" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="032509-" type="FlatSix"/>
+        <LastRunDays type="Flat" days="196"/>
+        <RaceHistoryStat type="Course" value="3"/>
+        <Age years="8"/>
+        <Weight text="8 7" units="pounds" value="119"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr K P Truter"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken135507.png" description="White, blue v bib, blue sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Casey Tibbs" bred="IRE" yearBorn="1994"/>
+        <Breeding type="Dam" name="Naughty Princess" bred="SAF" yearBorn="1996"/>
+        <Breeding type="DamSire" name="Devilish Ninja" bred="USA"/>
+        <FoalDate date="20091022"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2056433" name="Prince Of Eden" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="40-4849" type="FlatSix"/>
+        <LastRunDays type="Flat" days="35"/>
+        <RaceHistoryStat type="Course" value="2"/>
+        <Age years="6"/>
+        <Weight text="8 3" units="pounds" value="115"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Mr B P &amp; Mrs K Finch"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken135508.png" description="Black, red 'v', sleeves and collar, silver cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Silvano" bred="GER" yearBorn="1996"/>
+        <Breeding type="Dam" name="Al Shama" bred="SAF" yearBorn="2001"/>
+        <Breeding type="DamSire" name="Al Mufti" bred="USA" yearBorn="1985"/>
+        <FoalDate date="20110922"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733792" date="20170610" time="1430+0100" raceType="Flat" trackType="Turf" handicap="Yes" class="" showcase="No" maxRunners="7">
+      <Title>Racing. It's A Rush Mr 91 Handicap</Title>
+      <AddedMoney currency="ZAR" amount="110008"/>
+      <PenaltyValue currency="ZAR" amount="68743"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="68743"/>
+        <Prize position="2" amount="22005"/>
+        <Prize position="3" amount="10994"/>
+        <Prize position="4" amount="5506"/>
+        <Prize position="5" amount="2744"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="1312" text="0m 5f 212y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2090209" name="Line Break" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="6-94345" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <RaceHistoryStat type="CourseDistance" value="3"/>
+        <Age years="6"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Messrs P Bamford, M W Bass, M A Green, H D M Otto,"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken143001.png" description="Emerald green, red seams, emerald green sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Dynasty" bred="SAF" yearBorn="1999"/>
+        <Breeding type="Dam" name="Lantana" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Model Man" bred="SAF"/>
+        <FoalDate date="20110901"/>
+        <ForecastPrice>
+          <Price numerator="3" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2134042" name="Purple Mountains" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="858-057" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <RaceHistoryStat type="CourseDistance" value="2"/>
+        <Age years="5"/>
+        <Weight text="9 4" units="pounds" value="130"/>
+        <Trainer id="41283" name="Glen Puller" nationality="SAF"/>
+        <Owner name="Messrs F M Carruthers, A C Johnson G R Puller &amp; Ia"/>
+        <Breeder name=""/>
+        <Jockey id="28754" name="Piet Botha"/>
+        <JockeyColours filename="20170610ken143002.png" description="Dark blue and silver checks, silver sleeves, dark blue seams, silver cap, dark blue peak"/>
+        <Colour type="gr"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Var" bred="USA" yearBorn="1999"/>
+        <Breeding type="Dam" name="Riviersonderend" bred="UK"/>
+        <Breeding type="DamSire" name="Efisio" bred="UNR" yearBorn="1982"/>
+        <FoalDate date="20121107"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2094671" name="Fire Master" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="527-333" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <RaceHistoryStat type="CourseDistance" value="3"/>
+        <Age years="6"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr H C &amp; Mrs P J Devine"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken143003.png" description="Red, black maltese cross, white cap"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <Breeding type="Dam" name="Fiery Flier" bred="SAF" yearBorn="1995"/>
+        <Breeding type="DamSire" name="Flaming Rock" bred="IRE"/>
+        <FoalDate date="20111106"/>
+        <ForecastPrice>
+          <Price numerator="4" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2122816" name="The Stone Thrower" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="514-946" type="FlatSix"/>
+        <LastRunDays type="Flat" days="49"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="5"/>
+        <Weight text="8 13" units="pounds" value="125"/>
+        <Trainer id="41284" name="Joey Ramsden" nationality="SAF"/>
+        <Owner name="Mayfair Speculators (pty) Ltd (nom: Mr D L Brugman"/>
+        <Breeder name=""/>
+        <Jockey id="28061" name="Jannie Bekker"/>
+        <JockeyColours filename="20170610ken143004.png" description="Emerald green, yellow stars, black sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Seventh Rock" bred="AUS" yearBorn="2004"/>
+        <Breeding type="Dam" name="Si Senorita" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="Cordoba" bred="USA" yearBorn="1999"/>
+        <FoalDate date="20120915"/>
+        <ForecastPrice>
+          <Price numerator="7" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2087912" name="Blackmore" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="34246-7" type="FlatSix"/>
+        <LastRunDays type="Flat" days="56"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <RaceHistoryStat type="CourseDistance" value="2"/>
+        <Age years="6"/>
+        <Weight text="8 10" units="pounds" value="122"/>
+        <Trainer id="13665" name="Dean Kannemeyer" nationality="SAF"/>
+        <Owner name="Miss April Glaspie"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken143005.png" description="Maroon, gold spot, sleeves and cap"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Kahal" bred="UK" yearBorn="1994"/>
+        <Breeding type="Dam" name="Cariad" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Northern Guest" bred="USA" yearBorn="1977"/>
+        <FoalDate date="20110815"/>
+        <ForecastPrice>
+          <Price numerator="6" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2197690" name="Caballo Blanco" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="440-342" type="FlatSix"/>
+        <LastRunDays type="Flat" days="42"/>
+        <RaceHistoryStat type="BeatenFavourite" value="2"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="4"/>
+        <Weight text="8 6" units="pounds" value="118"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Mayfair Speculators (pty) Ltd (nom: Mr D L Brugman"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken143006.png" description="Emerald green, yellow stars, black sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Querari" bred="GER" yearBorn="2006"/>
+        <Breeding type="Dam" name="Poppy Elizabeth" bred="SAF" yearBorn="2002"/>
+        <Breeding type="DamSire" name="Jet Master" bred="SAF" yearBorn="1994"/>
+        <FoalDate date="20131017"/>
+        <ForecastPrice>
+          <Price numerator="7" denominator="2"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2146295" name="Captain Courteous" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="11113-7" type="FlatSix"/>
+        <LastRunDays type="Flat" days="154"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <RaceHistoryStat type="CourseDistance" value="3"/>
+        <Age years="5"/>
+        <Weight text="8 6" units="pounds" value="118"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mr M E Leaf"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken143007.png" description="Blue, gold sash, blue cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <Breeding type="Dam" name="Cornucopia" bred="SAF" yearBorn="2004"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20121017"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733793" date="20170610" time="1510+0100" raceType="Flat" trackType="Turf" handicap="Yes" class="" showcase="No" maxRunners="14">
+      <Title>Soccer 13 Fm 80 Handicap (F &amp; M)</Title>
+      <AddedMoney currency="ZAR" amount="91002"/>
+      <PenaltyValue currency="ZAR" amount="56868"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="56868"/>
+        <Prize position="2" amount="18194"/>
+        <Prize position="3" amount="9097"/>
+        <Prize position="4" amount="4557"/>
+        <Prize position="5" amount="2270"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="1531" text="0m 6f 211y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2119278" name="Jane S Piddy" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="14"/>
+        <FormFigures figures="05465-9" type="FlatSix"/>
+        <LastRunDays type="Flat" days="133"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="5"/>
+        <Weight text="9 7" units="pounds" value="133"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Mr W J Engelbrecht (jnr)"/>
+        <Breeder name=""/>
+        <Jockey id="1142951" name="Leon Govender"/>
+        <JockeyColours filename="20170610ken151001.png" description="Royal blue and grey halved horizontally, royal blue sleeves, red cap"/>
+        <Colour type="ch"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Trippi" bred="USA" yearBorn="1997"/>
+        <Breeding type="Dam" name="Dame Kiri" bred="SAF" yearBorn="1996"/>
+        <Breeding type="DamSire" name="Flaming Rock" bred="IRE"/>
+        <FoalDate date="20121016"/>
+        <ForecastPrice>
+          <Price numerator="25" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2203847" name="Red Granite" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="9"/>
+        <FormFigures figures="721-128" type="FlatSix"/>
+        <LastRunDays type="Flat" days="45"/>
+        <RaceHistoryStat type="CourseDistance" value="2"/>
+        <Age years="4"/>
+        <Weight text="9 4" units="pounds" value="130"/>
+        <Trainer id="41284" name="Joey Ramsden" nationality="SAF"/>
+        <Owner name="Mayfair Speculators (pty) Ltd (nom: Mr D L Brugman"/>
+        <Breeder name=""/>
+        <Jockey id="28061" name="Jannie Bekker"/>
+        <JockeyColours filename="20170610ken151002.png" description="Emerald green, yellow stars, black sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Seventh Rock" bred="AUS" yearBorn="2004"/>
+        <Breeding type="Dam" name="Si Senorita" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="Cordoba" bred="USA" yearBorn="1999"/>
+        <FoalDate date="20130927"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2046442" name="Colour Magic" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="10"/>
+        <FormFigures figures="37-3142" type="FlatSix"/>
+        <LastRunDays type="Flat" days="11"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <RaceHistoryStat type="Distance" value="2"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="6"/>
+        <Weight text="9 3" units="pounds" value="129"/>
+        <Trainer id="41274" name="Vaughan Marshall"/>
+        <Owner name="Messrs P R C Freestone, G M Miller &amp; B G Nelson"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken151003.png" description="Orange, purple star, sleeves and cap"/>
+        <Tackle type="Blinkers" count="22"/>
+        <Colour type="b"/>
+        <Sex type="m"/>
+        <Breeding type="Sire" name="Jay Peg" bred="SAF" yearBorn="2005"/>
+        <Breeding type="Dam" name="Wisteria" bred="SAF" yearBorn="2005"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20110915"/>
+        <ForecastPrice>
+          <Price numerator="4" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2245607" name="Big Bang Theory" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="11-0367" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <RaceHistoryStat type="Course" value="2"/>
+        <Age years="4"/>
+        <Weight text="9 1" units="pounds" value="127"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Messrs D Yutar, G D Tooch &amp; H N Yutar &amp; Brooklyn B"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken151004.png" description="Black, yellow seams, yellow sleeves, black armbands, yellow cap"/>
+        <Tackle type="Blinkers" count="2"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Seventh Rock" bred="AUS" yearBorn="2004"/>
+        <Breeding type="Dam" name="Miss Lovita" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Sportsworld" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20131127"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2143687" name="Kryptonite" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="22-3778" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <RaceHistoryStat type="CourseDistance" value="2"/>
+        <Age years="5"/>
+        <Weight text="8 13" units="pounds" value="125"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Messrs P Bamford, M W Bass, M I Muskett, Christoph"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken151005.png" description="Emerald green, red seams, emerald green sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Rock Of Rochelle" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Rhinestone" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Elliodor" bred="FR"/>
+        <FoalDate date="20121011"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2220296" name="Whispering Light" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="40-2010" type="FlatSix"/>
+        <LastRunDays type="Flat" days="42"/>
+        <RaceHistoryStat type="CourseDistance" value="2"/>
+        <Age years="4"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="41347" name="Harold Crawford"/>
+        <Owner name="Mr M J A Ferreira"/>
+        <Breeder name=""/>
+        <Jockey id="1146997" name="Heavelon V'd Hoven"/>
+        <JockeyColours filename="20170610ken151006.png" description="Light green, red maltese cross and sleeves, quartered cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Gimmethegreenlight" bred="AUS" yearBorn="2008"/>
+        <Breeding type="Dam" name="Fading Light" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Bel Byou" bred="IRE"/>
+        <FoalDate date="20131029"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2113353" name="Amarillo Rose" bred="SAF">
+        <Cloth number="7"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="54-3532" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <RaceHistoryStat type="BeatenFavourite" value="4"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <RaceHistoryStat type="CourseDistance" value="2"/>
+        <Age years="6"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Mr W J Engelbrecht (jnr) &amp; Mr &amp; Mrs A J Macdonald"/>
+        <Breeder name=""/>
+        <Jockey id="28754" name="Piet Botha"/>
+        <JockeyColours filename="20170610ken151007.png" description="Purple and red quartered, red sleeves, white cap"/>
+        <Colour type="ch"/>
+        <Sex type="m"/>
+        <Breeding type="Sire" name="Silvano" bred="GER" yearBorn="1996"/>
+        <Breeding type="Dam" name="Jallad's Gold" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="Jallad" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20111125"/>
+        <ForecastPrice>
+          <Price numerator="5" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2125781" name="Wedgwood" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="50-2051" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="5"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="41188" name="Geoff Woodruff" nationality="SAF"/>
+        <Owner name="Messrs M I Fullard, J H Drew &amp; L J Van Der Vyver"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken151008.png" description="White, gold diagonal stripes, blue sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Querari" bred="GER" yearBorn="2006"/>
+        <Breeding type="Dam" name="Woodstock Inn" bred="AUS"/>
+        <Breeding type="DamSire" name="Woodman" bred="USA" yearBorn="1983"/>
+        <FoalDate date="20121012"/>
+        <ForecastPrice>
+          <Price numerator="6" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2223679" name="Possibly Me" bred="SAF">
+        <Cloth number="9"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="21-8304" type="FlatSix"/>
+        <LastRunDays type="Flat" days="35"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="4"/>
+        <Weight text="8 9" units="pounds" value="121"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Varsfontein Stud (pty) Ltd (nom: Mr J S Kalmanson)"/>
+        <Breeder name=""/>
+        <Jockey id="19213" name="W C Marwing"/>
+        <JockeyColours filename="20170610ken151009.png" description="White, scarlet and white quartered cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <Breeding type="Dam" name="Dame Kiri" bred="SAF" yearBorn="1996"/>
+        <Breeding type="DamSire" name="Flaming Rock" bred="IRE"/>
+        <FoalDate date="20131106"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2139622" name="Lovely Rita" bred="SAF">
+        <Cloth number="10"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="28-0509" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <Age years="5"/>
+        <Weight text="8 8" units="pounds" value="120"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Mr W J Engelbrecht (jnr)"/>
+        <Breeder name=""/>
+        <Jockey id="28799" name="K Zechner"/>
+        <JockeyColours filename="20170610ken151010.png" description="Royal blue and grey halved horizontally, royal blue sleeves, red cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <Breeding type="Dam" name="Leading Dame" bred="SAF" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Jallad" bred="USA" yearBorn="1988"/>
+        <FoalDate date="20120914"/>
+        <ForecastPrice>
+          <Price numerator="20" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2111504" name="My Emblem" bred="SAF">
+        <Cloth number="11"/>
+        <Drawn stall="11"/>
+        <FormFigures figures="339-994" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <RaceHistoryStat type="Course" value="2"/>
+        <Age years="5"/>
+        <Weight text="8 8" units="pounds" value="120"/>
+        <Trainer id="41297" name="Eric Sands"/>
+        <Owner name="Mayfair Speculators (pty) Ltd (nom: Mr D L Brugman"/>
+        <Breeder name=""/>
+        <Jockey id="28082" name="Marco V'Rensburg"/>
+        <JockeyColours filename="20170610ken151011.png" description="Emerald green, yellow stars, black sleeves and cap"/>
+        <Tackle type="Blinkers" count="8"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="National Emblem" bred="SAF" yearBorn="1992"/>
+        <Breeding type="Dam" name="Me 'n You" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Captain Al" bred="SAF" yearBorn="1997"/>
+        <FoalDate date="20120913"/>
+        <ForecastPrice>
+          <Price numerator="12" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2229604" name="Weston" bred="SAF">
+        <Cloth number="12"/>
+        <Drawn stall="12"/>
+        <FormFigures figures="34-412" type="FlatSix"/>
+        <LastRunDays type="Flat" days="56"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="4"/>
+        <Weight text="8 7" units="pounds" value="119"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Drakenstein Stud (nom: Mrs G A Rupert)"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken151012.png" description="Blue, white panel, blue sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Philanthropist" bred="USA" yearBorn="2001"/>
+        <Breeding type="Dam" name="Fort Belvedere" bred="SAF" yearBorn="2001"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20131109"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2245609" name="Midtown Manhattan" bred="SAF">
+        <Cloth number="13"/>
+        <Drawn stall="13"/>
+        <FormFigures figures="07-0451" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="4"/>
+        <Weight text="8 4" units="pounds" value="116"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Green Street Bloodstock (s Bailey, D McGillewie, J"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken151013.png" description="Black, green stripe, black sleeves, green cuffs and cap"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Greys Inn" bred="USA" yearBorn="2000"/>
+        <Breeding type="Dam" name="Bergdorf Blonde" bred="SAF" yearBorn="2004"/>
+        <Breeding type="DamSire" name="Silvano" bred="GER" yearBorn="1996"/>
+        <FoalDate date="20131026"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2242401" name="Jack And Jill" bred="SAF">
+        <Cloth number="14"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="6321-06" type="FlatSix"/>
+        <LastRunDays type="Flat" days="27"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="4"/>
+        <Weight text="8 3" units="pounds" value="115"/>
+        <Trainer id="41290" name="Glen Kotzen"/>
+        <Owner name="Mr K Kotzen"/>
+        <Breeder name=""/>
+        <Jockey id="42260" name="L Africa"/>
+        <JockeyColours filename="20170610ken151014.png" description="Red, white spot, red sleeves and cap, white star"/>
+        <Tackle type="Blinkers" count="1"/>
+        <Colour type="b"/>
+        <Sex type="f"/>
+        <Breeding type="Sire" name="Elusive Fort" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="West Donegal" bred="SAF" yearBorn="1999"/>
+        <Breeding type="DamSire" name="West Man" bred="SAF"/>
+        <FoalDate date="20130904"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+    <Race trifecta="No" id="733794" date="20170610" time="1545+0100" raceType="Flat" trackType="Turf" handicap="Yes" class="" showcase="No" maxRunners="16">
+      <Title>Next Kenilworth Meeting 18th June 2017 Mr 64 Handicap</Title>
+      <AddedMoney currency="ZAR" amount="67997"/>
+      <PenaltyValue currency="ZAR" amount="42502"/>
+      <Prizes currency="ZAR">
+        <Prize position="1" amount="42502"/>
+        <Prize position="2" amount="13603"/>
+        <Prize position="3" amount="6793"/>
+        <Prize position="4" amount="3405"/>
+        <Prize position="5" amount="1694"/>
+      </Prizes>
+      <Eligibility type="3YO plus"/>
+      <Distance units="yards" value="1531" text="0m 6f 211y"/>
+      <LastWinner year="2016" noRace="No corresponding race"/>
+      <Horse id="2191855" name="Volatile Energy" bred="SAF">
+        <Cloth number="1"/>
+        <Drawn stall="7"/>
+        <FormFigures figures="732-808" type="FlatSix"/>
+        <LastRunDays type="Flat" days="70"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="4"/>
+        <Weight text="9 10" units="pounds" value="136"/>
+        <Trainer id="128338" name="Candice Bass-robinson"/>
+        <Owner name="Messrs A J Brand &amp; B Riley, Mr A E &amp; Mrs K M Keet"/>
+        <Breeder name=""/>
+        <Jockey id="81354" name="G Wright"/>
+        <JockeyColours filename="20170610ken154501.png" description="Royal blue and white quartered, royal blue sleeves, white chevrons, royal blue cap, white peak"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Seventh Rock" bred="AUS" yearBorn="2004"/>
+        <Breeding type="Dam" name="Relentless" bred="SAF" yearBorn="2004"/>
+        <Breeding type="DamSire" name="National Assembly" bred="CAN"/>
+        <FoalDate date="20130824"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2219349" name="Illdrinktothat" bred="SAF">
+        <Cloth number="2"/>
+        <Drawn stall="10"/>
+        <FormFigures figures="05100-0" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="4"/>
+        <Weight text="9 9" units="pounds" value="135"/>
+        <Trainer id="61907" name="Michael John Robinson"/>
+        <Owner name="Messrs Raymond Davies, O Hall &amp; J B Spaans"/>
+        <Breeder name=""/>
+        <Jockey id="19213" name="W C Marwing"/>
+        <JockeyColours filename="20170610ken154502.png" description="White, yellow spot, red sleeves, blue cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Ideal World" bred="USA" yearBorn="2005"/>
+        <Breeding type="Dam" name="Lemonade" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Strike Smartly" bred="CAN"/>
+        <FoalDate date="20130924"/>
+        <ForecastPrice>
+          <Price numerator="50" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2211585" name="Rocketeer" bred="SAF">
+        <Cloth number="3"/>
+        <Drawn stall="9"/>
+        <FormFigures figures="007633" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="4"/>
+        <Weight text="9 6" units="pounds" value="132"/>
+        <Trainer id="128337" name="Burger/van Reenen"/>
+        <Owner name="Messrs C J Burger &amp; S W Phillips"/>
+        <Breeder name=""/>
+        <Jockey id="76015" name="A Domeyer"/>
+        <JockeyColours filename="20170610ken154503.png" description="Yellow, red stars, hooped sleeves and cap"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Muhtafal" bred="USA"/>
+        <Breeding type="Dam" name="Badgerina" bred="SAF" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Badger Land" bred="USA"/>
+        <FoalDate date="20131112"/>
+        <ForecastPrice>
+          <Price numerator="7" denominator="2"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2227283" name="Cape Quarter" bred="SAF">
+        <Cloth number="4"/>
+        <Drawn stall="14"/>
+        <FormFigures figures="0609-37" type="FlatSix"/>
+        <LastRunDays type="Flat" days="108"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="4"/>
+        <Weight text="9 4" units="pounds" value="130"/>
+        <Trainer id="41274" name="Vaughan Marshall"/>
+        <Owner name="Mr B Kantor"/>
+        <Breeder name=""/>
+        <Jockey id="1159966" name="Craig Bantam">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken154504.png" description="Yellow, royal blue epaulettes, yellow sleeves and cap"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Count Dubois" bred="UK" yearBorn="1998"/>
+        <Breeding type="Dam" name="Juvenescent" bred="USA" yearBorn="2004"/>
+        <Breeding type="DamSire" name="Elusive Quality" bred="USA" yearBorn="1993"/>
+        <FoalDate date="20130823"/>
+        <ForecastPrice>
+          <Price numerator="6" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2144519" name="Nabisco" bred="SAF">
+        <Cloth number="5"/>
+        <Drawn stall="1"/>
+        <FormFigures figures="52450-0" type="FlatSix"/>
+        <LastRunDays type="Flat" days="85"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="5"/>
+        <Weight text="9 2" units="pounds" value="128"/>
+        <Trainer id="41282" name="Justin Snaith" nationality="SAF"/>
+        <Owner name="Mrs S Plattner"/>
+        <Breeder name=""/>
+        <Jockey id="28799" name="K Zechner"/>
+        <JockeyColours filename="20170610ken154505.png" description="Grass Green, Gold seams, Indigo Collar, Sleeves And Cap, Grass Green Cuffs"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <Breeding type="Dam" name="Sweetie Pie" bred="SAF" yearBorn="2006"/>
+        <Breeding type="DamSire" name="Fort Wood" bred="USA" yearBorn="1990"/>
+        <FoalDate date="20120801"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2101982" name="Western Storm" bred="SAF">
+        <Cloth number="6"/>
+        <Drawn stall="5"/>
+        <FormFigures figures="093445" type="FlatSix"/>
+        <LastRunDays type="Flat" days="14"/>
+        <RaceHistoryStat type="Course" value="2"/>
+        <Age years="5"/>
+        <Weight text="9 2" units="pounds" value="128"/>
+        <Trainer id="41283" name="Glen Puller" nationality="SAF"/>
+        <Owner name="Messrs F M Carruthers, A C Johnson G R Puller &amp; Ia"/>
+        <Breeder name=""/>
+        <Jockey id="28754" name="Piet Botha"/>
+        <JockeyColours filename="20170610ken154506.png" description="Dark blue and silver checks, silver sleeves, dark blue seams, silver cap, dark blue peak"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Var" bred="USA" yearBorn="1999"/>
+        <Breeding type="Dam" name="Happy Hostess" bred="SAF" yearBorn="2001"/>
+        <Breeding type="DamSire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <FoalDate date="20120908"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2261962" name="Phelan Lucky" bred="AUS">
+        <Cloth number="7"/>
+        <Drawn stall="8"/>
+        <FormFigures figures="6-031" type="FlatSix"/>
+        <LastRunDays type="Flat" days="49"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="3"/>
+        <Weight text="9 1" units="pounds" value="127"/>
+        <Trainer id="41180" name="Brett Crawford"/>
+        <Owner name="Mr P Phelan"/>
+        <Breeder name=""/>
+        <Jockey id="28057" name="Sihle Cele"/>
+        <JockeyColours filename="20170610ken154507.png" description="Scarlet, emerald green diamond, scarlet sleeves, striped cap"/>
+        <Colour type="ch"/>
+        <Sex type="c"/>
+        <Breeding type="Sire" name="Excelebration" bred="IRE" yearBorn="2008"/>
+        <Breeding type="Dam" name="Governing Spirit" bred="NZ"/>
+        <Breeding type="DamSire" name="Deputy Governor" bred="USA" yearBorn="1984"/>
+        <FoalDate date="20141006"/>
+        <ForecastPrice>
+          <Price numerator="6" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2176633" name="Mr Lover Boy" bred="SAF">
+        <Cloth number="8"/>
+        <Drawn stall="12"/>
+        <FormFigures figures="952326" type="FlatSix"/>
+        <LastRunDays type="Flat" days="35"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="5"/>
+        <Weight text="9 0" units="pounds" value="126"/>
+        <Trainer id="41295" name="Piet Steyn"/>
+        <Owner name="Messrs R M Dunbar, W D Mealing, Bryn Ressell &amp; E L"/>
+        <Breeder name=""/>
+        <Jockey id="28052" name="Grant Behr"/>
+        <JockeyColours filename="20170610ken154508.png" description="Bright pink, bright yellow spots, bright pink sleeves, bright yellow cap"/>
+        <Tackle type="Blinkers" count="12"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Lateral" bred="UK" yearBorn="2003"/>
+        <Breeding type="Dam" name="Cheval D'etoile" bred="SAF" yearBorn="1997"/>
+        <Breeding type="DamSire" name="All Fired Up" bred="USA" yearBorn="2004"/>
+        <FoalDate date="20121127"/>
+        <ForecastPrice>
+          <Price numerator="10" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2055706" name="Bruno" bred="SAF">
+        <Cloth number="9"/>
+        <Drawn stall="6"/>
+        <FormFigures figures="65005-0" type="FlatSix"/>
+        <LastRunDays type="Flat" days="73"/>
+        <RaceHistoryStat type="Distance" value="1"/>
+        <Age years="6"/>
+        <Weight text="8 13" units="pounds" value="125"/>
+        <Trainer id="41285" name="Andries Steyn"/>
+        <Owner name="Mr D C Kotzen"/>
+        <Breeder name=""/>
+        <Jockey id="1154118" name="Akshay Balloo">
+          <Allowance units="pounds" value="6"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken154509.png" description="Black and yellow quartered, striped sleeves, yellow cap, black diamond"/>
+        <Tackle type="Blinkers" count="14"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Dynasty" bred="SAF" yearBorn="1999"/>
+        <Breeding type="Dam" name="Tropical Dance" bred="ARG"/>
+        <Breeding type="DamSire" name="Luhuk" bred="USA" yearBorn="1991"/>
+        <FoalDate date="20110919"/>
+        <ForecastPrice>
+          <Price numerator="66" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2161289" name="Flying Ryan" bred="SAF">
+        <Cloth number="10"/>
+        <Drawn stall="16"/>
+        <FormFigures figures="36666-2" type="FlatSix"/>
+        <LastRunDays type="Flat" days="56"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="5"/>
+        <Weight text="8 13" units="pounds" value="125"/>
+        <Trainer id="41283" name="Glen Puller" nationality="SAF"/>
+        <Owner name="Messrs T Bhikha, F M Carruthers, W H Jacobs, Ken M"/>
+        <Breeder name=""/>
+        <Jockey id="31372" name="Oswald Noach"/>
+        <JockeyColours filename="20170610ken154510.png" description="Dark blue and silver checks, silver sleeves, dark blue seams, silver cap, dark blue peak"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Horse Chestnut" bred="SAF" yearBorn="1996"/>
+        <Breeding type="Dam" name="Foxy Angel" bred="SAF"/>
+        <Breeding type="DamSire" name="Russian Fox" bred="USA"/>
+        <FoalDate date="20121022"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2124699" name="Storm Front" bred="SAF">
+        <Cloth number="11"/>
+        <Drawn stall="2"/>
+        <FormFigures figures="69-0504" type="FlatSix"/>
+        <LastRunDays type="Flat" days="31"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="5"/>
+        <Weight text="8 11" units="pounds" value="123"/>
+        <Trainer id="41297" name="Eric Sands"/>
+        <Owner name="Mr A E Sands"/>
+        <Breeder name=""/>
+        <Jockey id="28082" name="Marco V'Rensburg"/>
+        <JockeyColours filename="20170610ken154511.png" description="Red and black hoops, white sleeves, red cuffs, red and black quartered cap"/>
+        <Tackle type="Blinkers" count="14"/>
+        <Colour type="gr"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Tiger Ridge" bred="USA" yearBorn="1996"/>
+        <Breeding type="Dam" name="Spring Storm" bred="SAF" yearBorn="1996"/>
+        <Breeding type="DamSire" name="Thunder Cat" bred="USA"/>
+        <FoalDate date="20120829"/>
+        <ForecastPrice>
+          <Price numerator="14" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2108435" name="Captain Disko" bred="SAF">
+        <Cloth number="12"/>
+        <Drawn stall="3"/>
+        <FormFigures figures="751336" type="FlatSix"/>
+        <LastRunDays type="Flat" days="36"/>
+        <Age years="5"/>
+        <Weight text="8 9" units="pounds" value="121"/>
+        <Trainer id="119968" name="Renate Plessis" nationality="SAF"/>
+        <Owner name="Mrs R Du Plessis"/>
+        <Breeder name=""/>
+        <Jockey id="1147063" name="Luyolo Mxothwa"/>
+        <JockeyColours filename="20170610ken154512.png" description="Navy blue, navy blue sleeves, white stars, white cap, navy blue star and peak"/>
+        <Tackle type="Blinkers" count="17"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Captain Corageous" bred="SAF" yearBorn="2002"/>
+        <Breeding type="Dam" name="L'lisa" bred="SAF" yearBorn="2003"/>
+        <Breeding type="DamSire" name="Exclusive Patriot" bred="USA"/>
+        <FoalDate date="20120814"/>
+        <ForecastPrice>
+          <Price numerator="16" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2156047" name="Chestnut Wild" bred="SAF">
+        <Cloth number="13"/>
+        <Drawn stall="4"/>
+        <FormFigures figures="36-8545" type="FlatSix"/>
+        <LastRunDays type="Flat" days="20"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="5"/>
+        <Weight text="8 6" units="pounds" value="118"/>
+        <Trainer id="41285" name="Andries Steyn"/>
+        <Owner name="Messrs R P Brand &amp; R P Von Molendorff &amp; Mrs J J St"/>
+        <Breeder name=""/>
+        <Jockey id="1146997" name="Heavelon V'd Hoven"/>
+        <JockeyColours filename="20170610ken154513.png" description="Emerald and white halved diagonally, reversed sleeves, orange cap"/>
+        <Tackle type="Blinkers" count="19"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Horse Chestnut" bred="SAF" yearBorn="1996"/>
+        <Breeding type="Dam" name="Running Wild" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Western Winter" bred="USA" yearBorn="1900"/>
+        <FoalDate date="20121105"/>
+        <ForecastPrice>
+          <Price numerator="8" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="1719963" name="Shepherds Purse" bred="SAF">
+        <Cloth number="14"/>
+        <Drawn stall="11"/>
+        <FormFigures figures="738080-" type="FlatSix"/>
+        <LastRunDays type="Flat" days="179"/>
+        <RaceHistoryStat type="CourseDistance" value="1"/>
+        <Age years="8"/>
+        <Weight text="8 4" units="pounds" value="116"/>
+        <Trainer id="41295" name="Piet Steyn"/>
+        <Owner name="Messrs R M Dunbar, F J Hall &amp; E L P Steyn"/>
+        <Breeder name=""/>
+        <Jockey id="42260" name="L Africa"/>
+        <JockeyColours filename="20170610ken154514.png" description="Blue and purple stripes, striped sleeves and cap"/>
+        <Tackle type="Blinkers" count="33"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Windrush" bred="USA"/>
+        <Breeding type="Dam" name="Every Position" bred="SAF" yearBorn="1998"/>
+        <Breeding type="DamSire" name="Pole Position" bred="UK" yearBorn="1987"/>
+        <FoalDate date="20090919"/>
+        <ForecastPrice>
+          <Price numerator="66" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2106351" name="Astrapi" bred="SAF">
+        <Cloth number="15"/>
+        <Drawn stall="15"/>
+        <FormFigures figures="5-74409" type="FlatSix"/>
+        <LastRunDays type="Flat" days="56"/>
+        <RaceHistoryStat type="Course" value="1"/>
+        <Age years="5"/>
+        <Weight text="8 3" units="pounds" value="115"/>
+        <Trainer id="128337" name="Burger/van Reenen"/>
+        <Owner name="Mr Greg &amp; Mrs Vida Holtman, Mr F J Louw &amp; Mrs C S"/>
+        <Breeder name=""/>
+        <Jockey id="1153769" name="Brandon May"/>
+        <JockeyColours filename="20170610ken154515.png" description="White and blue halved horizontally, pink sleeves, blue cap"/>
+        <Tackle type="Blinkers" count="12"/>
+        <Colour type="b"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Mogok" bred="USA"/>
+        <Breeding type="Dam" name="Withstand The Wind" bred="SAF" yearBorn="2004"/>
+        <Breeding type="DamSire" name="Rakeen" bred="USA" yearBorn="1987"/>
+        <FoalDate date="20120823"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+      <Horse id="2014972" name="Exclusive Knight" bred="SAF">
+        <Cloth number="16"/>
+        <Drawn stall="13"/>
+        <FormFigures figures="686970" type="FlatSix"/>
+        <LastRunDays type="Flat" days="53"/>
+        <Age years="7"/>
+        <Weight text="8 3" units="pounds" value="115"/>
+        <Trainer id="41295" name="Piet Steyn"/>
+        <Owner name="Messrs D J Coetzee &amp; A J O'meara &amp; Mrs Cheryl Cron"/>
+        <Breeder name=""/>
+        <Jockey id="1162107" name="Louis Burke">
+          <Allowance units="pounds" value="9"/>
+        </Jockey>
+        <JockeyColours filename="20170610ken154516.png" description="Orange, emerald green crossed sashes, orange sleeves, quartered cap"/>
+        <Colour type="ch"/>
+        <Sex type="g"/>
+        <Breeding type="Sire" name="Doowaley" bred="IRE"/>
+        <Breeding type="Dam" name="Exclusive Reign" bred="SAF" yearBorn="2000"/>
+        <Breeding type="DamSire" name="Tara's Halls" bred="SNL"/>
+        <FoalDate date="20100828"/>
+        <ForecastPrice>
+          <Price numerator="33" denominator="1"/>
+        </ForecastPrice>
+      </Horse>
+    </Race>
+  </Meeting>
+</HorseRacingCard>

@@ -84,7 +84,7 @@ var saUtils = {
               }
             }
 		 	    }
-          jockeyChangeObject.Jockey.Name = horse.JockeyChange["0"].$.name;
+          jockeyChangeObject.Jockey.Name = horse.JockeyChange["0"].$.name.toLowerCase();
           jockeyChangeObject.Jockey.Allowance.Units = horse.JockeyChange["0"].$.units;
           jockeyChangeObject.Jockey.Allowance.Value = horse.JockeyChange["0"].$.allowance;
           jockeyChangeObject.Jockey.Overweight.Value = horse.JockeyChange["0"].$.overweight;
@@ -225,7 +225,7 @@ var saUtils = {
    * @param {Object} horse The SA horse object
    */
   setHorseDetails : function( object, horse ) {
-    object.Name = horse.$.name;
+    object.Name = horse.$.name.toLowerCase();
     object.Bred = horse.$.bred;
     object.Cloth = horse.ClothRef["0"].$.number;
     return object

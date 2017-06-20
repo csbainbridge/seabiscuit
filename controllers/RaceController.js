@@ -147,6 +147,24 @@ var controller = {
                         }
                         break;
                 }
+                // If the update document contains $push key, create notifications object and merge with
+                // the current $push object.
+                if ( updateDocument.$push === undefined || updateDocument.$push === null ) {
+                    updateDocument = {
+                        $push: {
+                            notifications: {
+                                name: data.PABettingObject.MessageType
+                            }
+                        }
+                    }
+                } else {
+                    var notification = {
+                        notifications: {
+                            name: data.PABettingObject.MessageType
+                        }
+                    }   
+                    Object.assign(updateDocument.$push, notification)
+                }
                 updateDocument.current_revision = parseInt(data.PABettingObject.Revision)
                 Race.findOneAndUpdateAsync(
                     { _id: raceEntity._id },
