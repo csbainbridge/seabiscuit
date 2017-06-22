@@ -10,6 +10,7 @@ var handleError = require('../../utils/ErrorHandler').error,
     meetingController = require('../../controllers/MeetingController'),
     raceController = require('../../controllers/RaceController'),
     horseController = require('../../controllers/HorseController'),
+    notificationController = require('../../controllers').notification,
     _ = require('underscore');
 
 module.exports = (function() {
@@ -29,6 +30,11 @@ module.exports = (function() {
                 var nextRevision = parseInt(data.PABettingObject.Revision) + 1
                 if ( revisions.get(nextRevision.toString()) ) {
                     raceController.bettingUpdate(data, data.PABettingObject.Meeting.Race, raceEntity)
+                    notificationController.update({ 
+                        isCheckedUpdate: false, 
+                        raceEntity: raceEntity, 
+                        data: data 
+                    })
                     if ( data.PABettingObject.Meeting.Race.Horse.length > 0 ) {
                         iterateHorsesSynchronously(data, data.PABettingObject.Meeting.Race.Horse, raceEntity)
                     }
@@ -36,6 +42,11 @@ module.exports = (function() {
                     checkIfPreviouslyProcessed(revisions.get(nextRevision.toString()), revisions, raceEntity, race)
                 } else {
                     raceController.bettingUpdate(data, data.PABettingObject.Meeting.Race, raceEntity)
+                    notificationController.update({ 
+                        isCheckedUpdate: false, 
+                        raceEntity: raceEntity, 
+                        data: data 
+                    })
                     if ( data.PABettingObject.Meeting.Race.Horse.length > 0 ) {
                         iterateHorsesSynchronously(data, data.PABettingObject.Meeting.Race.Horse, raceEntity)
                     }
@@ -71,6 +82,11 @@ module.exports = (function() {
             revisionMap.set(key, revisions)
             if ( parseInt(data.PABettingObject.Revision) === 1 ) {
                 raceController.bettingUpdate(data, race, raceEntity)
+                notificationController.update({ 
+                        isCheckedUpdate: false, 
+                        raceEntity: raceEntity, 
+                        data: data 
+                    })
                 if ( data.PABettingObject.Meeting.Race.Horse.length > 0 ) {
                     iterateHorsesSynchronously(data, data.PABettingObject.Meeting.Race.Horse, raceEntity)
                 }

@@ -54,9 +54,6 @@ var RaceSchema = mongoose.Schema({
         currency: { type: String, default: ''},
         dividend: { type: String, default: '' },
         horses: { type: Array, default: '' }
-    }],
-    notifications: [{
-        name: { type: String }
     }]
 })
 

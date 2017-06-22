@@ -6,7 +6,6 @@ Promise.promisifyAll(Notification);
 
 module.exports = {
     create: function( raceEntity ) {
-        console.log(raceEntity)
         return new Promise(function( resolve, reject ) {
             var document = {
                 notifications: {
@@ -20,14 +19,39 @@ module.exports = {
                 resolve(notification)
             })
             .catch(function( error ) {
-                console.log(error)
                 reject(error)
                 return
             })
         })
     },
-    update: function( id ) {
-        
+    update: function( params ) {
+        // Need to pass the notification log id and notification id
+        //https://stackoverflow.com/questions/38507838/how-to-update-a-specific-object-in-a-array-of-objects-in-node-js-and-mongoose
+        return new Promise(function( resolve, reject ) {
+            if ( params.isCheckedUpdate === false ) {
+                var updateDocument = {
+                    $push: {
+                        notifications: {
+                            name: params.data.PABettingObject.MessageType,
+                            timestamp: new Date()
+                        }
+                    }
+                }
+                Notification.findOneAndUpdate(
+                    { _raceref: params.raceEntity._id },
+                    updateDocument,
+                    { new: true }
+                )
+                .then(function( notification ) {
+                    resolve(notification)
+                    return
+                })
+                .catch(function( error ) {
+                    reject(error)
+                    return
+                })
+            }
+        })
     },
     find: function( params ) {
         return new Promise(function( resolve, reject ) {

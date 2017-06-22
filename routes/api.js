@@ -15,9 +15,7 @@ var express = require('express'),
  * @returns {Object} Returns success object with entities
  */
 router.get('/:resource', function( req, res, next ) {
-    var resource = req.params.resource,
-        controller = controllers[resource]
-    console.log(controller)
+    var resource = req.params.resource, controller = controllers[resource]
     if (controller == null ) {
         response.invalid(res)
     } 
@@ -37,8 +35,7 @@ router.get('/:resource', function( req, res, next ) {
  * @returns {Object} Returns success object with entity
  */
 router.get('/:resource/:id', function( req, res, next ) {
-    var resource = req.params.resource,
-        id = req.params.id,controller = controllers[resource]
+    var resource = req.params.resource, id = req.params.id,controller = controllers[resource]
     if ( controller == null ) {
        response.invalid(res)
     }
@@ -61,12 +58,8 @@ router.get('/:resource/:id', function( req, res, next ) {
 // currently I am pushing the entire database every second to the client, this might be tedius when implementing a notification system, as we wont be able to tell
 // exactly what data has been changed.
 router.post('/:resource', function( req, res, next ) {
-    var resource = req.params.resource
-    var data = req.body
-    var countryName = req.query.name
-    var dataFormat = req.query.type
-    var controller = controllers[resource]
-    var entities = 0;
+    var resource = req.params.resource, data = req.body, countryName = req.query.name,
+        dataFormat = req.query.type, controller = controllers[resource], entities = 0;
     if ( controller == null ) {
         response.invalid(res)
     }
