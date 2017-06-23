@@ -8,6 +8,7 @@
  */
 var controller = require('../../controllers').meeting,
     handleError = require('../../utils/ErrorHandler').error,
+    notificationController = require('../../controllers').notification,
     Promise = require('bluebird'),
     _ = require('underscore')
 
@@ -47,6 +48,12 @@ module.exports = (function() {
     function doesMeetingExist( countryEntity, meetingEntity, data ) {
         if ( meetingEntity.length === 0 ) {
             entity = controller.create(data, countryEntity) // The global variable handler.data is always Turfontein which is why multiple model instances of turfontein meeting are added to the database.
+            entity.then(function(meeting){
+                 notificationController.create({
+                    notificationEntityType: "meeting",
+                    entity: meeting
+                })
+            })
             return entity
         } else {
             return callUpdate(data, meetingEntity)

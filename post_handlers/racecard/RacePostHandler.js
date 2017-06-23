@@ -50,7 +50,10 @@ module.exports = (function() {
         if ( raceEntity.length === 0 ) {
             entity = controller.create(race, meetingEntity)
             entity.then(function( race ) {
-                notificationController.create(race)
+                notificationController.create({
+                    notificationEntityType: "race",
+                    entity: race
+                })
             })
             .catch(function( error ) {
                 console.log(error)

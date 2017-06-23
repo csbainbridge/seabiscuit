@@ -5,9 +5,19 @@ var Notification = require('../models/Notification'),
 Promise.promisifyAll(Notification);
 
 module.exports = {
-    create: function( raceEntity ) {
+    create: function( params ) {
         return new Promise(function( resolve, reject ) {
-            Notification.createAsync({ _raceref: raceEntity._id })
+            var document = {}
+            if ( params.notificationEntityType === 'race' ) {
+                document = {
+                    _raceref: params.entity._id
+                }
+            } else {
+                document = {
+                    _meetingref: params.entity._id
+                }
+            }
+            Notification.createAsync(document)
             .then(function( notification ) {
                 resolve(notification)
             })
@@ -18,28 +28,66 @@ module.exports = {
         })
     },
     update: function( params ) {
-        // Need to pass the notification log id and notification id
-        //https://stackoverflow.com/questions/38507838/how-to-update-a-specific-object-in-a-array-of-objects-in-node-js-and-mongoose
         return new Promise(function( resolve, reject ) {
             if ( params.isCheckedUpdate === false ) {
-                var updateDocument = {
-                    $push: {
-                        notifications: {
-                            name: params.data.PABettingObject.MessageType,
-                            timestamp: new Date()
+                if ( params.notificationEntityType === "race" ) {
+                    var documentToUpdate = {
+                        _raceref: params.raceEntity._id
+                    }
+                    var updateDocument = {
+                        $push: {
+                            notifications: {
+                                name: params.data.PABettingObject.MessageType,
+                                timestamp: new Date()
+                            }
+                        }
+                    }
+                } else {
+                    var documentToUpdate = {
+                        _meetingref: params.meetingEntity._id
+                    }
+                    var updateDocument = {
+                        $push: {
+                            notifications: {
+                                name: params.data.PABettingObject.MessageType,
+                                timestamp: new Date()
+                            }
                         }
                     }
                 }
                 Notification.findOneAndUpdate(
-                    { _raceref: params.raceEntity._id },
+                    documentToUpdate,
                     updateDocument,
                     { new: true }
                 )
                 .then(function( notification ) {
                     resolve(notification)
-                    return
                 })
                 .catch(function( error ) {
+                    reject(error)
+                    return
+                })
+            } else if ( params.isCheckedUpdate === true ) {
+                if ( params.notificationEntityType === "race" ) {
+                    var documentToUpdate = {
+                        _raceref: params.entity._id
+                    }
+                } else {
+                    var documentToUpdate = {
+                        _meetingref: params.entity._id
+                    }
+                }
+                Notification.findAsync(documentToUpdate)
+                .then(function(notificationEntity){
+                    notificationEntity["0"].notifications.forEach(function(notification){
+                        if ( notification._isChecked === false ) {
+                            notification._isChecked = true
+                        }
+                    })
+                    resolve(notificationEntity["0"].save())
+
+                })
+                .catch(function(error){
                     reject(error)
                     return
                 })

@@ -35,7 +35,7 @@ router.get('/:resource', function( req, res, next ) {
  * @returns {Object} Returns success object with entity
  */
 router.get('/:resource/:id', function( req, res, next ) {
-    var resource = req.params.resource, id = req.params.id,controller = controllers[resource]
+    var resource = req.params.resource, id = req.params.id, controller = controllers[resource]
     if ( controller == null ) {
        response.invalid(res)
     }
@@ -59,23 +59,11 @@ router.get('/:resource/:id', function( req, res, next ) {
 // exactly what data has been changed.
 router.post('/:resource', function( req, res, next ) {
     var resource = req.params.resource, data = req.body, countryName = req.query.name,
-        dataFormat = req.query.type, controller = controllers[resource], entities = 0;
+        dataFormat = req.query.type, controller = controllers[resource], entities = 0, query = req.query;
     if ( controller == null ) {
         response.invalid(res)
     }
-    if ( controller === 'notification' ) {
-        console.log("Log: Notification Update")
-        notificationController.update({
-            isCheckedUpdate: true
-        })
-        .then(function( success ) {
-            response.success(res, "notifications updated")
-        })
-        .catch(function( error ) {
-            response.error(res, error)
-        })
-    }
-    if ( dataFormat === 'racecard' ) {
+    if ( dataFormat === 'racecard') {
         countryPromise = countryPostHandler.init(countryName, data, controller)
         meetingPromise = meetingPostHandler.init({promise : countryPromise, data : data})
         racePromises = racePostHandler.init({promise : meetingPromise, data : data})
@@ -95,8 +83,20 @@ router.post('/:resource', function( req, res, next ) {
         .catch(function( error ) {
             response.error(res, error)
         })
+    } else if ( resource === 'notification' ) {
+        notificationController.update({
+            isCheckedUpdate: true,
+            notificationEntityType: query.q,
+            entity: data
+        })
+        .then(function( success ) {
+            response.success(res, "notifications updated")
+        })
+        .catch(function( error ) {
+            response.error(res, error)
+        })
     } else {
-        response.error(res, "Expected data format 'racecard' or 'betting'")
+         response.error(res, "Expected data format 'racecard' or 'betting'")
     }
 })
 
