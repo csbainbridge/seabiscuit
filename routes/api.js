@@ -63,7 +63,19 @@ router.post('/:resource', function( req, res, next ) {
     if ( controller == null ) {
         response.invalid(res)
     }
-    if ( dataFormat === 'racecard') {
+    if ( controller === 'notification' ) {
+        console.log("Log: Notification Update")
+        notificationController.update({
+            isCheckedUpdate: true
+        })
+        .then(function( success ) {
+            response.success(res, "notifications updated")
+        })
+        .catch(function( error ) {
+            response.error(res, error)
+        })
+    }
+    if ( dataFormat === 'racecard' ) {
         countryPromise = countryPostHandler.init(countryName, data, controller)
         meetingPromise = meetingPostHandler.init({promise : countryPromise, data : data})
         racePromises = racePostHandler.init({promise : meetingPromise, data : data})

@@ -25,7 +25,10 @@ var processor = {
         var filePaths = files
         .filter(function(item){return item != undefined})
         .map(function(fileData){
-            return fileData.Directory + "/" + fileData.FileName
+            //TODO: Use a regular expression to check if the files ends with .xml instead of .DS_Store
+            if ( fileData.FileName !== ".DS_Store" ) {
+                return fileData.Directory + "/" + fileData.FileName
+            }
         })
         processor.postRaceDataSynchronously(filePaths)
     },

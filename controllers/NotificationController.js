@@ -7,14 +7,7 @@ Promise.promisifyAll(Notification);
 module.exports = {
     create: function( raceEntity ) {
         return new Promise(function( resolve, reject ) {
-            var document = {
-                notifications: {
-                    name: "RaceCardProcessed",
-                    timestamp: new Date()
-                },
-                _raceref: raceEntity._id
-            }
-            Notification.createAsync(document)
+            Notification.createAsync({ _raceref: raceEntity._id })
             .then(function( notification ) {
                 resolve(notification)
             })
