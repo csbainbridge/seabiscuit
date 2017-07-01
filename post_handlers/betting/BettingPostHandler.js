@@ -24,6 +24,7 @@ module.exports = (function() {
      * @param {Object} race The Race Object
      * @param {Object} raceEntity The Race Entity Object
      */
+    //TODO: Test two meetings when a first meeting file revision is not received.
     function correctBettingSequence( data, race, raceEntity ) {
         if ( revisionMap.size > 0 && revisionMap.get(data.PABettingObject.Meeting.Race.ID) !== undefined) {
             function checkIfPreviouslyProcessed(data, revisions, raceEntity, race) {
@@ -31,7 +32,8 @@ module.exports = (function() {
                 if ( revisions.get(nextRevision.toString()) ) {
                     raceController.bettingUpdate(data, data.PABettingObject.Meeting.Race, raceEntity)
                     notificationController.update({ 
-                        isCheckedUpdate: false, 
+                        isCheckedUpdate: false,
+                        notificationEntityType: "race", 
                         raceEntity: raceEntity, 
                         data: data 
                     })
@@ -43,7 +45,8 @@ module.exports = (function() {
                 } else {
                     raceController.bettingUpdate(data, data.PABettingObject.Meeting.Race, raceEntity)
                     notificationController.update({ 
-                        isCheckedUpdate: false, 
+                        isCheckedUpdate: false,
+                        notificationEntityType: "race", 
                         raceEntity: raceEntity, 
                         data: data 
                     })
@@ -83,10 +86,11 @@ module.exports = (function() {
             if ( parseInt(data.PABettingObject.Revision) === 1 ) {
                 raceController.bettingUpdate(data, race, raceEntity)
                 notificationController.update({ 
-                        isCheckedUpdate: false, 
+                        isCheckedUpdate: false,
+                        notificationEntityType: "race", 
                         raceEntity: raceEntity, 
                         data: data 
-                    })
+                })
                 if ( data.PABettingObject.Meeting.Race.Horse.length > 0 ) {
                     iterateHorsesSynchronously(data, data.PABettingObject.Meeting.Race.Horse, raceEntity)
                 }
@@ -101,6 +105,14 @@ module.exports = (function() {
      * @param {Object} meetingEntity The Meeting Entity Object
      */
     function callMeetingUpdate( race, meetingEntity ) {
+        if ( race.PABettingObject.MessageType === "Going" || race.PABettingObject.MessageType === "Weather") {
+            notificationController.update({
+                isCheckedUpdate: false,
+                notificationEntityType: "meeting",
+                meetingEntity: meetingEntity["0"],
+                data: race
+            })
+        }
         return meetingController.bettingUpdate(race, meetingEntity["0"])
     }
      /**

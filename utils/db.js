@@ -37,7 +37,7 @@ var db = {
       mongoose.connection.db.dropDatabase();
       countryController.create("South Africa")
       .then(function( success ) {
-        console.log(new Date() + ' ' + success.name + " entity created")
+        console.log(new Date() + ' ' + ": Database entities created successfully")
         resolve()
       })
       .catch(function(error) {

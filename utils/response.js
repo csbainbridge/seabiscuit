@@ -22,9 +22,10 @@ module.exports = {
      */
     success: function( res, data ) {
         res.json({
-            message: 'success',
+            message: "success",
             data: data
         })
+        // res.set({'content-type':'application/json'}).send(JSON.stringify(data))
     },
     /**
      * When a resource is not found return fail message.

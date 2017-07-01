@@ -60,7 +60,7 @@ var processor = {
                 if ( filePaths.length ) {
                     processor.postRaceDataSynchronously(filePaths)
                 } else {
-                    console.log(new Date() + " " + body.data + " from " + filePath + " POSTed successfully")
+                    console.log(new Date() + " " + body.data + " from " + filePath + " POST was successful")
                 }
             })
         })
@@ -86,7 +86,7 @@ var processor = {
                 if ( filePaths.length ) {
                     processor.postRaceDataSynchronously(filePaths)
                 } else {
-                    console.log(new Date() + " " + body.data + " from " + filePath + " POSTed successfully")
+                    console.log(new Date() + " " + body.data + " from " + filePath + " POST was successful")
                 }
             })
         })

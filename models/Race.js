@@ -45,7 +45,7 @@ var RaceSchema = mongoose.Schema({
     track_type: { type: String, default: '' },
     trifecta: { type: String, default: '' },
     max_runners: { type: String, default: '' },
-    runners: { type: String, default: '' },
+    runners: { type: String },
     horses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Horse' }],
     returns: [{
         _id: mongoose.Schema.Types.ObjectId,

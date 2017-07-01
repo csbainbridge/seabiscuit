@@ -5,10 +5,13 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-    <div id="container"><div>
-    <div id="meetings"></div>
-    <script src="../src/javascript/app.js"></script>
+    <!--<div id="root"></div>
+    <script type="text/javascript" src="/build/bundle.js"></script>-->
+    <button id="btn-today">TODAY</button>
+    <button id="btn-tomorrow">TOMORROW</button>
+    <button id="country">COUNTRY</button>
+    <div id="output"></div>
+    <div id="response"></div>
+    <script src="./src/app.js"></script>
   </body>
 </html>

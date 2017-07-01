@@ -30,6 +30,7 @@ var controller = {
                 track_type: data.TrackType,
                 trifecta: data.Trifecta,
                 max_runners: data.MaxRunners,
+                runners: data.MaxRunners,
                 distance: data.Distance
             }
             Race.createAsync(document)
@@ -145,7 +146,11 @@ var controller = {
                             },
                             stewards: race.Stewards
                         }
-                        break;
+                    case "NonRunner":
+                        updateDocument = {
+                            runners: raceEntity.max_runners - race.Horse.length
+                        }
+                    break;
                 }
                 updateDocument.current_revision = parseInt(data.PABettingObject.Revision)
                 Race.findOneAndUpdateAsync(
