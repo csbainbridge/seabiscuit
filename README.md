@@ -1,4 +1,4 @@
-# Seabiscuit (PA Realtime Race Day Viewer) (A NodeJS & ReactJS Application)
+# Seabiscuit (PA Realtime Race Day Viewer)
 
 A realtime web application for viewing live racing data.
 
@@ -26,10 +26,8 @@ To ensure to the ingestion process works correctly you will first need to create
 1. `cd` into project directory
 2. `npm run start:ingest`
 
-## Starting the Web Server
+## Starting the Web Server 
 
-1. `cd` into project directory
-2. `npm run start:web`
 
 Curtis' Linkedin
 https://www.linkedin.com/in/curtis-bainbridge-38b381105/
