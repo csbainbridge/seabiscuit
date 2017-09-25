@@ -27,9 +27,3 @@ To ensure to the ingestion process works correctly you will first need to create
 2. `npm run start:ingest`
 
 
-Curtis' Linkedin
-https://www.linkedin.com/in/curtis-bainbridge-38b381105/
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/master
